@@ -1,15 +1,17 @@
 package quinzical;
 
+import java.util.List;
+
 public class Question {
     private String _question;
-    private String _answer;
+    private List<String> _answer;
     private String _prize;
     private boolean _attempted = false;
     private boolean _result;
     private Category _parent;
 
     // When reading files, the category object will be created first before each question, so add all the data to question class
-    public Question(String question, String answer, String prize, Category parent) {
+    public Question(String question, List<String> answer, String prize, Category parent) {
         _question = question;
         _answer = answer;
         _prize = prize;
