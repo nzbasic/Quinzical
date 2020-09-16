@@ -60,7 +60,7 @@ public class Question {
 
     //Returns all the possible answers for a question (some have multiple answers)
     public List<String> getAnswersAsList() {
-        String[] data = _answer.split(",");
+        String[] data = _answer.split("/");
         List<String> output = new ArrayList<String>();
         for (String answer: data) {
             output.add(answer);
