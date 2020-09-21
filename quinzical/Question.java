@@ -72,20 +72,17 @@ public class Question {
 
         List<String> possibleAnswers = getAnswersAsList();
 
-        userInput.replace("the","");
-        userInput.toLowerCase().trim();
+        userInput=userInput.replace("the","").toLowerCase().trim();
         
         for (String answer: possibleAnswers) {
             if (userInput.equals(answer.toLowerCase().trim())) {
                 _attempted = true;
                 _result = true;
                 return true;
-            } else {
-                _attempted = true;
-                _result = false;
-                return false;
-            }
-        }
+            } 
+        }        
+        _attempted = true;
+        _result = false;
         return false;
     }
 }
