@@ -1,7 +1,9 @@
 package quinzical;
 
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Category {
     private List<Question> _questions = null;
@@ -34,4 +36,5 @@ public class Category {
         }
         return true;
     }
+    
 }
