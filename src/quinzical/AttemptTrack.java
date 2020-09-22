@@ -145,6 +145,7 @@ public class AttemptTrack {
     * Sets the question index inside record to 1 when the question has been attempted
     */
    public void setAttempted(int questionIndex) {
+	   readAttempted();
 	   record[questionIndex]=1;
 	   //save changes inside attemptRecord file
 	   updateAttemptRecord();
