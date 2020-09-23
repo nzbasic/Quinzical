@@ -22,11 +22,11 @@ public class PracticeController {
     private List<Category> categories;
 
     @FXML
-    private Button ctg1, ctg2, ctg3, ctg4, ctg5;
+    private Button ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9;
 
     @FXML
     public void initialize() {
-        buttonList = new Button[] { ctg1, ctg2, ctg3, ctg4, ctg5 };
+        buttonList = new Button[] { ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9};
         categories = generator.getPracticeCategories();
         for (int i = 0; i < 5; i++) {
             Button button = buttonList[i];
