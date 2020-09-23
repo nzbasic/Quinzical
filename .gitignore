@@ -1,6 +1,8 @@
 lib/
 .vscode/
 bin/
+src/attempt
+src/categories
 
 # Compiled class file
 *.class
