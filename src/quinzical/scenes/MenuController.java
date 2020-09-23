@@ -46,4 +46,20 @@ public void startGame(Event e) throws IOException {
 	   gc.checkIfAllAttempted();
 }
 
+@FXML
+public void startPractice(Event e) throws IOException {
+	FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Practice.fxml"));
+	Parent gameParent = gameLoad.load();
+	Scene practiceScene = new Scene(gameParent);
+	Stage quinzicalStage = (Stage)((Node)e.getSource()).getScene().getWindow();
+	quinzicalStage.setScene(practiceScene);
+	quinzicalStage.show();
+}
+
+@FXML
+public void quit(Event e) {
+	Stage quinzicalStage = (Stage)((Node)e.getSource()).getScene().getWindow();
+	quinzicalStage.close();
+}
+
 }

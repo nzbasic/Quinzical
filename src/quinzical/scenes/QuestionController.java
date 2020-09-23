@@ -31,8 +31,26 @@ public class QuestionController {
  private Label message;
  @FXML
  private Button continueGame;
+ @FXML
+ private Button mainMenu;
+ @FXML
+ private Label firstLetter;
+ 
  private int lineNumber;
  private List<Question> questionsAndAnswers;
+ private boolean practiceMode = false;
+ private Question questionObj;
+ private int retryNumber = 0;
+ 
+ public void setPracticeMode() {
+		practiceMode = true;
+		giveup.setVisible(false);
+	 }
+ 
+ public void setQuestion(Question q) {
+		questionObj = q;
+		setQuestion(questionObj.getQuestion());
+	 }
  
  public void setQuestion(String s) {
 	 question.setText(s);
@@ -44,6 +62,33 @@ public class QuestionController {
  }
  @FXML
  public void checkAnswer(Event e) {
+	if (practiceMode) {
+		//increase retry number, once they hit 3 then they dont get any more attempts
+		retryNumber++;
+
+		boolean flag = true;
+
+		//Check if what they wrote is correct, update question
+		if (questionObj.checkAnswer(answer.getText())) {
+			questionObj.setResult(true);
+			message.setText("Correct!");
+		} else {
+			flag = false;
+			if (retryNumber == 2) {
+				char first = questionObj.getFirstLetter();
+				firstLetter.setText("The first letter is: " + Character.toUpperCase(first));
+			}
+			if (retryNumber < 3) {
+				message.setText("Incorrect, " + (3-retryNumber) + " attempts remain");
+				message.setVisible(true);
+				return;
+			} else {
+				message.setText("The correct answer was " + questionObj.getAnswer());
+			}
+		}
+	} else {
+
+
 	 String usrInput = answer.getText();
 	 //Check Answers
 	 Question q=questionsAndAnswers.get(lineNumber-1);
@@ -56,15 +101,27 @@ public class QuestionController {
 	 }
 	//Set Question as attempted
 		 new AttemptTrack().setAttempted(lineNumber-1);
+
+	}
 	 submit.setVisible(false);
 	 giveup.setVisible(false);
 	 message.setVisible(true);
 	 continueGame.setVisible(true);
-	
+	 mainMenu.setVisible(true);
+	 firstLetter.setVisible(false);
  }
- 
  @FXML
  public void returnToQuestionSelection(Event e) throws IOException {
+	 if (practiceMode) {
+		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Practice.fxml"));
+	 
+		Parent gameParent = gameLoad.load();
+		
+		Scene gameScene= new Scene(gameParent);
+		Stage quinzicalStage = (Stage)((Node)e.getSource()).getScene().getWindow();
+		quinzicalStage.setScene(gameScene);
+		quinzicalStage.show();
+	 } else {
 	 FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Game.fxml"));
 	 
 	   Parent gameParent = gameLoad.load();
@@ -75,7 +132,10 @@ public class QuestionController {
 	   Stage quinzicalStage = (Stage)((Node)e.getSource()).getScene().getWindow();
 	   quinzicalStage.setScene(gameScene);
 	   quinzicalStage.show();
-	   gc.checkIfAllAttempted();
+	 }
  }
-
+ @FXML
+ public void returnToMenu(Event e) throws IOException {
+	 new GameController().returnToMenu(e);
+ }
 }

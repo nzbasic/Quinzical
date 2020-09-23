@@ -16,9 +16,9 @@
             <Font size="45.0" />
          </font>
       </Text>
-      <Button fx:id="exit" layoutX="163.0" layoutY="248.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="117.0" text="Quit" />
+      <Button fx:id="exit" onAction="#quit" layoutX="163.0" layoutY="248.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="117.0" text="Quit" />
       <Button fx:id="contGame" layoutX="161.0" layoutY="177.0" mnemonicParsing="false" onAction="#startGame" text="Continue Game" />
-      <Button fx:id="practice" layoutX="162.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="Practice" />
+      <Button fx:id="practice"  onAction="#startPractice" layoutX="162.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="Practice" />
       <Label layoutX="301.0" layoutY="7.0" text="Total Points:" />
       <Label fx:id="points" layoutX="392.0" layoutY="7.0" prefHeight="15.0" prefWidth="41.0" />
    </children>

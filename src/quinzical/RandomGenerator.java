@@ -108,4 +108,14 @@ public Question generatePracticeQuestion(Category c) {
 	Question q=new Question(questionfields[0],questionfields[1],Integer.toString(0),c);
 	return q;	
 }
+
+	/**
+	 * Returns 5 generated categories
+	 * @return
+	 */
+	public List<Category> getPracticeCategories() {
+		generateCategoriesAtRandom();
+		generateGameQuestions();
+		return categories;
+	}
 }
