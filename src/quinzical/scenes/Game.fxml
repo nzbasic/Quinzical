@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.*?>
 
-<HBox prefHeight="388.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.GameController">
+<HBox fx:id="game" prefHeight="388.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.GameController">
    <children>
       <GridPane prefHeight="299.0" prefWidth="528.0" HBox.hgrow="SOMETIMES">
         <columnConstraints>
@@ -61,6 +61,8 @@
             <Button fx:id="c5q4" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeToAnswerScreen" text="400" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             <Button fx:id="c5q5" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeToAnswerScreen" text="500" GridPane.columnIndex="4" GridPane.rowIndex="5" />
             <Button fx:id="returnMenu" mnemonicParsing="false" onAction="#returnToMenu" prefHeight="25.0" prefWidth="99.0" text="return" GridPane.rowIndex="6" />
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text=" Total points:" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Label fx:id="points" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="4" GridPane.rowIndex="6" />
          </children>
       </GridPane>
    </children>

@@ -10,12 +10,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import quinzical.Winnings;
 
 public class MenuController {
 @FXML
 private Button newGame;
 
+@FXML
+private Label points;
+
+public void initialize() {
+	points.setText(new Winnings().getWinnings());
+}
 @FXML
 public void startGame(Event e) throws IOException {
 	   FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Game.fxml"));
@@ -35,6 +43,7 @@ public void startGame(Event e) throws IOException {
 	   Stage quinzicalStage = (Stage)((Node)e.getSource()).getScene().getWindow();
 	   quinzicalStage.setScene(gameScene);
 	   quinzicalStage.show();
+	   gc.checkIfAllAttempted();
 }
 
 }

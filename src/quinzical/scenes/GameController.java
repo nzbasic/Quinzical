@@ -12,13 +12,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import quinzical.AttemptTrack;
 import quinzical.Question;
+import quinzical.Winnings;
 
 public class GameController {
+   
    @FXML
-   private Label category1,category2,category3,category4,category5;
+   private Label category1,category2,category3,category4,category5,points;
    @FXML
    private Button c1q1,c1q2,c1q3,c1q4,c1q5,c2q1,c2q2,c2q3,c2q4,c2q5,
                   c3q1,c3q2,c3q3,c3q4,c3q5,c4q1,c4q2,c4q3,c4q4,c4q5,
@@ -28,19 +31,22 @@ public class GameController {
    private AttemptTrack attempt=new AttemptTrack();
    private List<String> categoryNames;
    private List<Question> allq;
+   private int count;
    
    
-   public void newGameData() {
+   public void newGameData() throws IOException {
 	   attempt.resetAll();
 	   setupGame();
    }
    
-   public void oldGameData() {
+   public void oldGameData() throws IOException {
 	   setupGame();
    }
    
-   public void setupGame() {
+  
+   public void setupGame() throws IOException {
 	   Label[] categories= {category1,category2,category3,category4,category5};
+	   points.setText(new Winnings().getWinnings());
 	   categoryNames=attempt.readCategoriesGenerated();
 	   for (int i=0;i<5;i++) {
 		   categories[i].setText(categoryNames.get(i));
@@ -52,6 +58,8 @@ public class GameController {
 	   //Hide questions already attempted
 	   boolean countCate=true;
 	   int[] attemptedRecord=attempt.getAttemptedRecord();
+	   //check if all questions attempted
+	   count=0;
 	   for (int i=0;i<attemptedRecord.length;i++) {
 		   //Enable one button for each category
 		   if (i%5==0) {
@@ -59,15 +67,31 @@ public class GameController {
 		   }
 		   
 		   if (attemptedRecord[i]==1) {
-			   //If attempted, hide button
+			   //If attempted, hide button,Only Enable lowest value question	
 			   questions[i].setVisible(false);
-			   //Only Enable lowest value question		   
+			   count++;
 		   }
 		   else if (attemptedRecord[i]==0 && countCate==true) {
 			   questions[i].setDisable(false);
 			   countCate=false;
 		   }
 		   
+	   }
+	   
+   }
+   
+   public void checkIfAllAttempted() throws IOException {
+	   if (count==25) {
+		   //To reward screen
+		   FXMLLoader rewardLoad = new FXMLLoader(getClass().getResource("Reward.fxml"));
+		   Parent rewardParent = rewardLoad.load();
+		   RewardController rc = rewardLoad.getController();
+		   rc.setPoints(new Winnings().getWinnings());
+		   
+		   Scene rewardScene= new Scene(rewardParent);
+		   Stage quinzicalStage = (Stage)category1.getScene().getWindow();
+		   quinzicalStage.setScene(rewardScene);
+		   quinzicalStage.show();
 	   }
    }
    

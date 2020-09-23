@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="343.0" prefWidth="406.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="quinzical.scenes.RewardController">
+   <children>
+      <Label layoutX="133.0" layoutY="89.0" prefHeight="48.0" prefWidth="175.0" text="YOUR SCORE IS:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="points" layoutX="160.0" layoutY="137.0" prefHeight="48.0" prefWidth="74.0" />
+      <Button fx:id="returnMenu" layoutX="49.0" layoutY="193.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="130.0" text="Return To Menu" onAction="#returnToMainMenu"/>
+      <Button fx:id="newGame" layoutX="221.0" layoutY="193.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="130.0" text="Play Again"  onAction="#restartGame"/>
+   </children>
+</AnchorPane>

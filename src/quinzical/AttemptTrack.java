@@ -45,6 +45,8 @@ public class AttemptTrack {
 	   boolean existance = tmpDir.exists();
 	   return existance;
    }
+   
+  
    /**
     * get the names of the five categories generated from previous attempts
     */
