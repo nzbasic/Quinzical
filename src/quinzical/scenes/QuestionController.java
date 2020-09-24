@@ -10,11 +10,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import quinzical.AttemptTrack;
+import quinzical.HelperThread;
 import quinzical.Question;
 import quinzical.Winnings;
 
@@ -32,7 +34,7 @@ public class QuestionController {
  @FXML
  private Button continueGame;
  @FXML
- private Button mainMenu;
+ private Button mainMenu,normal,fast,slow;
  @FXML
  private Label firstLetter;
  
@@ -41,6 +43,7 @@ public class QuestionController {
  private boolean practiceMode = false;
  private Question questionObj;
  private int retryNumber = 0;
+ private String questionText;
  
  public void setPracticeMode() {
 		practiceMode = true;
@@ -51,14 +54,31 @@ public class QuestionController {
  public void setQuestion(Question q) {
 	   question.setVisible(true);
 		questionObj = q;
-		setQuestion(questionObj.getQuestion());
+		question.setText(questionObj.getQuestion());
+		questionText=questionObj.getQuestion();
 	 }
  
  //For games module
  public void setQuestion(String s) {
 	 question.setVisible(false);
 	 //Bash Process
-	 question.setText(s);
+	 questionText=s;
+ }
+ 
+ @FXML
+ public void playQuestionSpeech(Event e) {
+	 HelperThread helper =null;
+	 String ButtonId=((Control)e.getSource()).getId();
+	   if (ButtonId.equals("normal")) {
+	   helper = new HelperThread(questionText,1);
+	   }
+	   else if (ButtonId.equals("slow")){
+		  helper = new HelperThread(questionText,0);
+	   }
+	   else if (ButtonId.equals("fast")) {
+		   helper = new HelperThread(questionText,2);
+	   }
+	   helper.start();
  }
  public void setQuestionLines(int index, List<Question> questionLines) {
 	 lineNumber=index;
@@ -77,18 +97,23 @@ public class QuestionController {
 		if (questionObj.checkAnswer(answer.getText())) {
 			questionObj.setResult(true);
 			message.setText("Correct!");
+			new HelperThread("Correct!",1).run();
 		} else {
 			flag = false;
 			if (retryNumber == 2) {
 				char first = questionObj.getFirstLetter();
-				firstLetter.setText("The first letter is: " + Character.toUpperCase(first));
+				String textHint="The first letter is: " + Character.toUpperCase(first);
+				firstLetter.setText(textHint);
+				new HelperThread(textHint,1).run();
 			}
 			if (retryNumber < 3) {
 				message.setText("Incorrect, " + (3-retryNumber) + " attempts remain");
 				message.setVisible(true);
 				return;
 			} else {
-				message.setText("The correct answer was " + questionObj.getAnswer());
+				String answerText="The correct answer was " + questionObj.getAnswer();
+				message.setText(answerText);
+				new HelperThread(answerText,1).run();
 			}
 		}
 	} else {
@@ -100,9 +125,12 @@ public class QuestionController {
 	 if (q.checkAnswer(usrInput)) {
 		 //Add Winnings
 		 new Winnings().updateWinnings(Integer.parseInt(q.getPrize()));
-		 message.setText("Correct!");		 		 
+		 message.setText("Correct!");	
+		 new HelperThread("Correct!",1).run();
 	 }else {
-		 message.setText("The correct answer is: "+q.getAnswer());
+		 String answerTxt="The correct answer is: "+q.getAnswer();
+		 message.setText(answerTxt);
+		 new HelperThread(answerTxt,1).run();
 	 }
 	
 
