@@ -67,6 +67,7 @@ public class QuestionController {
  
  @FXML
  public void playQuestionSpeech(Event e) {
+	 
 	 HelperThread helper =null;
 	 String ButtonId=((Control)e.getSource()).getId();
 	   if (ButtonId.equals("normal")) {

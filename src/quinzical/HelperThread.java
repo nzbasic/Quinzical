@@ -2,6 +2,7 @@ package quinzical;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.util.stream.Stream;
 
 public class HelperThread extends Thread{
     private String textToSpeech;
@@ -14,7 +15,10 @@ public class HelperThread extends Thread{
 	@Override
 	public void run() {
 		try {
-			 
+			Stream<ProcessHandle> descendents = ProcessHandle.current().descendants();
+			descendents.filter(ProcessHandle::isAlive).forEach(ph -> {
+			      ph.destroy();
+			});
 			FileWriter fw = new FileWriter("./attempt/question.scm");
 			BufferedWriter bw = new BufferedWriter(fw);
 		    bw.write("(voice_akl_nz_jdt_diphone)");
@@ -30,8 +34,8 @@ public class HelperThread extends Thread{
 		    textToSpeech=textToSpeech.replace("ā", "aa");
 		    bw.write("(SayText \""+textToSpeech+"\")");
 			bw.close();
-			ProcessBuilder verify = new ProcessBuilder("bash", "-c", "festival -b ./attempt/question.scm");
-				Process ansProcess = verify.start();
+			new ProcessBuilder("bash", "-c", "festival -b ./attempt/question.scm").start();
+			
 	   } catch (Exception e) {
 			//add our own exception class to handle runtime exceptions
 			throw new quinzicalExceptions(e.getMessage());
