@@ -47,12 +47,17 @@ public class QuestionController {
 		giveup.setVisible(false);
 	 }
  
+ //For practice module
  public void setQuestion(Question q) {
+	   question.setVisible(true);
 		questionObj = q;
 		setQuestion(questionObj.getQuestion());
 	 }
  
+ //For games module
  public void setQuestion(String s) {
+	 question.setVisible(false);
+	 //Bash Process
 	 question.setText(s);
  }
  public void setQuestionLines(int index, List<Question> questionLines) {
@@ -99,8 +104,7 @@ public class QuestionController {
 	 }else {
 		 message.setText("The correct answer is: "+q.getAnswer());
 	 }
-	//Set Question as attempted
-		 new AttemptTrack().setAttempted(lineNumber-1);
+	
 
 	}
 	 submit.setVisible(false);

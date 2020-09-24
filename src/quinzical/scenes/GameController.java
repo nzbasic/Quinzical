@@ -101,11 +101,13 @@ public class GameController {
 	   String ButtonId=((Control)e.getSource()).getId();
 	   //Set button invisible
 	   ((Button)e.getSource()).setVisible(false);
+	   
 	   //Get Question
 	   int categoryIndex=Integer.parseInt(ButtonId.substring(1,2));
 	   int questionIndex=Integer.parseInt(ButtonId.substring(3));
 	   int lineNumber=(categoryIndex-1)*5+questionIndex;
-	   
+	 //Set Question as attempted
+		 new AttemptTrack().setAttempted(lineNumber-1);
 	   //Enable nextbutton click
 	   if (questionIndex<5) {
 		   (questionbuttons[lineNumber]).setDisable(false);
