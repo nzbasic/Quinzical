@@ -130,7 +130,7 @@ public class GameController {
    }
    @FXML
    public void returnToMenu(Event e) throws IOException {
-	   FXMLLoader menuLoad = new FXMLLoader(getClass().getResource("GameMenu.fxml"));
+	   FXMLLoader menuLoad = new FXMLLoader(getClass().getResource("Menu.fxml"));
 	   Parent menuParent = menuLoad.load();
 	   
 	   Scene questionScene= new Scene(menuParent);

@@ -15,7 +15,7 @@ public class quinzical extends Application {
 	    	
 	    	FXMLLoader loader = new FXMLLoader();
 	    	loader.setController(new GameController());
-	        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("scenes/GameMenu.fxml")));
+	        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("scenes/Menu.fxml")));
 	        primaryStage.setScene(scene);
 	        primaryStage.show();
 	    }
