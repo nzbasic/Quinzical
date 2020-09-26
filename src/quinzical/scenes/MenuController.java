@@ -1,20 +1,13 @@
 package quinzical.scenes;
 
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-
 import javafx.application.Platform;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

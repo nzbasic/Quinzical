@@ -15,7 +15,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import quinzical.AttemptTrack;
 import quinzical.HelperThread;
 import quinzical.Question;
 import quinzical.Winnings;
@@ -92,15 +91,13 @@ public class QuestionController {
 		//increase retry number, once they hit 3 then they dont get any more attempts
 		retryNumber++;
 
-		boolean flag = true;
-
 		//Check if what they wrote is correct, update question
 		if (questionObj.checkAnswer(answer.getText())) {
 			questionObj.setResult(true);
 			message.setText("Correct!");
 			new HelperThread("Correct!",1).run();
 		} else {
-			flag = false;
+		
 			if (retryNumber == 2) {
 				char first = questionObj.getFirstLetter();
 				String textHint="The first letter is: " + Character.toUpperCase(first);
