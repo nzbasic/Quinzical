@@ -17,6 +17,10 @@ import javafx.scene.Node;
 import quinzical.Question;
 import quinzical.RandomGenerator;
 
+/**
+ * Controller for the practice module. The user selects which category they
+ * would like a question from.
+ */
 public class PracticeController {
     private CategoryLoader loader;
     private RandomGenerator generator;
@@ -32,20 +36,28 @@ public class PracticeController {
         categories = loader.getCategories();
     }
 
+    /**
+     * Called when the user presses any of the buttons.
+     * 
+     * @param e Button Event
+     * @throws IOException
+     */
     @FXML
     public void select(Event e) throws IOException {
-        String ButtonId=((Control)e.getSource()).getId();
+        // Grabbing the button the user pressed.
+        String ButtonId = ((Control) e.getSource()).getId();
+        // Based on the id of the button, get the equivalent category.
         int categoryNumber = Integer.parseInt(ButtonId.substring(3));
-        Question questionSelected = generator.generatePracticeQuestion(categories.get(categoryNumber-1));
+        Question questionSelected = generator.generatePracticeQuestion(categories.get(categoryNumber - 1));
         FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("QuestionAndAnswer.fxml"));
-	    Parent questionParent = questionLoad.load();
+        Parent questionParent = questionLoad.load();
         QuestionController qc = questionLoad.getController();
         qc.setPracticeMode();
-	    qc.setQuestion(questionSelected);
-	   
-	    Scene questionScene= new Scene(questionParent);
-	    Stage quinzicalStage = (Stage)((Node)e.getSource()).getScene().getWindow();
-	    quinzicalStage.setScene(questionScene);
-	    quinzicalStage.show();
+        qc.setQuestion(questionSelected);
+
+        Scene questionScene = new Scene(questionParent);
+        Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        quinzicalStage.setScene(questionScene);
+        quinzicalStage.show();
     }
 }

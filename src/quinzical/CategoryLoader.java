@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Loads categories into objects from local files. Used for practice module.
+ */
 public class CategoryLoader {
 
     private List<Category> categories;
@@ -19,7 +22,7 @@ public class CategoryLoader {
             try {
                 sc = new Scanner(file);
 
-                while(sc.hasNextLine()) {
+                while (sc.hasNextLine()) {
                     String line = sc.nextLine();
                     String[] data = line.split(",");
                     Question question = new Question(data[0], data[1], "0", category);
@@ -37,6 +40,5 @@ public class CategoryLoader {
     public List<Category> getCategories() {
         return categories;
     }
-
 
 }

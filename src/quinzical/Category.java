@@ -1,10 +1,11 @@
 package quinzical;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Object to store a category, and its list of questions
+ */
 public class Category {
     private List<Question> _questions = null;
     private String _name;
@@ -18,7 +19,7 @@ public class Category {
         return _name;
     }
 
-    // Might not be needed, 
+    // Might not be needed,
     public List<Question> getQuestions() {
         return _questions;
     }
@@ -29,12 +30,12 @@ public class Category {
 
     // Might not be needed, I think your file writing does this already
     public boolean isEmpty() {
-        for (Question question: _questions) {
+        for (Question question : _questions) {
             if (!question.isAttempted()) {
                 return false;
             }
         }
         return true;
     }
-    
+
 }

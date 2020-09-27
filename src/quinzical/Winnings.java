@@ -1,22 +1,24 @@
 package quinzical;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-
+/**
+ * Handles the users winnings during the game.
+ */
 public class Winnings {
-    
+
 	private int points;
 	private boolean exist;
-	
+
 	public Winnings() {
 		File winningsFile = new File("./attempt/winnings.txt");
-		exist=winningsFile.exists();
+		exist = winningsFile.exists();
 	}
-	
-	
+
 	/**
 	 * This method adds/subtracts the amount passed into the method to the
 	 * totalWinnings.
@@ -24,7 +26,7 @@ public class Winnings {
 	 * @param amount The amount to be added/subtracted.
 	 */
 	public void updateWinnings(int amount) {
-			points = points + amount;
+		points = points + amount;
 		try {
 			FileWriter fw = new FileWriter("./attempt/winnings.txt");
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -35,7 +37,7 @@ public class Winnings {
 			throw new quinzicalExceptions(e.getMessage());
 		}
 	}
-	
+
 	/**
 	 * This method reads the total winnings in history.
 	 */
@@ -65,9 +67,9 @@ public class Winnings {
 		return "0";
 
 	}
-	
+
 	public void resetWinnings() {
-		points=0;
+		points = 0;
 		updateWinnings(0);
 	}
 }
