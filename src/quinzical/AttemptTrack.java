@@ -30,17 +30,17 @@ public class AttemptTrack {
 	 */
 	public AttemptTrack() {
 		exists = checkDirExistence();
-		if (exists) {
-			// readQuestionsAndCategoriesGenerated();
-			// readAttempted();
-
-		} else {
+		if (!exists) {
 			tmpDir.mkdirs();
 			exists = true;
 			resetAll();
 		}
 	}
-
+    
+	/**
+	 * Checks if the directory named attempt exists
+	 * @return true if exists, false if doesn't exist.
+	 */
 	public static boolean checkDirExistence() {
 		tmpDir = new File("./attempt");
 		boolean existance = tmpDir.exists();
@@ -214,7 +214,6 @@ public class AttemptTrack {
 		allQuestions.clear();
 		// removes all the categories
 		categories.clear();
-		// CHANGE!!! CALL RANDOM GENERATOR METHOD AGAIN! TO RESET.
 		RandomGenerator rg = new RandomGenerator();
 		rg.generateCategoriesAtRandom();
 		rg.generateGameQuestions();

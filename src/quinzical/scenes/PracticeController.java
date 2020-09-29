@@ -60,4 +60,13 @@ public class PracticeController {
         quinzicalStage.setScene(questionScene);
         quinzicalStage.show();
     }
+    
+    /**
+     * Return to main menu
+     * @throws IOException 
+     */
+    @FXML
+    public void returnToMenu(Event e) throws IOException {
+    	new GameController().returnToMenu(e);
+    }
 }
