@@ -1,0 +1,25 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+*{
+	-fx-background-color: #121F26;
+}
+.button{
+	-fx-background-color: darkorange;
+	-fx-font-family:'rasa';
+	-fx-text-fill: antiquewhite;
+	-fx-font-size: 16px;
+	-fx-font-weight: bold;
+	-fx-border-color: black;
+	-fx-border-width: 1 1 1 1;
+}
+
+#returnMenu{
+	-fx-font-size: 20px;
+}
+.button:pressed{
+	-fx-background-color: lightsalmon;	
+	}
+.button:hover{
+	-fx-border-color: palegoldenrod;
+	-fx-border-width: 1 1 1 1;
+}
