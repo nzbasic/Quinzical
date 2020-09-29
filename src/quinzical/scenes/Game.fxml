@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -8,7 +9,7 @@
 
 <HBox fx:id="game" prefHeight="388.0" prefWidth="479.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.GameController">
    <children>
-      <GridPane prefHeight="299.0" prefWidth="528.0" HBox.hgrow="SOMETIMES">
+      <GridPane prefHeight="299.0" prefWidth="528.0" stylesheets="@Game.css" HBox.hgrow="SOMETIMES">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -26,11 +27,37 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="category1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
-            <Label fx:id="category2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" />
-            <Label fx:id="category3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" />
-            <Label fx:id="category4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" />
-            <Label fx:id="category5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="4" />
+            <Label fx:id="category51112" alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="288.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <Label fx:id="category51111" alignment="CENTER" contentDisplay="CENTER" layoutX="201.0" layoutY="288.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label fx:id="category5111" alignment="CENTER" contentDisplay="CENTER" layoutX="105.0" layoutY="288.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label fx:id="category511" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="288.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="category51" alignment="CENTER" contentDisplay="CENTER" layoutX="393.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.rowIndex="5" />
+            <Label layoutX="297.0" layoutY="233.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Label layoutX="201.0" layoutY="233.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label layoutX="105.0" layoutY="233.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label layoutX="10.0" layoutY="233.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label layoutX="393.0" layoutY="178.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="4" />
+            <Label layoutX="297.0" layoutY="178.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Label layoutX="201.0" layoutY="178.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Label layoutX="105.0" layoutY="178.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label layoutX="10.0" layoutY="178.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label layoutX="297.0" layoutY="122.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
+            <Label layoutX="201.0" layoutY="122.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label layoutX="201.0" layoutY="343.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="2" />
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label layoutX="201.0" layoutY="343.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1" />
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="6" />
+            <Label fx:id="category1" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+            <Label fx:id="category2" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.columnIndex="1" />
+            <Label fx:id="category3" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.columnIndex="2" />
+            <Label fx:id="category4" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.columnIndex="3" />
+            <Label fx:id="category5" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.columnIndex="4" />
             <Button fx:id="c1q1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeToAnswerScreen" text="100" GridPane.rowIndex="1" />
             <Button fx:id="c1q2" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeToAnswerScreen" text="200" GridPane.rowIndex="2" />
             <Button fx:id="c1q3" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeToAnswerScreen" text="300" GridPane.rowIndex="3" />
@@ -60,9 +87,15 @@
             <Button fx:id="c5q3" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeToAnswerScreen" text="300" GridPane.columnIndex="4" GridPane.rowIndex="3" />       
             <Button fx:id="c5q4" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeToAnswerScreen" text="400" GridPane.columnIndex="4" GridPane.rowIndex="4" />
             <Button fx:id="c5q5" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeToAnswerScreen" text="500" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <Button fx:id="returnMenu" mnemonicParsing="false" onAction="#returnToMenu" prefHeight="25.0" prefWidth="99.0" text="return" GridPane.rowIndex="6" />
+            <Button fx:id="returnMenu" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#returnToMenu" prefHeight="25.0" prefWidth="99.0" text="   return" GridPane.rowIndex="6" />
             <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text=" Total points:" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <Label fx:id="points" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <ImageView fitHeight="31.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
+               <image>
+                  <Image url="@assets/home.png" />
+               </image></ImageView>
          </children>
       </GridPane>
    </children>
