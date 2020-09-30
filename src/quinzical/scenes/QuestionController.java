@@ -63,9 +63,8 @@ public class QuestionController {
 
 	// For games module
 	public void setQuestion(String s) {
-		question.setVisible(false);
-		// Bash Process
 		questionText = s;
+		question.setText(s);
 	}
 
 	@FXML

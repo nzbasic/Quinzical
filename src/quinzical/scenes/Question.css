@@ -1,0 +1,39 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#background{
+	-fx-background-image:url('assets/comic.jpg');
+}
+.button{
+	-fx-background-color: darkorange;
+	-fx-font-family:'rasa';
+	-fx-text-fill: antiquewhite;
+	-fx-font-size: 16px;
+	-fx-font-weight: bold;
+	-fx-border-color: black;
+	-fx-border-width: 1 1 1 1;
+}
+.label, #question{
+	-fx-font-family:'dejavu sans';
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+}
+
+#normal, #slow, #fast{
+	-fx-background-color: transparent;
+	-fx-border-color: transparent;
+}
+#normal:hover,#slow:hover, #fast:hover{
+	-fx-border-color: palegoldenrod;
+	-fx-border-width: 1 1 1 1;
+}
+
+#returnMenu{
+	-fx-font-size: 20px;
+}
+.button:pressed{
+	-fx-background-color: lightsalmon;	
+	}
+.button:hover{
+	-fx-border-color: palegoldenrod;
+	-fx-border-width: 1 1 1 1;
+}
