@@ -103,14 +103,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane layoutX="120.0" layoutY="602.0" prefHeight="44.0" prefWidth="307.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10 10 0 0;" AnchorPane.bottomAnchor="5.0">
+      <AnchorPane layoutX="110.0" layoutY="601.0" prefHeight="44.0" prefWidth="319.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10 10 0 0;" AnchorPane.bottomAnchor="6.0">
          <children>
             <Label layoutX="14.0" layoutY="10.0" text="Current Winnings:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="money" alignment="CENTER" layoutX="212.0" layoutY="10.0" prefHeight="26.0" prefWidth="93.0" text="\$0" textFill="WHITE">
+            <Label fx:id="money" alignment="CENTER" layoutX="199.0" layoutY="10.0" prefHeight="26.0" prefWidth="134.0" text="\$0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
