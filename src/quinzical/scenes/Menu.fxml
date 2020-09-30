@@ -127,12 +127,12 @@
          <children>
             <Label alignment="CENTER" layoutY="14.0" prefHeight="67.0" prefWidth="450.0" text="A previous save has been found" textFill="WHITE">
                <font>
-                  <Font name="Calibri Bold" size="29.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Label alignment="CENTER" layoutY="67.0" prefHeight="67.0" prefWidth="450.0" text="Would you like to continue?" textFill="WHITE">
                <font>
-                  <Font name="Calibri Bold" size="29.0" />
+                  <Font size="24.0" />
                </font>
             </Label>
             <Button layoutX="88.0" layoutY="134.0" mnemonicParsing="false" onAction="#continueGame" prefHeight="49.0" prefWidth="108.0" style="-fx-background-color: #2ECC40;" text="Continue" textFill="WHITE" wrapText="true">

@@ -35,6 +35,7 @@ public class HelperThread extends Thread {
 				bw.newLine();
 			}
 			textToSpeech = textToSpeech.replace("ā", "aa");
+			textToSpeech = textToSpeech.replace("/", "or");
 			bw.write("(SayText \"" + textToSpeech + "\")");
 			bw.close();
 			new ProcessBuilder("bash", "-c", "festival -b ./attempt/question.scm").start();

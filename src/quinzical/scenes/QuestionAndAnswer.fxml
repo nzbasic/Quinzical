@@ -13,9 +13,9 @@
       <TextField fx:id="answer" layoutX="203.0" layoutY="200.0" onAction="#checkAnswer" />
       <Button fx:id="giveup" layoutX="140.0" layoutY="231.0" mnemonicParsing="false" onAction="#checkAnswer" text="Don't know" />
       <Button fx:id="submit" layoutX="350.0" layoutY="231.0" mnemonicParsing="false" onAction="#checkAnswer" text="Submit" />
-      <Label fx:id="message" layoutX="176.0" layoutY="275.0" prefHeight="37.0" prefWidth="304.0" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="message" layoutX="154.0" layoutY="272.0" prefHeight="56.0" prefWidth="428.0" wrapText="true" />
       <Button fx:id="continueGame" layoutX="252.0" layoutY="231.0" mnemonicParsing="false" onAction="#returnToQuestionSelection" text="Continue" visible="false" />
-      <Label fx:id="firstLetter" layoutX="176.0" layoutY="312.0" prefHeight="31.0" prefWidth="266.0" />
+      <Label fx:id="firstLetter" layoutX="185.0" layoutY="328.0" prefHeight="31.0" prefWidth="266.0" wrapText="true" />
       <Button fx:id="mainMenu" layoutX="14.0" layoutY="351.0" mnemonicParsing="false" onAction="#returnToMenu" text="Main Menu" />
       <Text layoutX="189.0" layoutY="132.0" text="SLOW" />
       <Text layoutX="261.0" layoutY="132.0" text="NORMAL" />
