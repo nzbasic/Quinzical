@@ -34,14 +34,18 @@ public class GameController {
 	private List<String> categoryNames;
 	private List<Question> allq;
 	private int count;
-
+	
+	private Stage gameStage;
+	
 	public void newGameData() throws IOException {
 		attempt.resetAll();
 		setupGame();
+		
 	}
 
 	public void oldGameData() throws IOException {
 		setupGame();
+		
 	}
 
 	public void setupGame() throws IOException {
@@ -75,7 +79,12 @@ public class GameController {
 			}
 
 		}
+		
 
+	}
+	
+	public void setStage(Stage s) {
+		gameStage=s;
 	}
 
 	public void checkIfAllAttempted() throws IOException {
@@ -87,9 +96,9 @@ public class GameController {
 			rc.setPoints(new Winnings().getWinnings());
 
 			Scene rewardScene = new Scene(rewardParent);
-			Stage quinzicalStage = (Stage) category1.getScene().getWindow();
-			quinzicalStage.setScene(rewardScene);
-			quinzicalStage.show();
+			
+			gameStage.setScene(rewardScene);
+			gameStage.show();
 		}
 	}
 

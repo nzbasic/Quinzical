@@ -77,9 +77,11 @@ public class MenuController {
 			gc.newGameData();
 			Scene gameScene = new Scene(gameParent);
 			Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+			gc.setStage(quinzicalStage);
 			quinzicalStage.setScene(gameScene);
 			quinzicalStage.show();
 			gc.checkIfAllAttempted();
+			
 		} else { // Otherwise, show the popup to see if they would like to continue or start
 					// again.
 			popup.setVisible(true);
@@ -128,6 +130,7 @@ public class MenuController {
 		gc.oldGameData();
 		Scene gameScene = new Scene(gameParent);
 		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+		gc.setStage(quinzicalStage);
 		quinzicalStage.setScene(gameScene);
 		quinzicalStage.show();
 		gc.checkIfAllAttempted();

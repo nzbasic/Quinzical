@@ -162,8 +162,10 @@ public class QuestionController {
 
 			Scene gameScene = new Scene(gameParent);
 			Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+			gc.setStage(quinzicalStage);
 			quinzicalStage.setScene(gameScene);
 			quinzicalStage.show();
+			gc.checkIfAllAttempted();
 		}
 	}
 
