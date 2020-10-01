@@ -1,8 +1,5 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
-#background{
-	-fx-background-image:url('assets/comic.jpg');
-}
 .button{
 	-fx-background-color: darkorange;
 	-fx-font-family:'rasa';
@@ -11,6 +8,9 @@
 	-fx-font-weight: bold;
 	-fx-border-color: black;
 	-fx-border-width: 1 1 1 1;
+	-fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-insets: 0;
 }
 .label, #question{
 	-fx-font-family:'dejavu sans';
@@ -36,4 +36,5 @@
 .button:hover{
 	-fx-border-color: palegoldenrod;
 	-fx-border-width: 1 1 1 1;
+	-fx-background-insets: 0;
 }
