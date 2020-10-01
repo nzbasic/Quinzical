@@ -112,7 +112,7 @@ public class QuestionController {
 					message.setVisible(true);
 					return;
 				} else {
-					String answerText = "The correct answer was " + questionObj.getAnswer();
+					String answerText = "The correct answer was " + questionObj.sayAnswer();
 					message.setText(answerText);
 					new HelperThread(answerText, 1).run();
 				}

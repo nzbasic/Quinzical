@@ -52,9 +52,13 @@ public class Question {
         return _question;
     }
 
-    public String getAnswer() {
+    public String sayAnswer() {
         String[] data = _answer.split("/");
         return data[0];
+    }
+    
+    public String getAnswer() {
+    	return _answer;
     }
 
     public String getPrize() {
