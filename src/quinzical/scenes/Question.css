@@ -15,7 +15,7 @@
 .label, #question{
 	-fx-font-family:'dejavu sans';
 	-fx-font-weight: bold;
-	-fx-font-size: 14px;
+	-fx-font-size: 20px;
 }
 
 #normal, #slow, #fast{
