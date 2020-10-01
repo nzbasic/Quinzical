@@ -53,7 +53,8 @@ public class Question {
     }
 
     public String getAnswer() {
-        return _answer;
+        String[] data = _answer.split("/");
+        return data[0];
     }
 
     public String getPrize() {
