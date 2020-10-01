@@ -23,7 +23,7 @@
       <TextField fx:id="answer" layoutX="226.0" layoutY="239.0" onAction="#checkAnswer" />
       <Button fx:id="giveup" layoutX="144.0" layoutY="272.0" mnemonicParsing="false" onAction="#checkAnswer" text="Don't know" />
       <Button fx:id="submit" layoutX="354.0" layoutY="272.0" mnemonicParsing="false" onAction="#checkAnswer" text="Submit" />
-      <Label fx:id="message" layoutX="158.0" layoutY="313.0" prefHeight="56.0" prefWidth="428.0" wrapText="true" />
+      <Label fx:id="message" alignment="CENTER" layoutX="135.0" layoutY="323.0" prefHeight="68.0" prefWidth="309.0" wrapText="true" />
       <Button fx:id="continueGame" layoutX="256.0" layoutY="272.0" mnemonicParsing="false" onAction="#returnToQuestionSelection" text="Continue" visible="false" />
       <Label fx:id="firstLetter" layoutX="189.0" layoutY="369.0" prefHeight="31.0" prefWidth="266.0" wrapText="true" />
       <Button fx:id="mainMenu" layoutX="14.0" layoutY="351.0" mnemonicParsing="false" onAction="#returnToMenu" text="Main Menu" />
