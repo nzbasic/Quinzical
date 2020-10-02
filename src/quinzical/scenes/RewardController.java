@@ -27,6 +27,6 @@ public class RewardController {
 
 	@FXML
 	public void restartGame(Event e) throws IOException {
-		new MenuController().startGame(e);
+		new MenuController().newGame(e);
 	}
 }

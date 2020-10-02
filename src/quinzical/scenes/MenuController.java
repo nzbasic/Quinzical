@@ -71,22 +71,13 @@ public class MenuController {
 			}
 		} // If they haven't, load a new game.
 		if (!flag) {
-			FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Game.fxml"));
-			Parent gameParent = gameLoad.load();
-			GameController gc = gameLoad.getController();
-			gc.newGameData();
-			Scene gameScene = new Scene(gameParent);
-			Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-			gc.setStage(quinzicalStage);
-			quinzicalStage.setScene(gameScene);
-			quinzicalStage.show();
-			gc.checkIfAllAttempted();
-			
+			newGame(e);
 		} else { // Otherwise, show the popup to see if they would like to continue or start
 					// again.
 			popup.setVisible(true);
 		}
 	}
+
 
 	/**
 	 * Practice module is loaded.
