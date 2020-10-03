@@ -1,10 +1,10 @@
 # Quinzical
 
-Menu:
-![alt text](https://cdn.discordapp.com/attachments/627267590862929961/761884795516485632/menu.png "Quinzical Menu")
+Menu:\
+![alt text](https://cdn.discordapp.com/attachments/627267590862929961/761884795516485632/menu.png "Quinzical Menu")\
 
-Question Select:
-![alt text](https://cdn.discordapp.com/attachments/627267590862929961/761885530727776266/unknown.png "Question Selection Screen")
+Question Select:\
+![alt text](https://cdn.discordapp.com/attachments/627267590862929961/761885530727776266/unknown.png "Question Selection Screen")\
 
 Find the current release [HERE](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-05/releases/tag/1.0)
 
