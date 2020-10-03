@@ -19,9 +19,9 @@ Option 3: Import source files and all other files as a project in your IDE.
    -Install javaFx inside Eclipse, https://marketplace.eclipse.org/content/efxclipse
    -Import Quinzical.jar or src files into your IDE. (Note: The categories folder should be inside the same folder as src)
    
-NOTE: 
-1)The categories folder must be placed in the same folder as where Quinzical.jar is placed (if you are to run the application via terminal) 
-2)Make sure there isn't a folder named "attempt" in the folder which contains Quinzical.jar.
+NOTE:\
+1)The categories folder must be placed in the same folder as where Quinzical.jar is placed (if you are to run the application via terminal)\
+2)Make sure there isn't a folder named "attempt" in the folder which contains Quinzical.jar.\
 3)Make sure that the festival command is available on your virturalbox with akl_nz_jdt_diphone installed.
 
 
