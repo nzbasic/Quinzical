@@ -4,3 +4,23 @@ Use this repo for both Assignment 3 and also your final Project (as you will be 
 
 Be sure to update this README file to provide an easy-to-follow set of instructions on how to run your program. 
 
+
+Instructions on how to run the application:
+Option 1: Run the script file named playQuinzical.sh in bash Terminal.
+Option 2: Run the jar file on your terminal/IDE.
+Option 3: Import source files and all other files as a project in your IDE.
+
+1) To run the script file from terminal:
+  chmod +x playQuinzical.sh
+  ./playQuinzical.sh
+  
+2) To run the application in Eclipse/Other IDE
+   -Install javaFx inside Eclipse, https://marketplace.eclipse.org/content/efxclipse
+   -Import Quinzical.jar or src files into your IDE. (Note: The categories folder should be inside the same folder as src)
+   
+NOTE: 
+1)The categories folder must be placed in the same folder as where Quinzical.jar is placed (if you are to run the application via terminal) 
+2)Make sure there isn't a folder named "attempt" in the folder which contains Quinzical.jar.
+3)Make sure that the festival command is available on your virturalbox with akl_nz_jdt_diphone installed.
+
+
