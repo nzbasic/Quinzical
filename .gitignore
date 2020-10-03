@@ -3,6 +3,11 @@ lib/
 bin/
 src/attempt
 src/categories
+out/
+.idea/
+assignment-3-and-project-team-05.iml
+attempt/
+MANIFEST.MF
 
 # Compiled class file
 *.class
