@@ -1,4 +1,6 @@
-package quinzical;
+package quinzical.model;
+
+import quinzical.quinzicalExceptions;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -62,7 +64,7 @@ public class AttemptTrack {
 	 * Stores the 25 randomly generate questions in a file named
 	 * questionsAttempt.txt Each line contains question,answer,prize,category
 	 * 
-	 * @param q is a list of 25 Question Objects. The first 1-5 Questions are from
+	 * @param qList is a list of 25 Question Objects. The first 1-5 Questions are from
 	 *          the first category, 6-10 from second category,11-15 from third
 	 *          category, ...
 	 */

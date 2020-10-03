@@ -13,8 +13,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import quinzical.AttemptTrack;
-import quinzical.Winnings;
+import quinzical.model.AttemptTrack;
+import quinzical.model.Winnings;
+import quinzical.quinzical;
 
 /**
  * Controller for the main menu screen.
@@ -87,12 +88,7 @@ public class MenuController {
 	 */
 	@FXML
 	public void startPractice(Event e) throws IOException {
-		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Practice.fxml"));
-		Parent gameParent = gameLoad.load();
-		Scene practiceScene = new Scene(gameParent);
-		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-		quinzicalStage.setScene(practiceScene);
-		quinzicalStage.show();
+		quinzical.loadFXML("Practice");
 	}
 
 	/**

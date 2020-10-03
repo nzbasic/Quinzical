@@ -13,9 +13,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import quinzical.AttemptTrack;
-import quinzical.Question;
-import quinzical.Winnings;
+import quinzical.model.AttemptTrack;
+import quinzical.model.Question;
+import quinzical.model.Winnings;
+import quinzical.quinzical;
 
 /**
  * Controller for the screen where the user selects which question they would
@@ -168,12 +169,6 @@ public class GameController {
 	 */
 	@FXML
 	public void returnToMenu(Event e) throws IOException {
-		FXMLLoader menuLoad = new FXMLLoader(getClass().getResource("Menu.fxml"));
-		Parent menuParent = menuLoad.load();
-
-		Scene questionScene = new Scene(menuParent);
-		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-		quinzicalStage.setScene(questionScene);
-		quinzicalStage.show();
+		quinzical.loadFXML("Menu");
 	}
 }

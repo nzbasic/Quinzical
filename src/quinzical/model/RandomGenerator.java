@@ -1,4 +1,6 @@
-package quinzical;
+package quinzical.model;
+
+import quinzical.quinzicalExceptions;
 
 import java.io.BufferedReader;
 import java.io.File;

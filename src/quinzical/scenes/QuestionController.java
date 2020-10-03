@@ -16,8 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import quinzical.HelperThread;
-import quinzical.Question;
-import quinzical.Winnings;
+import quinzical.model.Question;
+import quinzical.model.Winnings;
 
 /**
  * Controller to display questions and accept user text input for when they

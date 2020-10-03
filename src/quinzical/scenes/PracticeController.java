@@ -11,11 +11,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.stage.Stage;
-import quinzical.Category;
-import quinzical.CategoryLoader;
+import quinzical.model.Category;
+import quinzical.model.CategoryLoader;
 import javafx.scene.Node;
-import quinzical.Question;
-import quinzical.RandomGenerator;
+import quinzical.model.Question;
+import quinzical.model.RandomGenerator;
 
 /**
  * Controller for the practice module. The user selects which category they
