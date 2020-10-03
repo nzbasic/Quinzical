@@ -4,11 +4,12 @@ Use this repo for both Assignment 3 and also your final Project (as you will be 
 
 Be sure to update this README file to provide an easy-to-follow set of instructions on how to run your program. 
 
+Find the current release [HERE](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-05/releases/tag/1.0)
 
 Instructions on how to run the application:
-Option 1: Run the script file named playQuinzical.sh in bash Terminal.
-Option 2: Run the jar file on your terminal/IDE.
-Option 3: Import source files and all other files as a project in your IDE.
+..*Option 1: Extract files from the [downloaded zip](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-05/releases/tag/1.0) and run the playQuinzical.sh script.
+..*Option 2: Run the jar file on your terminal/IDE.
+..*Option 3: Import source files and all other files as a project in your IDE.
 
 1) To run the script file from terminal:
   chmod +x playQuinzical.sh
