@@ -20,16 +20,14 @@ public class Category {
     }
 
     /**
-     * Returns name of the category
-     * @return
+     * @return Name of the category.
      */
     public String getName() {
         return _name;
     }
 
     /**
-     * Returns list of question objects stored in the category.
-     * @return
+     * @return List of Question objects in a category.
      */
     public List<Question> getQuestions() {
         return _questions;
@@ -37,7 +35,7 @@ public class Category {
 
     /**
      * Adds a question to the category
-     * @param question
+     * @param question Question object to add
      */
     public void add(Question question) {
         _questions.add(question);
@@ -45,7 +43,7 @@ public class Category {
 
     /**
      * Checks if this category has any unattempted questions. Returns false if question is found.
-     * @return
+     * @return true or false
      */
     public boolean isEmpty() {
         for (Question question : _questions) {

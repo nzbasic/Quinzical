@@ -22,9 +22,9 @@ public class RandomGenerator {
 	private int[] points = { 100, 200, 300, 400, 500 };
 	private AttemptTrack attempt = new AttemptTrack();
 
-	public RandomGenerator() {
-	}
-
+	/**
+	 * Uses random number generation to generate lists of categories and questions from all loaded questions.
+	 */
 	public void generateCategoriesAtRandom() {
 		allCategoryNames = new ArrayList<String>();
 		File[] files = new File("./categories").listFiles();
@@ -46,8 +46,8 @@ public class RandomGenerator {
 	}
 
 	/**
-	 * Return the List of generated category names. Must call generateCategoriesAtRandom first.
-	 * @return
+	 * Must call generateCategoriesAtRandom first.
+	 * @return List of generated category names.
 	 */
 	public List<String> getGeneratedCategories() {
 		return randomCategoryNames;

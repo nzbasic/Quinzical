@@ -44,40 +44,35 @@ public class Question {
     }
 
     /**
-     * Returns the status of this question, if it has been attempted or not.
-     * @return
+     * @return Status of this question, if it has been attempted or not.
      */
     public boolean isAttempted() {
         return _attempted;
     }
 
     /**
-     * Returns the result of this question, if it was answered correctly or not.
-     * @return
+     * @return Result of this question, if it was answered correctly or not.
      */
     public boolean getResult() {
         return _result;
     }
 
     /**
-     * Returns the parent category of this question.
-     * @return
+     * @return Parent category of this question.
      */
     public Category getParentCategory() {
         return _parent;
     }
 
     /**
-     * Returns the question text
-     * @return
+     * @return Question text
      */
     public String getQuestion() {
         return _question;
     }
 
-    /**
-     * Returns the first answer for this question
-     * @return
+    /** 
+     * @return First answer for this question
      */
     public String sayAnswer() {
         String[] data = _answer.split("/");
@@ -85,24 +80,21 @@ public class Question {
     }
     
     /**
-     * Returns the full answer string for this question
-     * @return
+     * @return Full answer string for this question
      */
     public String getAnswer() {
     	return _answer;
     }
 
     /**
-     * Returns the prize number for this question
-     * @return
+     * @return Prize amount for this question
      */
     public String getPrize() {
         return _prize;
     }
 
     /**
-     * Returns the first letter of the answer.
-     * @return
+     * @return First letter of the answer.
      */
     public char getFirstLetter() {
         return _answer.charAt(0);
@@ -121,7 +113,7 @@ public class Question {
     /**
      * Checks a user string against the answer stored in the object. Returns true if they match.
      * @param userInput
-     * @return
+     * @return true or false
      */
     public boolean checkAnswer(String userInput) {
 

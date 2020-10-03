@@ -14,6 +14,9 @@ public class Winnings {
 	private int points;
 	private boolean exist;
 
+	/**
+	 * Default constructor for Winnings. Loads the current winnings file.
+	 */
 	public Winnings() {
 		File winningsFile = new File("./attempt/winnings.txt");
 		exist = winningsFile.exists();
