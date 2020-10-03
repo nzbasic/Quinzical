@@ -14,8 +14,13 @@ public class Question {
     private boolean _result;
     private Category _parent;
 
-    // When reading files, the category object will be created first before each
-    // question, so add all the data to question class
+    /**
+     * Default constructor for a question object.
+     * @param question The Question text
+     * @param answer The answer text
+     * @param prize The prize the user will win when they get the question correct
+     * @param parent The category which the question exists within
+     */
     public Question(String question, String answer, String prize, Category parent) {
         _question = question;
         _answer = answer;
@@ -23,50 +28,82 @@ public class Question {
         _parent = parent;
     }
 
-    // Whenever the question is completed, set it as attempted. Might not be needed
-    // in this object depending on how we write files
+    /**
+     * Sets the status of this question, if it has been attempted or not.
+     */
     public void setAttemped() {
         _attempted = true;
     }
 
-    // This can store true if they got it right, false if they got it wrong, I used
-    // it to colour buttons red or green after answering to show what they got
-    // right/wrong.
+    /**
+     * Sets the result of the question, if they got it right or wrong.
+     * @param result
+     */
     public void setResult(boolean result) {
         _result = result;
     }
 
+    /**
+     * Returns the status of this question, if it has been attempted or not.
+     * @return
+     */
     public boolean isAttempted() {
         return _attempted;
     }
 
+    /**
+     * Returns the result of this question, if it was answered correctly or not.
+     * @return
+     */
     public boolean getResult() {
         return _result;
     }
 
+    /**
+     * Returns the parent category of this question.
+     * @return
+     */
     public Category getParentCategory() {
         return _parent;
     }
 
+    /**
+     * Returns the question text
+     * @return
+     */
     public String getQuestion() {
         return _question;
     }
 
+    /**
+     * Returns the first answer for this question
+     * @return
+     */
     public String sayAnswer() {
         String[] data = _answer.split("/");
         return data[0];
     }
     
+    /**
+     * Returns the full answer string for this question
+     * @return
+     */
     public String getAnswer() {
     	return _answer;
     }
 
+    /**
+     * Returns the prize number for this question
+     * @return
+     */
     public String getPrize() {
         return _prize;
     }
 
-    // The practice module says something about giving them first letter of answer
-    // as hint
+    /**
+     * Returns the first letter of the answer.
+     * @return
+     */
     public char getFirstLetter() {
         return _answer.charAt(0);
     }
@@ -81,6 +118,11 @@ public class Question {
         return output;
     }
 
+    /**
+     * Checks a user string against the answer stored in the object. Returns true if they match.
+     * @param userInput
+     * @return
+     */
     public boolean checkAnswer(String userInput) {
 
         List<String> possibleAnswers = getAnswersAsList();

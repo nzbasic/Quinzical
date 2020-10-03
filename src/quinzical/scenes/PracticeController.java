@@ -29,6 +29,9 @@ public class PracticeController {
     @FXML
     private Button ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9;
 
+    /**
+     * Called when the controller is created, loads categories.
+     */
     @FXML
     public void initialize() {
         loader = new CategoryLoader();

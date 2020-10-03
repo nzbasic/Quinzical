@@ -68,6 +68,9 @@ public class Winnings {
 
 	}
 
+	/**
+	 * Sets the current winnings to 0.
+	 */
 	public void resetWinnings() {
 		points = 0;
 		updateWinnings(0);

@@ -37,17 +37,29 @@ public class GameController {
 	
 	private Stage gameStage;
 	
+	/**
+	 * Starts a new game of quinzical, throws out old data.
+	 * @throws IOException
+	 */
 	public void newGameData() throws IOException {
 		attempt.resetAll();
 		setupGame();
 		
 	}
 
+	/**
+	 * Loads data from old save file.
+	 * @throws IOException
+	 */
 	public void oldGameData() throws IOException {
 		setupGame();
 		
 	}
 
+	/**
+	 * Loads the buttons in the Game Screen with question data.
+	 * @throws IOException
+	 */
 	public void setupGame() throws IOException {
 		Label[] categories = { category1, category2, category3, category4, category5 };
 		points.setText(new Winnings().getWinnings());
@@ -83,10 +95,18 @@ public class GameController {
 
 	}
 	
+	/**
+	 * Sets the stage of this controller.
+	 * @param s
+	 */
 	public void setStage(Stage s) {
 		gameStage=s;
 	}
 
+	/**
+	 * Checks if all questions have been attempted, if they have, go to reward screen.
+	 * @throws IOException
+	 */
 	public void checkIfAllAttempted() throws IOException {
 		if (count == 25) {
 			// To reward screen
@@ -102,6 +122,11 @@ public class GameController {
 		}
 	}
 
+	/**
+	 * When user selects a question, load the answer screen with that question's data.
+	 * @param e
+	 * @throws IOException
+	 */
 	@FXML
 	public void changeToAnswerScreen(Event e) throws IOException {
 		// Get Id of button clicked, works if clicked object extends control
@@ -136,6 +161,11 @@ public class GameController {
 
 	}
 
+	/**
+	 * Returns user to the main menu.
+	 * @param e
+	 * @throws IOException
+	 */
 	@FXML
 	public void returnToMenu(Event e) throws IOException {
 		FXMLLoader menuLoad = new FXMLLoader(getClass().getResource("Menu.fxml"));

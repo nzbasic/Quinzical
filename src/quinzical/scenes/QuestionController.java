@@ -48,12 +48,18 @@ public class QuestionController {
 	private int retryNumber = 0;
 	private String questionText;
 
+	/**
+	 * Sets the controller to be in practice mode. Changes behaviour when getting a question wrong.
+	 */
 	public void setPracticeMode() {
 		practiceMode = true;
 		giveup.setVisible(false);
 	}
 
-	// For practice module
+	/**
+	 * Sets the current question to a question object.
+	 * @param q Question object
+	 */
 	public void setQuestion(Question q) {
 		question.setVisible(true);
 		questionObj = q;
@@ -61,7 +67,10 @@ public class QuestionController {
 		questionText = questionObj.getQuestion();
 	}
 
-	// For games module
+	/**
+	 * Sets the current question to a question string.
+	 * @param s Question string
+	 */
 	public void setQuestion(String s) {
 		questionText = s;
 		question.setText(s);
@@ -82,12 +91,22 @@ public class QuestionController {
 		helper.start();
 	}
 
+	/**
+	 * Sets the index and questionLines for the current question to assist with reading the question.
+	 * @param index Index of the question
+	 * @param questionLines List of questions
+	 */
 	public void setQuestionLines(int index, List<Question> questionLines) {
 		lineNumber = index;
 		questionsAndAnswers = questionLines;
 
 	}
 
+	/**
+	 * Called when user submits their answer. If practice mode is on, they get 3 attempts. Otherwise, show if they
+	 * are right or wrong.
+	 * @param e
+	 */
 	@FXML
 	public void checkAnswer(Event e) {
 		if (practiceMode) {
@@ -142,6 +161,11 @@ public class QuestionController {
 		firstLetter.setVisible(false);
 	}
 
+	/**
+	 * Returns user to a question selection screen, depending on if they came from Games or Practice module.
+	 * @param e
+	 * @throws IOException
+	 */
 	@FXML
 	public void returnToQuestionSelection(Event e) throws IOException {
 		if (practiceMode) {
@@ -169,6 +193,11 @@ public class QuestionController {
 		}
 	}
 
+	/**
+	 * Returns user to the main menu.
+	 * @param e
+	 * @throws IOException
+	 */
 	@FXML
 	public void returnToMenu(Event e) throws IOException {
 		new GameController().returnToMenu(e);

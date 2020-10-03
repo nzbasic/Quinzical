@@ -16,15 +16,29 @@ public class RewardController {
 	@FXML
 	private Button returnMenu, newGame;
 
+	/**
+	 * Sets the current winnings of the user for display.
+	 * @param total
+	 */
 	public void setPoints(String total) {
 		points.setText(total);
 	}
 
+	/**
+	 * Returns user to the main menu, keeps data.
+	 * @param e
+	 * @throws IOException
+	 */
 	@FXML
 	public void returnToMainMenu(Event e) throws IOException {
 		new GameController().returnToMenu(e);
 	}
 
+	/**
+	 * Restarts the game, removing old data.
+	 * @param e
+	 * @throws IOException
+	 */
 	@FXML
 	public void restartGame(Event e) throws IOException {
 		new MenuController().newGame(e);

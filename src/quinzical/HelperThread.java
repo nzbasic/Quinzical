@@ -11,6 +11,11 @@ public class HelperThread extends Thread {
 	private String textToSpeech;
 	private int speechRate;
 
+	/**
+	 * Default constructor, requires the text that will be playing and the speed at which it will be read.
+	 * @param text
+	 * @param rate
+	 */
 	public HelperThread(String text, int rate) {
 		textToSpeech = text;
 		speechRate = rate;

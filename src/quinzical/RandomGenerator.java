@@ -45,10 +45,19 @@ public class RandomGenerator {
 		}
 	}
 
+	/**
+	 * Return the List of generated category names. Must call generateCategoriesAtRandom first.
+	 * @return
+	 */
 	public List<String> getGeneratedCategories() {
 		return randomCategoryNames;
 	}
 
+	/**
+	 * Reads all lines in a category file
+	 * @param nameOfFile Name of the file to search
+	 * @return A List of strings, one for each line in the file.
+	 */
 	public List<String> readAllLinesInFile(String nameOfFile) {
 		List<String> listOfLines = new ArrayList<>();
 		try {
