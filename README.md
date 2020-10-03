@@ -1,8 +1,10 @@
-# project
+# Quinzical
 
-Use this repo for both Assignment 3 and also your final Project (as you will be in the same team). 
+Menu:
+![alt text](https://cdn.discordapp.com/attachments/627267590862929961/761884795516485632/menu.png "Quinzical Menu")
 
-Be sure to update this README file to provide an easy-to-follow set of instructions on how to run your program. 
+Question Select:
+![alt text](https://cdn.discordapp.com/attachments/627267590862929961/761885530727776266/unknown.png "Question Selection Screen")
 
 Find the current release [HERE](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-05/releases/tag/1.0)
 
