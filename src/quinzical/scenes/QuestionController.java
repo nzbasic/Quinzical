@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import quinzical.HelperThread;
 import quinzical.model.Question;
@@ -25,7 +25,7 @@ import quinzical.model.Winnings;
  */
 public class QuestionController {
 	@FXML
-	private Text question;
+	private Label question;
 	@FXML
 	private TextField answer;
 	@FXML
@@ -40,6 +40,8 @@ public class QuestionController {
 	private Button mainMenu, normal, fast, slow;
 	@FXML
 	private Label firstLetter;
+	@FXML
+	private AnchorPane popup;
 
 	private int lineNumber;
 	private List<Question> questionsAndAnswers;
@@ -102,6 +104,12 @@ public class QuestionController {
 
 	}
 
+	@FXML
+	public void initlialize() {
+		HelperThread helper = new HelperThread(questionText, 1);
+		helper.start();
+	}
+
 	/**
 	 * Called when user submits their answer. If practice mode is on, they get 3 attempts. Otherwise, show if they
 	 * are right or wrong.
@@ -122,6 +130,7 @@ public class QuestionController {
 
 				if (retryNumber == 2) {
 					char first = questionObj.getFirstLetter();
+					popup.setVisible(true);
 					String textHint = "The first letter is: " + Character.toUpperCase(first);
 					firstLetter.setText(textHint);
 					new HelperThread(textHint, 1).run();
@@ -131,6 +140,7 @@ public class QuestionController {
 					message.setVisible(true);
 					return;
 				} else {
+					firstLetter.setVisible(false);
 					String answerText = "The correct answer was " + questionObj.sayAnswer();
 					message.setText(answerText);
 					new HelperThread(answerText, 1).run();
@@ -142,17 +152,20 @@ public class QuestionController {
 			// Check Answers
 			Question q = questionsAndAnswers.get(lineNumber - 1);
 			if (q.checkAnswer(usrInput)) {
+				
 				// Add Winnings
 				new Winnings().updateWinnings(Integer.parseInt(q.getPrize()));
 				message.setText("Correct!");
 				new HelperThread("Correct!", 1).run();
 			} else {
+				
 				String answerTxt = "The correct answer is: " + q.getAnswer();
 				message.setText(answerTxt);
 				new HelperThread(answerTxt, 1).run();
 			}
 
 		}
+		popup.setVisible(true);
 		submit.setVisible(false);
 		giveup.setVisible(false);
 		message.setVisible(true);
