@@ -8,6 +8,8 @@ Question Select:\
 
 Find the current release [HERE](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-05/releases/tag/1.0)
 
+To hear the voices, you must have the akl_nz_jdt_diphone voice pack installed for festival.
+
 Instructions on how to run the application:\
 Option 1: Extract files from the [downloaded zip](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-05/releases/tag/1.0) and run the playQuinzical.sh script.\
 Option 2: Run the jar file on your terminal/IDE.\
