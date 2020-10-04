@@ -67,6 +67,7 @@ public class QuestionController {
 		questionObj = q;
 		question.setText(questionObj.getQuestion());
 		questionText = questionObj.getQuestion();
+		new HelperThread(questionText, 1).run();
 	}
 
 	/**
@@ -75,6 +76,7 @@ public class QuestionController {
 	 */
 	public void setQuestion(String s) {
 		questionText = s;
+		new HelperThread(questionText, 1).run();
 		question.setText(s);
 	}
 
@@ -104,11 +106,6 @@ public class QuestionController {
 
 	}
 
-	@FXML
-	public void initlialize() {
-		HelperThread helper = new HelperThread(questionText, 1);
-		helper.start();
-	}
 
 	/**
 	 * Called when user submits their answer. If practice mode is on, they get 3 attempts. Otherwise, show if they
@@ -159,7 +156,7 @@ public class QuestionController {
 				new HelperThread("Correct!", 1).run();
 			} else {
 				
-				String answerTxt = "The correct answer is: " + q.getAnswer();
+				String answerTxt = "The correct answer is: " + q.sayAnswer();
 				message.setText(answerTxt);
 				new HelperThread(answerTxt, 1).run();
 			}

@@ -28,7 +28,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Text fill="WHITE" layoutX="189.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your answer:">
+      <Text fill="WHITE" layoutX="174.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your answer:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
