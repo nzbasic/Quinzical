@@ -6,10 +6,10 @@ Menu:\
 Question Select:\
 ![alt text](https://cdn.discordapp.com/attachments/627267590862929961/761885530727776266/unknown.png "Question Selection Screen")
 
-Find the current release [HERE](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-05/releases/tag/1.0)
+Find the current release [HERE](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-05/releases)
 
 Instructions on how to run the application:\
-Option 1: Extract files from the [downloaded zip](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-05/releases/tag/1.0) and run the playQuinzical.sh script.\
+Option 1: Extract files from the [downloaded zip](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-05/releases) and run the playQuinzical.sh script.\
 Option 2: Run the jar file on your terminal/IDE.\
 Option 3: Import source files and all other files as a project in your IDE.
 
