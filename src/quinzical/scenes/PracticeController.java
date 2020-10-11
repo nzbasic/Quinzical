@@ -8,33 +8,37 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Control;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import javafx.scene.Node;
 import quinzical.model.Category;
 import quinzical.model.CategoryLoader;
 import quinzical.model.Question;
 import quinzical.model.RandomGenerator;
-import javafx.scene.Node;
 
-
-/**
- * Controller for the practice module. The user selects which category they
- * would like a question from.
- */
 public class PracticeController {
     private CategoryLoader loader;
     private RandomGenerator generator;
     private List<Category> categories;
+    @FXML
+    private ComboBox<Category> categoryBox;
 
     @FXML
-    private Button ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9;
+    private void initialize() {
 
-    @FXML
-    public void initialize() {
         loader = new CategoryLoader();
         generator = new RandomGenerator();
         categories = loader.getCategories();
+
+        for (Category category : categories) {
+            categoryBox.getItems().add(category);
+        }
+
+    }
+
+    @FXML
+    private void practiceWrongQuestions() {
+        
     }
 
     /**
@@ -46,10 +50,8 @@ public class PracticeController {
     @FXML
     public void select(Event e) throws IOException {
         // Grabbing the button the user pressed.
-        String ButtonId = ((Control) e.getSource()).getId();
-        // Based on the id of the button, get the equivalent category.
-        int categoryNumber = Integer.parseInt(ButtonId.substring(3));
-        Question questionSelected = generator.generatePracticeQuestion(categories.get(categoryNumber - 1));
+        Category category = categoryBox.getValue();
+        Question questionSelected = generator.generatePracticeQuestion(category);
         FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("QuestionAndAnswer.fxml"));
         Parent questionParent = questionLoad.load();
         QuestionController qc = questionLoad.getController();
@@ -61,7 +63,7 @@ public class PracticeController {
         quinzicalStage.setScene(questionScene);
         quinzicalStage.show();
     }
-    
+
     /**
      * Return to main menu
      * @throws IOException 
@@ -70,4 +72,5 @@ public class PracticeController {
     public void returnToMenu(Event e) throws IOException {
     	new GameController().returnToMenu(e);
     }
+
 }

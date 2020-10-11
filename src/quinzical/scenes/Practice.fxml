@@ -1,88 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="323.0" prefWidth="600.0" stylesheets="@Practice.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.PracticeController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.PracticeController">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="99.0" prefWidth="580.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-         <children>
-            <Label alignment="CENTER" layoutX="276.0" layoutY="41.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Select a Category:" textFill="#ebdbbf" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <font>
-                  <Font size="29.0" />
-               </font>
-            </Label>
-            <Button fx:id="returnMenu" layoutX="3.0" layoutY="-2.0" mnemonicParsing="false" onAction="#returnToMenu" prefHeight="22.0" prefWidth="111.0" text="    return" />
-            <ImageView fitHeight="34.0" fitWidth="67.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/home.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="pbutton" layoutX="10.0" layoutY="101.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="213.0" prefWidth="580.0">
-         <children>
-            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="99.0" prefWidth="580.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-               <children>
-                  <GridPane layoutX="40.0" layoutY="35.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="ctg8" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#select" prefHeight="119.0" prefWidth="143.0" text="Famous People" textAlignment="CENTER" wrapText="true" GridPane.hgrow="SOMETIMES">
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                        </Button>
-                        <Button fx:id="ctg1" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#select" prefHeight="120.0" prefWidth="173.0" text="Fauna" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" />
-                        <Button fx:id="ctg5" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#select" prefHeight="111.0" prefWidth="145.0" text="Flora" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.hgrow="SOMETIMES" />
-                        <Button fx:id="ctg2" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#select" prefHeight="100.0" prefWidth="131.0" text="Geography" wrapText="true" GridPane.columnIndex="3" GridPane.hgrow="SOMETIMES" />
-                        <Button fx:id="ctg9" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#select" prefHeight="104.0" prefWidth="126.0" text="History" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="4" GridPane.hgrow="SOMETIMES" />
-                     </children>
-                  </GridPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="99.0" prefWidth="560.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-               <children>
-                  <GridPane layoutX="59.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="99.0" prefWidth="443.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="ctg4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#select" prefHeight="122.0" prefWidth="133.0" text="NZ Life" wrapText="true" GridPane.hgrow="SOMETIMES" />
-                        <Button fx:id="ctg3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#select" prefHeight="141.0" prefWidth="138.0" text="Oddities" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" />
-                        <Button fx:id="ctg6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#select" prefHeight="122.0" prefWidth="123.0" text="Places" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.hgrow="SOMETIMES" />
-                        <Button fx:id="ctg7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#select" prefHeight="144.0" prefWidth="126.0" text="Symbols" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="3" GridPane.hgrow="SOMETIMES" />
-                     </children>
-                  </GridPane>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
+      <ComboBox fx:id="categoryBox" layoutX="136.0" layoutY="60.0" onAction="#select" prefHeight="84.0" prefWidth="329.0" promptText="Select A Category To Practice From" />
+      <Label layoutX="287.0" layoutY="192.0" text="or">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <Button layoutX="182.0" layoutY="274.0" mnemonicParsing="false" onAction="#practiceWrongQuestions" prefHeight="50.0" prefWidth="236.0" text="Practice Questions You Got Wrong" />
    </children>
 </AnchorPane>
