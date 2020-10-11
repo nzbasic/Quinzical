@@ -1,6 +1,5 @@
 package quinzical.model;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -14,9 +13,6 @@ public class CategoryLoader {
 
     private List<Category> categories;
 
-    /**
-     * Default constructor for CategoryLoader. Loads the categories from local files.
-     */
     public CategoryLoader() {
         categories = new ArrayList<Category>();
         File[] files = new File("./categories").listFiles();
@@ -41,10 +37,6 @@ public class CategoryLoader {
         }
     }
 
-    /**
-     * Returns a list of categories found within the local files.
-     * @return
-     */
     public List<Category> getCategories() {
         return categories;
     }

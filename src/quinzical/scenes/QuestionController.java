@@ -151,12 +151,14 @@ public class QuestionController {
 			if (q.checkAnswer(usrInput)) {
 				
 				// Add Winnings
-				new Winnings().updateWinnings(Integer.parseInt(q.getPrize()));
+				Winnings winningController = new Winnings();
+				winningController.readWinnings();
+				winningController.updateWinnings(Integer.parseInt(q.getPrize()));
 				message.setText("Correct!");
 				new HelperThread("Correct!", 1).run();
 			} else {
 				
-				String answerTxt = "The correct answer is: " + q.sayAnswer();
+				String answerTxt = "Your answer was incorrect";
 				message.setText(answerTxt);
 				new HelperThread(answerTxt, 1).run();
 			}

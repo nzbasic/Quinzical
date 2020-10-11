@@ -13,9 +13,10 @@ import javafx.scene.control.Control;
 import javafx.stage.Stage;
 import quinzical.model.Category;
 import quinzical.model.CategoryLoader;
-import javafx.scene.Node;
 import quinzical.model.Question;
 import quinzical.model.RandomGenerator;
+import javafx.scene.Node;
+
 
 /**
  * Controller for the practice module. The user selects which category they
@@ -29,9 +30,6 @@ public class PracticeController {
     @FXML
     private Button ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9;
 
-    /**
-     * Called when the controller is created, loads categories.
-     */
     @FXML
     public void initialize() {
         loader = new CategoryLoader();
