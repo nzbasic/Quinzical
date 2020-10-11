@@ -120,15 +120,33 @@ public class Question {
 
         List<String> possibleAnswers = getAnswersAsList();
 
-        userInput = userInput.replace("the", "").toLowerCase().trim();
+        String output = "";
+        String[] data = userInput.split(" ");
+        if (data[0].equals("the")) {
+            int length = data.length;
+            for (int i = 1; i < length; i++) {
+                output = output + data[i];
+            }
+        } else {
+            output = userInput;
+        }
+
+        userInput = output.toLowerCase().trim();
 
         for (String answer : possibleAnswers) {
+            System.out.println(answer);
             if (userInput.equals(answer.toLowerCase().trim())) {
                 _attempted = true;
                 _result = true;
+
                 return true;
             }
         }
+
+        System.out.println(userInput);
+        
+
+
         _attempted = true;
         _result = false;
         return false;
