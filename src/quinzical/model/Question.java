@@ -134,7 +134,6 @@ public class Question {
         userInput = output.toLowerCase().trim();
 
         for (String answer : possibleAnswers) {
-            System.out.println(answer);
             if (userInput.equals(answer.toLowerCase().trim())) {
                 _attempted = true;
                 _result = true;
@@ -142,10 +141,6 @@ public class Question {
                 return true;
             }
         }
-
-        System.out.println(userInput);
-        
-
 
         _attempted = true;
         _result = false;

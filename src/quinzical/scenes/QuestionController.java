@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import quinzical.HelperThread;
+import quinzical.model.AttemptTrack;
 import quinzical.model.Question;
 import quinzical.model.Winnings;
 
@@ -157,7 +158,7 @@ public class QuestionController {
 				message.setText("Correct!");
 				new HelperThread("Correct!", 1).run();
 			} else {
-				
+				new AttemptTrack().recordWrongQuestion(q);
 				String answerTxt = "Your answer was incorrect";
 				message.setText(answerTxt);
 				new HelperThread(answerTxt, 1).run();

@@ -120,4 +120,10 @@ public class RandomGenerator {
 		Question q = new Question(questionfields[0], questionfields[1], Integer.toString(0), c);
 		return q;
 	}
+
+	public Question generateRandomQuestionFromList(List<Question> list) {
+		int length = list.size();
+		int randomNum = ThreadLocalRandom.current().nextInt(0, length);
+		return list.get(randomNum);
+	}
 }

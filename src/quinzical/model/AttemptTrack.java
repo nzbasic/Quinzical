@@ -7,8 +7,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * This class manages the previous attempt history and game status
@@ -38,9 +40,10 @@ public class AttemptTrack {
 			resetAll();
 		}
 	}
-    
+
 	/**
 	 * Checks if the directory named attempt exists
+	 * 
 	 * @return true if exists, false if doesn't exist.
 	 */
 	public static boolean checkDirExistence() {
@@ -64,9 +67,9 @@ public class AttemptTrack {
 	 * Stores the 25 randomly generate questions in a file named
 	 * questionsAttempt.txt Each line contains question,answer,prize,category
 	 * 
-	 * @param qList is a list of 25 Question Objects. The first 1-5 Questions are from
-	 *          the first category, 6-10 from second category,11-15 from third
-	 *          category, ...
+	 * @param qList is a list of 25 Question Objects. The first 1-5 Questions are
+	 *              from the first category, 6-10 from second category,11-15 from
+	 *              third category, ...
 	 */
 	public void updateQuestionsGenerated(List<Question> qList) {
 		try {
@@ -227,4 +230,58 @@ public class AttemptTrack {
 		winningRec.resetWinnings();
 	}
 
+	public void recordWrongQuestion(Question question) {
+		List<Question> list = getWrongQuestions();
+		list.add(question);
+		writeWrongQuestions(list);
+	}
+
+	public List<Question> getWrongQuestions() {
+		List<Question> output = new ArrayList<Question>();
+		File file = new File("./attempt/wrongQuestions.txt");
+		if (file.exists()) {
+			List<String> list = new ArrayList<String>();
+			try {
+				String line = null;
+				Scanner scanner = new Scanner(new FileReader("./attempt/wrongQuestions.txt"));
+				while (scanner.hasNextLine()) {
+					line = scanner.nextLine();
+					list.add(line);
+				}
+				scanner.close();
+			} catch (Exception e) {
+				throw new quinzicalExceptions(e.getMessage());
+			}
+
+			for (String string : list) {
+				String[] data = string.split(",");
+				String question = data[0];
+				String answer = data[1];
+				Question questionObj = new Question(question,answer, null, null);
+				output.add(questionObj);
+			}
+
+		} else {
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				throw new quinzicalExceptions(e.getMessage());
+			}
+		}
+		return output;
+	}
+
+	private void writeWrongQuestions(List<Question> list) {
+		try {
+			FileWriter fw = new FileWriter("./attempt/wrongQuestions.txt");
+			for (Question q : list) {
+				String question = q.getQuestion();
+				String answer = q.getAnswer();
+				fw.write(question + "," + answer + "\n");
+			}
+			fw.close();
+		} catch (Exception e) {
+			throw new quinzicalExceptions(e.getMessage());
+		}
+	}
 }

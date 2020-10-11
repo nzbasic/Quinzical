@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import javafx.scene.Node;
+import quinzical.model.AttemptTrack;
 import quinzical.model.Category;
 import quinzical.model.CategoryLoader;
 import quinzical.model.Question;
@@ -37,8 +38,26 @@ public class PracticeController {
     }
 
     @FXML
-    private void practiceWrongQuestions() {
-        
+    private void practiceWrongQuestions(Event e) throws IOException {
+        List<Question> list = new AttemptTrack().getWrongQuestions();
+        if (list.size() == 0) {
+            return;
+        }
+        Question question = generator.generateRandomQuestionFromList(list);
+        loadQuestion(question, e);
+    }
+
+    private void loadQuestion(Question question, Event e) throws IOException {
+        FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("QuestionAndAnswer.fxml"));
+        Parent questionParent = questionLoad.load();
+        QuestionController qc = questionLoad.getController();
+        qc.setPracticeMode();
+        qc.setQuestion(question);
+
+        Scene questionScene = new Scene(questionParent);
+        Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        quinzicalStage.setScene(questionScene);
+        quinzicalStage.show();
     }
 
     /**
@@ -51,17 +70,9 @@ public class PracticeController {
     public void select(Event e) throws IOException {
         // Grabbing the button the user pressed.
         Category category = categoryBox.getValue();
-        Question questionSelected = generator.generatePracticeQuestion(category);
-        FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("QuestionAndAnswer.fxml"));
-        Parent questionParent = questionLoad.load();
-        QuestionController qc = questionLoad.getController();
-        qc.setPracticeMode();
-        qc.setQuestion(questionSelected);
+        Question question = generator.generatePracticeQuestion(category);
+        loadQuestion(question, e);
 
-        Scene questionScene = new Scene(questionParent);
-        Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        quinzicalStage.setScene(questionScene);
-        quinzicalStage.show();
     }
 
     /**
