@@ -142,4 +142,14 @@ public class MenuController {
 		quinzicalStage.show();
 	}
 
+	@FXML
+	public void addQuestion() throws IOException {
+		quinzical.loadFXML("AddQuestion");
+	}
+
+	@FXML
+	public void shop() {
+
+	}
+
 }
