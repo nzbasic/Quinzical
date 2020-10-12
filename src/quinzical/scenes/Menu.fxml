@@ -56,7 +56,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane layoutX="161.0" layoutY="350.0" onMouseClicked="#startPractice" prefHeight="52.0" prefWidth="200.0" style="-fx-background-color: #FF851B; -fx-background-radius: 7;">
+      <AnchorPane layoutX="163.0" layoutY="302.0" onMouseClicked="#startPractice" prefHeight="52.0" prefWidth="200.0" style="-fx-background-color: #FF851B; -fx-background-radius: 7;">
          <effect>
             <DropShadow />
          </effect>
@@ -71,7 +71,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane layoutX="161.0" layoutY="477.0" onMouseClicked="#exit" prefHeight="52.0" prefWidth="200.0" style="-fx-background-color: #FF851B; -fx-background-radius: 7;">
+      <AnchorPane layoutX="163.0" layoutY="478.0" onMouseClicked="#exit" prefHeight="52.0" prefWidth="200.0" style="-fx-background-color: #FF851B; -fx-background-radius: 7;">
          <effect>
             <DropShadow />
          </effect>
@@ -138,6 +138,36 @@
                </font>
             </Button>
          </children>
+      </AnchorPane>
+      <AnchorPane layoutX="163.0" layoutY="388.0" onMouseClicked="#shop" prefHeight="52.0" prefWidth="200.0" style="-fx-background-color: #FF851B; -fx-background-radius: 7;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label alignment="CENTER" layoutX="86.0" layoutY="18.0" text="Shop" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="System Bold" size="34.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane layoutX="369.0" layoutY="224.0" onMouseClicked="#addQuestion" prefHeight="52.0" prefWidth="52.0" style="-fx-background-color: #FF851B; -fx-background-radius: 7;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label alignment="CENTER" layoutX="86.0" layoutY="18.0" prefHeight="49.0" prefWidth="47.0" text="+" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </AnchorPane>
    </children>
 </AnchorPane>
