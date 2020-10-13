@@ -47,6 +47,17 @@ public class AddQuestionController {
         categoryBox.setValue(null);
         questionText.setText("");
         answerText.setText("");
+
+        String name = category.getName();
+        File file = new File("./categories/" + name);
+        try {
+            FileWriter fw = new FileWriter(file, true);
+            fw.write("\n"+ questionString + "," + answerString);
+            fw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
