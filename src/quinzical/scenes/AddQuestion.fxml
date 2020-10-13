@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="541.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.AddQuestionController">
    <children>
-      <ComboBox layoutX="26.0" layoutY="163.0" prefWidth="150.0" promptText="category" />
+      <ComboBox fx:id="categoryBox" layoutX="26.0" layoutY="163.0" prefWidth="150.0" promptText="category" />
       <TextField fx:id="questionText" layoutX="190.0" layoutY="163.0" promptText="question text" />
       <TextField fx:id="answerText" layoutX="354.0" layoutY="163.0" promptText="answer" />
       <Button layoutX="176.0" layoutY="231.0" mnemonicParsing="false" onAction="#add" text="add" />
@@ -17,5 +17,6 @@
       <Label alignment="CENTER" layoutX="26.0" layoutY="60.0" prefHeight="93.0" prefWidth="149.0" text="Select the Category you would like this question to appear under" textAlignment="CENTER" wrapText="true" />
       <Label alignment="CENTER" layoutX="190.0" layoutY="60.0" prefHeight="93.0" prefWidth="149.0" text="Type the question, for example: This is the Māori word for stomach " textAlignment="CENTER" wrapText="true" />
       <Label alignment="CENTER" layoutX="354.0" layoutY="60.0" prefHeight="93.0" prefWidth="149.0" text="Type the answer, starting with &quot;what is, what are, who is&quot;, for example: What is Puku" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="popup" layoutX="212.0" layoutY="201.0" text="please fill in the boxes" visible="false" />
    </children>
 </AnchorPane>

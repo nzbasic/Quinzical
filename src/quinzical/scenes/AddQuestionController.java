@@ -22,7 +22,7 @@ public class AddQuestionController {
     private Label popup;
 
     @FXML
-    private void initlialize() {
+    private void initialize() {
         CategoryLoader loader = new CategoryLoader();
         List<Category> list = loader.getCategories();
         for (Category category : list) {
@@ -35,11 +35,16 @@ public class AddQuestionController {
         Category category = categoryBox.getValue();
         String questionString = questionText.getText();
         String answerString = answerText.getText();
-        if (category == null || questionString == null || answerString == null) {
+        if ( (category == null) || (questionString.equals("")) || (answerString.equals("")) ) {
+            popup.setText("Please fill in the boxes");
             popup.setVisible(true);
             return;
         }
-
+        popup.setText("Question added!");
+        popup.setVisible(true);
+        categoryBox.setValue(null);
+        questionText.setText("");
+        answerText.setText("");
     }
 
     @FXML
