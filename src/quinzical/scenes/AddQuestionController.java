@@ -1,5 +1,7 @@
 package quinzical.scenes;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
@@ -38,6 +40,16 @@ public class AddQuestionController {
         if (category == null || questionString == null || answerString == null) {
             popup.setVisible(true);
             return;
+        }
+
+        String name = category.getName();
+        File file = new File("./attempt/" + name);
+        try {
+            FileWriter fw = new FileWriter(file);
+            fw.write(questionString + "," + answerString + "\n");
+            fw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
