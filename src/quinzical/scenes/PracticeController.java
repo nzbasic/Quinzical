@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.scene.Node;
@@ -68,9 +69,12 @@ public class PracticeController {
     @FXML
     public void select(Event e) throws IOException {
         // Grabbing the button the user pressed.
-
-
-
+        String id = ((Control) e.getSource()).getId();
+        char[] chars = id.toCharArray();
+        int categoryNum = Integer.parseInt(Character.toString(chars[3]));
+        Category category = categories.get(categoryNum-1);
+        Question question = generator.generatePracticeQuestion(category);
+        loadQuestion(question,e);
         //Question question = generator.generatePracticeQuestion(category);
         //loadQuestion(question, e);
 
