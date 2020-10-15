@@ -159,8 +159,9 @@ public class GameController {
 		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 		quinzicalStage.setScene(questionScene);
 		quinzicalStage.show();
-
+        qc.speaking(qc.getQuestionText(), 1, 0);
 	}
+
 
 	/**
 	 * Returns user to the main menu.

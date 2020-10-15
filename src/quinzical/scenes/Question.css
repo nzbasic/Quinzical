@@ -20,6 +20,12 @@
 .label{
 	-fx-font-size: 14px;
 }
+#timerDisplay, #fixedDisplay{
+	-fx-background-color: #f9b3aa;
+	-fx-text-fill: black;
+	-fx-font-size: 18px;
+	-fx-font-weight: bold;
+}
 
 #normal, #slow, #fast{
 	-fx-background-color: transparent;

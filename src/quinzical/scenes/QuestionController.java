@@ -1,8 +1,14 @@
 package quinzical.scenes;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Stream;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +19,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import quinzical.HelperThread;
-import quinzical.model.AttemptTrack;
+import javafx.util.Duration;
+import quinzical.quinzicalExceptions;
 import quinzical.model.Question;
 import quinzical.model.Winnings;
 
@@ -26,23 +33,15 @@ import quinzical.model.Winnings;
  */
 public class QuestionController {
 	@FXML
-	private Label question;
+	private Label question, message, timerDisplay, fixedDisplay, firstLetter;
 	@FXML
 	private TextField answer;
 	@FXML
-	private Button giveup;
-	@FXML
-	private Button submit;
-	@FXML
-	private Label message;
-	@FXML
-	private Button continueGame;
-	@FXML
-	private Button mainMenu, normal, fast, slow;
-	@FXML
-	private Label firstLetter;
+	private Button giveup, submit, continueGame, mainMenu, normal, fast, slow;
 	@FXML
 	private AnchorPane popup;
+	@FXML
+	private ImageView clock;
 
 	private int lineNumber;
 	private List<Question> questionsAndAnswers;
@@ -50,9 +49,11 @@ public class QuestionController {
 	private Question questionObj;
 	private int retryNumber = 0;
 	private String questionText;
+	private Timeline animation;
 
 	/**
-	 * Sets the controller to be in practice mode. Changes behaviour when getting a question wrong.
+	 * Sets the controller to be in practice mode. Changes behaviour when getting a
+	 * question wrong.
 	 */
 	public void setPracticeMode() {
 		practiceMode = true;
@@ -61,44 +62,54 @@ public class QuestionController {
 
 	/**
 	 * Sets the current question to a question object.
+	 * 
 	 * @param q Question object
 	 */
 	public void setQuestion(Question q) {
 		question.setVisible(true);
 		questionObj = q;
 		question.setText(questionObj.getQuestion());
-		questionText = questionObj.getQuestion();
-		new HelperThread(questionText, 1).run();
+		questionText = replaceText(questionObj.getQuestion());
+		 speaking(questionText,1,1);
+	
+	}
+
+	public String getQuestionText() {
+		return questionText;
 	}
 
 	/**
 	 * Sets the current question to a question string.
+	 * 
 	 * @param s Question string
 	 */
 	public void setQuestion(String s) {
-		questionText = s;
-		new HelperThread(questionText, 1).run();
+		questionText = replaceText(s);
 		question.setText(s);
 	}
 
 	@FXML
 	public void playQuestionSpeech(Event e) {
-
-		HelperThread helper = null;
+		int playNum=1;
+        if (animation==null && !practiceMode) {
+        	playNum=3;
+        }
 		String ButtonId = ((Control) e.getSource()).getId();
 		if (ButtonId.equals("normal")) {
-			helper = new HelperThread(questionText, 1);
+				speaking(questionText, 1, playNum);
 		} else if (ButtonId.equals("slow")) {
-			helper = new HelperThread(questionText, 0);
+				speaking(questionText, 0, playNum);
 		} else if (ButtonId.equals("fast")) {
-			helper = new HelperThread(questionText, 2);
+			speaking(questionText, 2, playNum);
 		}
-		helper.start();
+
 	}
 
 	/**
-	 * Sets the index and questionLines for the current question to assist with reading the question.
-	 * @param index Index of the question
+	 * Sets the index and questionLines for the current question to assist with
+	 * reading the question.
+	 * 
+	 * @param index         Index of the question
 	 * @param questionLines List of questions
 	 */
 	public void setQuestionLines(int index, List<Question> questionLines) {
@@ -107,14 +118,20 @@ public class QuestionController {
 
 	}
 
-
 	/**
-	 * Called when user submits their answer. If practice mode is on, they get 3 attempts. Otherwise, show if they
-	 * are right or wrong.
+	 * Called when user submits their answer. If practice mode is on, they get 3
+	 * attempts. Otherwise, show if they are right or wrong.
+	 * 
 	 * @param e
 	 */
 	@FXML
 	public void checkAnswer(Event e) {
+		clock.setVisible(false);
+		fixedDisplay.setVisible(false);
+		timerDisplay.setVisible(false);
+		if (animation!=null) {
+	    animation.stop();
+		}
 		if (practiceMode) {
 			// increase retry number, once they hit 3 then they dont get any more attempts
 			retryNumber++;
@@ -123,7 +140,7 @@ public class QuestionController {
 			if (questionObj.checkAnswer(answer.getText())) {
 				questionObj.setResult(true);
 				message.setText("Correct!");
-				new HelperThread("Correct!", 1).run();
+				speaking("Correct!", 1, 1);
 			} else {
 
 				if (retryNumber == 2) {
@@ -131,7 +148,7 @@ public class QuestionController {
 					popup.setVisible(true);
 					String textHint = "The first letter is: " + Character.toUpperCase(first);
 					firstLetter.setText(textHint);
-					new HelperThread(textHint, 1).run();
+					speaking(textHint, 1, 1);
 				}
 				if (retryNumber < 3) {
 					message.setText("Incorrect, " + (3 - retryNumber) + " attempts remain");
@@ -141,30 +158,35 @@ public class QuestionController {
 					firstLetter.setVisible(false);
 					String answerText = "The correct answer was " + questionObj.sayAnswer();
 					message.setText(answerText);
-					new HelperThread(answerText, 1).run();
+					speaking(answerText, 1, 1);
 				}
 			}
 		} else {
-
+			
+			//animation.stop();
+			
 			String usrInput = answer.getText();
 			// Check Answers
 			Question q = questionsAndAnswers.get(lineNumber - 1);
 			if (q.checkAnswer(usrInput)) {
-				
+
 				// Add Winnings
 				Winnings winningController = new Winnings();
 				winningController.readWinnings();
 				winningController.updateWinnings(Integer.parseInt(q.getPrize()));
 				message.setText("Correct!");
-				new HelperThread("Correct!", 1).run();
+				speaking("Correct!",1,1);
+				//new HelperThread("Correct!", 1, 1).run();
 			} else {
-				new AttemptTrack().recordWrongQuestion(q);
+               
 				String answerTxt = "Your answer was incorrect";
 				message.setText(answerTxt);
-				new HelperThread(answerTxt, 1).run();
+				speaking(answerTxt,1,1);
+				
 			}
 
 		}
+		
 		popup.setVisible(true);
 		submit.setVisible(false);
 		giveup.setVisible(false);
@@ -174,8 +196,104 @@ public class QuestionController {
 		firstLetter.setVisible(false);
 	}
 
+	public String replaceText(String s) {
+		s = s.replace("ā", "aa");
+		s = s.replace("/", "or");
+		return s;
+	}
+
 	/**
-	 * Returns user to a question selection screen, depending on if they came from Games or Practice module.
+	 * 
+	 * @param textToSpeech
+	 * @param speechRate   0 for slow, 1 for normal,2 for fast
+	 * @param playTime     0 if this the first time the question gets played
+	 */
+
+	public void speaking(String textToSpeech, int speechRate, int playTime) {
+		textToSpeech = textToSpeech.replace("ā", "aa");
+		textToSpeech = textToSpeech.replace("/", "or");
+		String GameText=textToSpeech;
+		Thread taskThread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try {
+					Stream<ProcessHandle> descendents = ProcessHandle.current().descendants();
+					descendents.filter(ProcessHandle::isAlive).forEach(ph -> {
+						ph.destroy();
+					});
+					FileWriter fw = new FileWriter("./attempt/question.scm");
+					BufferedWriter bw = new BufferedWriter(fw);
+					bw.write("(voice_akl_nz_jdt_diphone)");
+					bw.newLine();
+					if (speechRate == 0) {
+						bw.write("(Parameter.set \'Duration_Stretch 2.1)");
+						bw.newLine();
+					} else if (speechRate == 2) {
+						bw.write("(Parameter.set \'Duration_Stretch 0.7)");
+						bw.newLine();
+					}
+                    
+					
+					bw.write("(SayText \"" + GameText + "\")");
+					bw.close();
+					Process p = new ProcessBuilder("bash", "-c", "festival -b ./attempt/question.scm").start();
+
+					// TImer only appears after the first time the question gets played
+					if (playTime == 0 || playTime == 3) {
+						p.waitFor();
+						int gameExit=p.exitValue();
+						if (gameExit==0 || playTime == 3) {
+						Platform.runLater(new Runnable() {
+							private int count = 60;
+							private String display;
+
+							private void updateTimer() {
+								if (count > 0) {
+									count--;
+									if (count < 10) {
+										display = "0" + count;
+									} else {
+										display = count + "";
+									}
+								} else {
+									checkAnswer(null);
+								}
+
+								timerDisplay.setText(display);
+							}
+
+							@Override
+							public void run() {
+								clock.setVisible(true);
+								fixedDisplay.setVisible(true);
+								timerDisplay.setVisible(true);
+								animation = new Timeline(new KeyFrame(Duration.seconds(1), e -> updateTimer()));
+								animation.setCycleCount(Timeline.INDEFINITE);
+								animation.play();
+
+							}
+
+						});
+						}
+					}
+					
+				} catch (Exception e) {
+					// add our own exception class to handle runtime exceptions
+					throw new quinzicalExceptions(e.getMessage());
+				}
+				// bash process
+			}
+
+		});
+		taskThread.start();
+	}
+
+	/**
+	 * Returns user to a question selection screen, depending on if they came from
+	 * Games or Practice module.
+	 * 
 	 * @param e
 	 * @throws IOException
 	 */
@@ -208,6 +326,7 @@ public class QuestionController {
 
 	/**
 	 * Returns user to the main menu.
+	 * 
 	 * @param e
 	 * @throws IOException
 	 */
