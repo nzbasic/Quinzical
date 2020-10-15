@@ -15,7 +15,7 @@ public class CategoryLoader {
 
     public CategoryLoader() {
         categories = new ArrayList<Category>();
-        File[] files = new File("./categories").listFiles();
+        File[] files = new File("./categories/NZ").listFiles();
         Scanner sc = null;
         for (File file : files) {
             Category category = new Category(file.getName());

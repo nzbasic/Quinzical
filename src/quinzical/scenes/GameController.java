@@ -28,9 +28,10 @@ public class GameController {
 	private Label category1, category2, category3, category4, category5, points;
 	@FXML
 	private Button c1q1, c1q2, c1q3, c1q4, c1q5, c2q1, c2q2, c2q3, c2q4, c2q5, c3q1, c3q2, c3q3, c3q4, c3q5, c4q1, c4q2,
-			c4q3, c4q4, c4q5, c5q1, c5q2, c5q3, c5q4, c5q5, returnMenu;
+			c4q3, c4q4, c4q5, c5q1, c5q2, c5q3, c5q4, c5q5, returnMenu,unlock;
 
 	private Button[] questionbuttons;
+	private int[] completedCategories={0,0,0,0,0};
 	private AttemptTrack attempt = new AttemptTrack();
 	private List<String> categoryNames;
 	private List<Question> allq;
@@ -62,6 +63,7 @@ public class GameController {
 	 * @throws IOException
 	 */
 	public void setupGame() throws IOException {
+		int attemptedInCurrentCate=0;
 		Label[] categories = { category1, category2, category3, category4, category5 };
 		points.setText(new Winnings().getWinnings());
 		categoryNames = attempt.readCategoriesGenerated();
@@ -76,19 +78,31 @@ public class GameController {
 		int[] attemptedRecord = attempt.getAttemptedRecord();
 		// check if all questions attempted
 		count = 0;
+		
 		for (int i = 0; i < attemptedRecord.length; i++) {
 			// Enable one button for each category
 			if (i % 5 == 0) {
 				countCate = true;
+				int quotient=i/5;
+				if (quotient>0) {
+				completedCategories[quotient-1]=attemptedInCurrentCate;
+				}
+				attemptedInCurrentCate=0;
 			}
 
 			if (attemptedRecord[i] == 1) {
 				// If attempted, hide button,Only Enable lowest value question
 				questions[i].setVisible(false);
+				attemptedInCurrentCate++;
+				
 				count++;
 			} else if (attemptedRecord[i] == 0 && countCate == true) {
 				questions[i].setDisable(false);
 				countCate = false;
+			}
+			//Record for number of completed Questions for the last category
+			if (i==24) {
+				completedCategories[4]=attemptedInCurrentCate;
 			}
 
 		}
@@ -106,6 +120,7 @@ public class GameController {
 
 	/**
 	 * Checks if all questions have been attempted, if they have, go to reward screen.
+	 * If 2 categories have been attempted unlock International questions.
 	 * @throws IOException
 	 */
 	public void checkIfAllAttempted() throws IOException {
@@ -121,6 +136,18 @@ public class GameController {
 			gameStage.setScene(rewardScene);
 			gameStage.show();
 		}
+		//Check if International Questions can be unlocked
+		int numCompleted=0;
+		for (int i=0;i<5;i++) {
+			if (completedCategories[i]==5) {
+				numCompleted++;
+			}
+			if (numCompleted==2){
+				unlock.setVisible(true);
+				break;
+			}
+		}
+		
 	}
 
 	/**
@@ -161,8 +188,15 @@ public class GameController {
 		quinzicalStage.show();
         qc.speaking(qc.getQuestionText(), 1, 0);
 	}
-
-
+   
+	/**
+	 * User chooses to attempt Questions from the international Section
+	 * @param e
+	 */
+    @FXML
+    public void switchToInternationalQuestions(Event e) {
+    	
+    }
 	/**
 	 * Returns user to the main menu.
 	 * @param e

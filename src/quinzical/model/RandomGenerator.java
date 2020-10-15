@@ -29,7 +29,7 @@ public class RandomGenerator {
 	 */
 	public void generateCategoriesAtRandom() {
 		allCategoryNames = new ArrayList<String>();
-		File[] files = new File("./categories").listFiles();
+		File[] files = new File("./categories/NZ").listFiles();
 		for (File file : files) {
 			allCategoryNames.add(file.getName());
 		}
@@ -64,7 +64,7 @@ public class RandomGenerator {
 		List<String> listOfLines = new ArrayList<>();
 		try {
 			// read each file
-			BufferedReader bufReader = new BufferedReader(new FileReader("./categories/" + nameOfFile));
+			BufferedReader bufReader = new BufferedReader(new FileReader("./categories/NZ/" + nameOfFile));
 			// read all lines in that file
 			String line = bufReader.readLine();
 			while (line != null) {
