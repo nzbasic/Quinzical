@@ -1,7 +1,6 @@
 package quinzical.scenes;
 
 import java.io.IOException;
-import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +8,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -36,19 +34,7 @@ public class MenuController {
 	 */
 	@FXML
 	public void initialize() {
-		money.setText("$" + new Winnings().getWinnings());
-		// Load images in a new thread to prevent GUI Concurrency problems.
-		Thread imageLoader = new Thread(() -> {
-			Image exit = new Image(getClass().getResourceAsStream("assets/exit.png"));
-			Image nz = new Image(getClass().getResourceAsStream("assets/nz.jpg"));
-			Image play = new Image(getClass().getResourceAsStream("assets/play.png"));
-			Platform.runLater(() -> {
-				exitImage.setImage(exit);
-				background.setImage(nz);
-				playImage.setImage(play);
-			});
-		});
-		imageLoader.start();
+		money.setText("Current Winnings: $" + new Winnings().getWinnings());
 	}
 
 	/**
@@ -140,16 +126,6 @@ public class MenuController {
 		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 		quinzicalStage.setScene(gameScene);
 		quinzicalStage.show();
-	}
-
-	@FXML
-	public void addQuestion() throws IOException {
-		quinzical.loadFXML("AddQuestion");
-	}
-
-	@FXML
-	public void shop() {
-
 	}
 
 }
