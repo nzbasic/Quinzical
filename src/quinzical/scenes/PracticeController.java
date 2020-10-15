@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import quinzical.model.AttemptTrack;
@@ -21,20 +21,19 @@ public class PracticeController {
     private CategoryLoader loader;
     private RandomGenerator generator;
     private List<Category> categories;
+    private Label[] labels;
     @FXML
-    private ComboBox<Category> categoryBox;
+    private Label ctg1,ctg2,ctg3,ctg4,ctg5,ctg6,ctg7,ctg8,ctg9;
 
     @FXML
     private void initialize() {
-
         loader = new CategoryLoader();
         generator = new RandomGenerator();
         categories = loader.getCategories();
-
-        for (Category category : categories) {
-            categoryBox.getItems().add(category);
+        labels = new Label[]{ctg1,ctg2,ctg3,ctg4,ctg5,ctg6,ctg7,ctg8,ctg9};
+        for (int i=0; i < 9; i++) {
+            labels[i].setText(categories.get(i).getName());
         }
-
     }
 
     @FXML
@@ -69,9 +68,11 @@ public class PracticeController {
     @FXML
     public void select(Event e) throws IOException {
         // Grabbing the button the user pressed.
-        Category category = categoryBox.getValue();
-        Question question = generator.generatePracticeQuestion(category);
-        loadQuestion(question, e);
+
+
+
+        //Question question = generator.generatePracticeQuestion(category);
+        //loadQuestion(question, e);
 
     }
 

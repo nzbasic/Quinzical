@@ -1,20 +1,202 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.PracticeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0a152b;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.PracticeController">
    <children>
-      <ComboBox fx:id="categoryBox" layoutX="136.0" layoutY="60.0" onAction="#select" prefHeight="84.0" prefWidth="329.0" promptText="Select A Category To Practice From" />
-      <Label layoutX="287.0" layoutY="192.0" text="or">
-         <font>
-            <Font size="34.0" />
-         </font>
-      </Label>
-      <Button layoutX="182.0" layoutY="274.0" mnemonicParsing="false" onAction="#practiceWrongQuestions" prefHeight="50.0" prefWidth="236.0" text="Practice Questions You Got Wrong" />
-      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#returnToMenu" text="Menu" />
+      <AnchorPane layoutX="251.0" layoutY="44.0" prefHeight="139.0" prefWidth="778.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label alignment="CENTER" layoutX="375.0" layoutY="61.0" text="Please Select A Category To Practice From" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <HBox layoutX="147.0" layoutY="238.0" prefHeight="113.0" prefWidth="986.0" style="-fx-spacing: 20;">
+         <children>
+            <AnchorPane prefHeight="104.0" prefWidth="197.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label fx:id="ctg1" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ctg1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <AnchorPane prefHeight="104.0" prefWidth="197.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label fx:id="ctg2" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <AnchorPane prefHeight="104.0" prefWidth="197.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label fx:id="ctg3" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <AnchorPane prefHeight="104.0" prefWidth="197.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label fx:id="ctg4" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <AnchorPane prefHeight="104.0" prefWidth="197.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label fx:id="ctg5" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <HBox layoutX="247.0" layoutY="370.0" prefHeight="113.0" prefWidth="786.0" style="-fx-spacing: 20;">
+         <children>
+            <AnchorPane prefHeight="104.0" prefWidth="197.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label fx:id="ctg6" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <AnchorPane prefHeight="104.0" prefWidth="197.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label fx:id="ctg7" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <AnchorPane prefHeight="104.0" prefWidth="197.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label fx:id="ctg8" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <AnchorPane prefHeight="104.0" prefWidth="197.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label fx:id="ctg9" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <HBox layoutX="118.0" layoutY="535.0" prefHeight="122.0" prefWidth="1045.0" style="-fx-spacing: 30;">
+         <children>
+            <AnchorPane onMouseClicked="#practiceWrongQuestions" prefHeight="104.0" prefWidth="691.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label alignment="CENTER" layoutX="375.0" layoutY="61.0" prefHeight="104.0" prefWidth="651.0" text="Practice a Question You Got Wrong" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <AnchorPane onMouseClicked="#returnToMenu" prefHeight="104.0" prefWidth="354.0" style="-fx-background-color: #FF851B; -fx-background-radius: 10;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label alignment="CENTER" layoutX="375.0" layoutY="61.0" prefHeight="104.0" prefWidth="335.0" text="Return To Menu" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
