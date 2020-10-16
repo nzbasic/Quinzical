@@ -229,7 +229,7 @@ public class QuestionController {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
+
 				try {
 					killProcesses();
 					FileWriter fw = new FileWriter("./attempt/question.scm");
