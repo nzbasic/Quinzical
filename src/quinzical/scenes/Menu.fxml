@@ -44,9 +44,9 @@
                   <DropShadow />
                </effect>
                <children>
-                  <HBox layoutX="61.0" prefHeight="84.0" prefWidth="159.0" style="-fx-spacing: 10;">
+                  <HBox layoutX="59.0" layoutY="7.0" prefHeight="57.0" prefWidth="163.0" style="-fx-spacing: 10;">
                      <children>
-                        <ImageView fitHeight="45.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="41.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@assets/play.png" />
                            </image>
@@ -54,16 +54,19 @@
                               <ColorAdjust brightness="1.0" />
                            </effect>
                            <HBox.margin>
-                              <Insets top="20.0" />
+                              <Insets top="8.0" />
                            </HBox.margin>
                         </ImageView>
                         <Label alignment="CENTER" text="Play" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font size="57.0" />
+                              <Font size="47.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
@@ -85,7 +88,7 @@
                <children>
                   <Label alignment="CENTER" layoutX="98.0" text="Practice" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font size="57.0" />
+                        <Font size="47.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -104,9 +107,9 @@
                   <DropShadow />
                </effect>
                <children>
-                  <HBox layoutX="67.0" prefHeight="84.0" prefWidth="147.0" style="-fx-spacing: 10;">
+                  <HBox layoutX="67.0" layoutY="8.0" prefHeight="45.0" prefWidth="147.0" style="-fx-spacing: 10;">
                      <children>
-                        <ImageView fitHeight="47.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="42.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@assets/exit.png" />
                            </image>
@@ -114,16 +117,19 @@
                               <ColorAdjust brightness="1.0" />
                            </effect>
                            <HBox.margin>
-                              <Insets top="20.0" />
+                              <Insets top="8.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label alignment="CENTER" text="Exit" textAlignment="CENTER" textFill="WHITE">
+                        <Label alignment="TOP_CENTER" prefHeight="28.0" prefWidth="89.0" text="Exit" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font size="57.0" />
+                              <Font size="47.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
