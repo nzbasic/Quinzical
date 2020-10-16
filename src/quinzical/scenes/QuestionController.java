@@ -204,7 +204,16 @@ public class QuestionController {
 		s = s.replace("/", "or");
 		return s;
 	}
-
+    
+	/**
+	 * Destroy all the current text-to-speech processes
+	 */
+	public void killProcesses() {
+		Stream<ProcessHandle> descendents = ProcessHandle.current().descendants();
+		descendents.filter(ProcessHandle::isAlive).forEach(ph -> {
+			ph.destroy();
+		});
+	}
 	/**
 	 * 
 	 * @param textToSpeech
@@ -222,10 +231,7 @@ public class QuestionController {
 			public void run() {
 				// TODO Auto-generated method stub
 				try {
-					Stream<ProcessHandle> descendents = ProcessHandle.current().descendants();
-					descendents.filter(ProcessHandle::isAlive).forEach(ph -> {
-						ph.destroy();
-					});
+					killProcesses();
 					FileWriter fw = new FileWriter("./attempt/question.scm");
 					BufferedWriter bw = new BufferedWriter(fw);
 					bw.write("(voice_akl_nz_jdt_diphone)");
@@ -341,6 +347,7 @@ public class QuestionController {
 	 */
 	@FXML
 	public void returnToMenu(Event e) throws IOException {
+		killProcesses();
 		new GameController().returnToMenu(e);
 	}
 }
