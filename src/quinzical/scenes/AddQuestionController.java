@@ -25,7 +25,7 @@ public class AddQuestionController {
 
     @FXML
     private void initialize() {
-        CategoryLoader loader = new CategoryLoader();
+        CategoryLoader loader = new CategoryLoader("NZ");
         List<Category> list = loader.getCategories();
         for (Category category : list) {
             categoryBox.getItems().add(category);

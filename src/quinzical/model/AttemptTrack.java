@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -55,8 +56,8 @@ public class AttemptTrack {
 	/**
 	 * get the names of the five categories generated from previous attempts
 	 */
-	public List<String> readCategoriesGenerated() {
-		readQuestionsAndCategoriesGenerated();
+	public List<String> readCategoriesGenerated(String section) {
+		readQuestionsAndCategoriesGenerated(section);
 		for (Category c : categories) {
 			categoryNames.add(c.getName());
 		}
@@ -64,16 +65,21 @@ public class AttemptTrack {
 	}
 
 	/**
-	 * Stores the 25 randomly generate questions in a file named
-	 * questionsAttempt.txt Each line contains question,answer,prize,category
+	 * Stores the randomly generated questions in a file named
+	 * questionsAttempt.txt or internatinalAttempt.txt Each line contains question,answer,prize,category
 	 * 
-	 * @param qList is a list of 25 Question Objects. The first 1-5 Questions are
-	 *              from the first category, 6-10 from second category,11-15 from
-	 *              third category, ...
+	 * @param qList is a list of Question Objects. 
 	 */
-	public void updateQuestionsGenerated(List<Question> qList) {
+	public void updateQuestionsGenerated(List<Question> qList,String section) {
+		FileWriter fw=null;
 		try {
-			FileWriter fw = new FileWriter("./attempt/questionsAttempt.txt");
+			if (section.equals("NZ")){
+			fw = new FileWriter("./attempt/questionsAttempt.txt");
+			}
+			else {
+	        fw = new FileWriter("./attempt/internationalAttempt.txt");
+			}
+			
 			BufferedWriter bw = new BufferedWriter(fw);
 			for (Question q : qList) {
 				String questionLine = q.getQuestion() + "," + q.getAnswer() + "," + q.getPrize() + ","
@@ -91,18 +97,27 @@ public class AttemptTrack {
 	/**
 	 * get 25 Question Objects
 	 */
-	public List<Question> getQuestionsGenerated() {
-		readQuestionsAndCategoriesGenerated();
+	public List<Question> getQuestionsGenerated(String section) {
+		readQuestionsAndCategoriesGenerated(section);
 		return allQuestions;
 	}
 
 	/**
-	 * Read the 25 questions from previous attempt/ continue game from last time
+	 * Read the questions from previous attempt/ continue game from last time
 	 */
-	public void readQuestionsAndCategoriesGenerated() {
+	public void readQuestionsAndCategoriesGenerated(String section) {
 		String line = null;
+		BufferedReader reader=null;
+		int questionsPerCategory=0;
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader("./attempt/questionsAttempt.txt"));
+			if (section.equals("NZ")) {
+			reader = new BufferedReader(new FileReader("./attempt/questionsAttempt.txt"));
+			questionsPerCategory=5;
+		}
+			else {
+				reader = new BufferedReader(new FileReader("./attempt/internationalAttempt.txt"));
+				questionsPerCategory=2;
+			}
 			int i = 0;
 			int j = 0;
 			while ((line = reader.readLine()) != null) {
@@ -110,11 +125,11 @@ public class AttemptTrack {
 				// place inside another method
 				// to avoid code duplication
 				String[] questionfields = line.split(",");
-				// Add Category names for every 5 element
-				if (i % 5 == 0) {
-					categories.add(new Category(questionfields[3])); // Only 5 category names added,
-																		// i=0,i=5,i=10,i=15,i=20
-					j++; // 1,2,3,4,5
+				// Add Category names for every 5or 2 elements
+				if (i % questionsPerCategory == 0) {
+					categories.add(new Category(questionfields[3])); 
+																		
+					j++; 
 				}
 				allQuestions.add(
 						new Question(questionfields[0], questionfields[1], questionfields[2], categories.get(j - 1))); // j=0,1,2,3,4
@@ -134,16 +149,23 @@ public class AttemptTrack {
 	 */
 	public void resetAttemptRecord() {
 		record = new int[25];
-		updateAttemptRecord();
+		updateAttemptRecord("NZ");
 
 	}
+	
 
 	/**
 	 * Updates attemptRecord file
 	 */
-	public void updateAttemptRecord() {
+	public void updateAttemptRecord(String section) {
+		FileWriter fw=null;
 		try {
-			FileWriter fw = new FileWriter("./attempt/attemptRecord.txt");
+			if (section.equals("NZ")) {
+			fw = new FileWriter("./attempt/attemptRecord.txt");
+			}
+			else {
+				fw = new FileWriter("./attempt/bonusAttemptRecord.txt");
+			}
 			BufferedWriter bw = new BufferedWriter(fw);
 			for (int i : record) {
 				bw.write(Integer.toString(i));
@@ -159,11 +181,11 @@ public class AttemptTrack {
 	 * Sets the question index inside record to 1 when the question has been
 	 * attempted
 	 */
-	public void setAttempted(int questionIndex) {
-		readAttempted();
+	public void setAttempted(int questionIndex,String section) {
+		readAttempted(section);
 		record[questionIndex] = 1;
 		// save changes inside attemptRecord file
-		updateAttemptRecord();
+		updateAttemptRecord(section);
 	}
 
 	/**
@@ -172,11 +194,17 @@ public class AttemptTrack {
 	 * 
 	 * @return
 	 */
-	public void readAttempted() {
+	public void readAttempted(String section) {
 		record = new int[25];
+		BufferedReader reader=null;
 		String line = null;
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader("./attempt/attemptRecord.txt"));
+			if (section.equals("NZ")) {
+			reader = new BufferedReader(new FileReader("./attempt/attemptRecord.txt"));
+			}
+			else {
+				reader = new BufferedReader(new FileReader("./attempt/bonusAttemptRecord.txt"));	
+			}
 			int i = 0;
 			while ((line = reader.readLine()) != null) {
 				record[i] = Integer.parseInt(line);
@@ -192,27 +220,14 @@ public class AttemptTrack {
 	/**
 	 * Get attempt Record
 	 */
-	public int[] getAttemptedRecord() {
-		readAttempted();
+	public int[] getAttemptedRecord(String section) {
+		readAttempted(section);
 		return record;
 	}
 
 	/**
-	 * Returns true if all the questions have been attempted by the user
-	 * 
-	 * @return
-	 */
-	public boolean checkIfAllCluesAttempted() {
-		for (int i = 0; i < 25; i++) {
-			if (record[i] == 0) {
-				return false; // if one question is not attempted return false
-			}
-		}
-		return true; // all the questions have been attempted
-	}
-
-	/**
 	 * Reset all attempts/ resets questions,categories and winnings
+	 * n:number of Q per category
 	 */
 	public void resetAll() {
 		// removes all the questions
@@ -220,13 +235,17 @@ public class AttemptTrack {
 		// removes all the categories
 		categories.clear();
 		RandomGenerator rg = new RandomGenerator();
-		rg.generateCategoriesAtRandom();
-		rg.generateGameQuestions();
+		
+		rg.generateCategoriesAtRandom(5,"NZ");
+		rg.generateGameQuestions(5,"NZ");
+		rg.generateCategoriesAtRandom(3, "International");
+		rg.generateGameQuestions(2,"International");
 
 		// clears attempt record
 		record = new int[25];
 		// writes to attemptRecord file
-		updateAttemptRecord();
+		updateAttemptRecord("NZ");
+		updateAttemptRecord("International");
 		winningRec.resetWinnings();
 	}
 

@@ -28,7 +28,7 @@ public class PracticeController {
 
     @FXML
     private void initialize() {
-        loader = new CategoryLoader();
+        loader = new CategoryLoader("NZ");
         generator = new RandomGenerator();
         categories = loader.getCategories();
         labels = new Label[]{ctg1,ctg2,ctg3,ctg4,ctg5,ctg6,ctg7,ctg8,ctg9};

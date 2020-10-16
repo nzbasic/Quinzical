@@ -66,7 +66,7 @@ public class GameController {
 		int attemptedInCurrentCate=0;
 		Label[] categories = { category1, category2, category3, category4, category5 };
 		points.setText(new Winnings().getWinnings());
-		categoryNames = attempt.readCategoriesGenerated();
+		categoryNames = attempt.readCategoriesGenerated("NZ");
 		for (int i = 0; i < 5; i++) {
 			categories[i].setText(categoryNames.get(i));
 		}
@@ -75,7 +75,7 @@ public class GameController {
 		questionbuttons = questions;
 		// Hide questions already attempted
 		boolean countCate = true;
-		int[] attemptedRecord = attempt.getAttemptedRecord();
+		int[] attemptedRecord = attempt.getAttemptedRecord("NZ");
 		// check if all questions attempted
 		count = 0;
 		
@@ -125,6 +125,7 @@ public class GameController {
 	 */
 	public void checkIfAllAttempted() throws IOException {
 		if (count == 25) {
+			//Ask user if they would like to attmpt remaining questions in International Section
 			// To reward screen
 			FXMLLoader rewardLoad = new FXMLLoader(getClass().getResource("Reward.fxml"));
 			Parent rewardParent = rewardLoad.load();
@@ -158,21 +159,31 @@ public class GameController {
 	@FXML
 	public void changeToAnswerScreen(Event e) throws IOException {
 		// Get Id of button clicked, works if clicked object extends control
+	    String section=null;
 		String ButtonId = ((Control) e.getSource()).getId();
+		int lineNumber=0;
 		// Set button invisible
 		((Button) e.getSource()).setVisible(false);
 
 		// Get Question
 		int categoryIndex = Integer.parseInt(ButtonId.substring(1, 2));
 		int questionIndex = Integer.parseInt(ButtonId.substring(3));
-		int lineNumber = (categoryIndex - 1) * 5 + questionIndex;
 		// Set Question as attempted
-		new AttemptTrack().setAttempted(lineNumber - 1);
+		if (ButtonId.substring(0,1).equals("c")) {
+			section="NZ";
+			lineNumber = (categoryIndex - 1) * 5 + questionIndex;
 		// Enable nextbutton click
-		if (questionIndex < 5) {
-			(questionbuttons[lineNumber]).setDisable(false);
+				if (questionIndex < 5) {
+					(questionbuttons[lineNumber]).setDisable(false);
+				}
 		}
-		allq = attempt.getQuestionsGenerated();
+		else {
+			section="International";	
+			lineNumber = (categoryIndex - 1) * 2 + questionIndex;
+		}
+		new AttemptTrack().setAttempted(lineNumber - 1,section);
+		//questionObjects
+		allq = attempt.getQuestionsGenerated(section);
 
 		String question = allq.get(lineNumber - 1).getQuestion();
 
@@ -192,10 +203,18 @@ public class GameController {
 	/**
 	 * User chooses to attempt Questions from the international Section
 	 * @param e
+	 * @throws IOException 
 	 */
     @FXML
-    public void switchToInternationalQuestions(Event e) {
-    	
+    public void switchToInternationalQuestions(Event e) throws IOException {
+    	FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("InternationalQuestions.fxml"));
+		Parent questionParent = questionLoad.load();
+		BonusQuestionController qc = questionLoad.getController();
+		qc.setUp();
+		Scene questionScene = new Scene(questionParent);
+		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+		quinzicalStage.setScene(questionScene);
+		quinzicalStage.show();
     }
 	/**
 	 * Returns user to the main menu.

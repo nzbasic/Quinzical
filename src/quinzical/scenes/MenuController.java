@@ -48,7 +48,7 @@ public class MenuController {
 	public void startGame(Event e) throws IOException {
 
 		AttemptTrack track = new AttemptTrack();
-		int[] record = track.getAttemptedRecord();
+		int[] record = track.getAttemptedRecord("NZ");
 		boolean flag = false;
 
 		// Check if the user has attempted any questions in the current save.

@@ -105,6 +105,6 @@
       </ImageView>
       <Label layoutX="397.0" layoutY="518.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text=" Total points:" />
       <Label fx:id="points" layoutX="520.0" layoutY="498.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="120.0" />
-      <Button fx:id="unlock" layoutX="150.0" layoutY="504.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="240.0" text="International Questions" visible="false" />
+      <Button fx:id="unlock" layoutX="150.0" layoutY="504.0" onAction="#switchToInternationalQuestions" mnemonicParsing="false" prefHeight="46.0" prefWidth="240.0" text="International Questions" visible="false" />
    </children>
 </AnchorPane>

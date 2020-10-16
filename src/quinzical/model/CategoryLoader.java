@@ -13,9 +13,10 @@ public class CategoryLoader {
 
     private List<Category> categories;
 
-    public CategoryLoader() {
+    public CategoryLoader(String section) {
         categories = new ArrayList<Category>();
-        File[] files = new File("./categories/NZ").listFiles();
+        
+        File[] files = new File("./categories/"+section).listFiles();
         Scanner sc = null;
         for (File file : files) {
             Category category = new Category(file.getName());
