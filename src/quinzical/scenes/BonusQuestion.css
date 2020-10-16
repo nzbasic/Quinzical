@@ -8,14 +8,14 @@
 	-fx-background-color: #0a152b;
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
-	-fx-font-size: 14px;
+	-fx-font-size: 30px;
 }
 
 .button{
 	-fx-background-color: #FF851B;
 	-fx-font-family:'rasa';
 	-fx-text-fill: white;
-	-fx-font-size: 26px;
+	-fx-font-size: 40px;
 	-fx-font-weight: bold;
 	-fx-border-color: black;
 	-fx-border-width: 1 1 1 1;
@@ -28,10 +28,10 @@
 	-fx-background-color: transparent;
 	-fx-text-fill: white;
 	-fx-font-weight: bold;
-	-fx-font-size: 14px;
+	-fx-font-size: 30px;
 }
 #returnMenu,#NZ{
-	-fx-font-size: 16px;
+	-fx-font-size: 20px;
 }
 .button:pressed{
 	-fx-background-color: lightsalmon;	
