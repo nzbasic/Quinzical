@@ -46,6 +46,7 @@ public class QuestionController {
 	private int lineNumber;
 	private List<Question> questionsAndAnswers;
 	private boolean practiceMode = false;
+	private boolean internationalSection=false;
 	private Question questionObj;
 	private int retryNumber = 0;
 	private String questionText;
@@ -73,7 +74,9 @@ public class QuestionController {
 		 speaking(questionText,1,1);
 	
 	}
-
+    public void setBonusAttempt() {
+    	internationalSection=true;
+    }
 	public String getQuestionText() {
 		return questionText;
 	}
@@ -299,8 +302,9 @@ public class QuestionController {
 	 */
 	@FXML
 	public void returnToQuestionSelection(Event e) throws Exception {
+		FXMLLoader gameLoad=null;
 		if (practiceMode) {
-			FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Practice.fxml"));
+			gameLoad = new FXMLLoader(getClass().getResource("Practice.fxml"));
 
 			Parent gameParent = gameLoad.load();
 
@@ -309,8 +313,11 @@ public class QuestionController {
 			quinzicalStage.setScene(gameScene);
 			quinzicalStage.show();
 		} else {
-			FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Game.fxml"));
-
+		   if (internationalSection) {
+			   new GameController().switchToInternationalQuestions(e);
+		    }
+		    else {
+			gameLoad = new FXMLLoader(getClass().getResource("Game.fxml"));
 			Parent gameParent = gameLoad.load();
 			GameController gc = gameLoad.getController();
 			gc.oldGameData();
@@ -321,6 +328,8 @@ public class QuestionController {
 			quinzicalStage.setScene(gameScene);
 			quinzicalStage.show();
 			gc.checkIfAllAttempted();
+		    }
+			
 		}
 	}
 

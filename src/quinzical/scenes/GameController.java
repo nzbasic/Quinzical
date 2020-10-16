@@ -37,6 +37,7 @@ public class GameController {
 	private List<String> categoryNames;
 	private List<Question> allq;
 	private int count;
+	private boolean internationalSection=false;
 	
 	private Stage gameStage;
 	
@@ -49,7 +50,8 @@ public class GameController {
 		setupGame();
 		
 	}
-
+    
+	
 	/**
 	 * Loads data from old save file.
 	 * @throws IOException
@@ -169,6 +171,10 @@ public class GameController {
 		gameStage.setScene(rewardScene);
 		gameStage.show();
 	}
+	public void setInternationalSection(Event e) throws Exception {
+		internationalSection=true;
+		changeToAnswerScreen(e);
+	}
 	/**
 	 * When user selects a question, load the answer screen with that question's data.
 	 * @param e
@@ -208,8 +214,12 @@ public class GameController {
 		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("QuestionAndAnswer.fxml"));
 		Parent questionParent = questionLoad.load();
 		QuestionController qc = questionLoad.getController();
+		if (internationalSection) {
+			qc.setBonusAttempt();
+		}
 		qc.setQuestion(question);
 		qc.setQuestionLines(lineNumber, allq);
+		
 
 		Scene questionScene = new Scene(questionParent);
 		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();

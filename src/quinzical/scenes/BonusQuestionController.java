@@ -99,7 +99,7 @@ public void returnToNZQuestion(Event e) throws Exception {
 }
 
 @FXML
-public void changeToAnswerScreen(Event e) throws IOException {
-	new GameController().changeToAnswerScreen(e);
+public void changeToAnswerScreen(Event e) throws Exception {
+	new GameController().setInternationalSection(e);
 }
 }
