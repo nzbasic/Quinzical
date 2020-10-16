@@ -18,7 +18,6 @@ public class BonusQuestionController {
 @FXML Button b1q1,b1q2,b2q1,b2q2,b3q1,b3q2,returnMenu,NZ;
 private List<String> categoryNames;
 private AttemptTrack attempt = new AttemptTrack();
-private Button[] questionbuttons;
 private int count;
 
 /**
@@ -34,7 +33,6 @@ public void setUp() throws IOException {
 		categories[i].setText(categoryNames.get(i));
 	}
 	Button[] questions = { b1q1,b1q2,b2q1,b2q2,b3q1,b3q2};
-	questionbuttons = questions;
 	// Hide questions already attempted
 	boolean countCate = true;
 	int[] attemptedRecord = attempt.getAttemptedRecord("International");
@@ -73,11 +71,30 @@ public void returnToMenu(Event e) throws IOException {
 }
 
 /**
+ * Get the total Number of Questions Attempted for International Section
+ * @return
+ * @throws Exception
+ */
+public int getNumberOfQuestionsAttempted() throws Exception {
+	int[] attemptedRecord = attempt.getAttemptedRecord("International");
+	// check if all questions attempted
+	count = 0;
+	for (int i = 0; i < 6; i++) {
+
+		if (attemptedRecord[i] == 1) {
+	
+			count++;
+		}
+
+	}
+	return count;
+}
+/**
  * Returns to NZ question set
- * @throws IOException 
+ * @throws Exception 
  */
 @FXML
-public void returnToNZQuestion(Event e) throws IOException {
+public void returnToNZQuestion(Event e) throws Exception {
 	new QuestionController().returnToQuestionSelection(e);
 }
 

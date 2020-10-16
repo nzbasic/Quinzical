@@ -2,6 +2,9 @@
 #background{
 	-fx-background-color:#0a152b;
 }
+#finalPopUp{
+	-fx-background-color:white;
+}
 .label{
 	-fx-font-family:'dejavu sans';
 	-fx-background-color: #0a152b;

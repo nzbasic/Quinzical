@@ -93,10 +93,10 @@ public class MenuController {
 	 * questions and the game continues.
 	 * 
 	 * @param e Button Event
-	 * @throws IOException
+	 * @throws Exception 
 	 */
 	@FXML
-	public void continueGame(Event e) throws IOException {
+	public void continueGame(Event e) throws Exception {
 		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Game.fxml"));
 		Parent gameParent = gameLoad.load();
 		GameController gc = gameLoad.getController();

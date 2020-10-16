@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import quinzical.model.AttemptTrack;
 import quinzical.model.Question;
@@ -29,7 +30,7 @@ public class GameController {
 	@FXML
 	private Button c1q1, c1q2, c1q3, c1q4, c1q5, c2q1, c2q2, c2q3, c2q4, c2q5, c3q1, c3q2, c3q3, c3q4, c3q5, c4q1, c4q2,
 			c4q3, c4q4, c4q5, c5q1, c5q2, c5q3, c5q4, c5q5, returnMenu,unlock;
-
+    @FXML AnchorPane finalPopUp;
 	private Button[] questionbuttons;
 	private int[] completedCategories={0,0,0,0,0};
 	private AttemptTrack attempt = new AttemptTrack();
@@ -121,21 +122,21 @@ public class GameController {
 	/**
 	 * Checks if all questions have been attempted, if they have, go to reward screen.
 	 * If 2 categories have been attempted unlock International questions.
-	 * @throws IOException
+	 * @throws Exception 
 	 */
-	public void checkIfAllAttempted() throws IOException {
+	public void checkIfAllAttempted() throws Exception {
+		
 		if (count == 25) {
-			//Ask user if they would like to attmpt remaining questions in International Section
-			// To reward screen
-			FXMLLoader rewardLoad = new FXMLLoader(getClass().getResource("Reward.fxml"));
-			Parent rewardParent = rewardLoad.load();
-			RewardController rc = rewardLoad.getController();
-			rc.setPoints(new Winnings().getWinnings());
-
-			Scene rewardScene = new Scene(rewardParent);
+			//Ask user if they would like to attempt remaining questions in International Section
+			if (new BonusQuestionController().getNumberOfQuestionsAttempted()<6) {
+				finalPopUp.setVisible(true);
+				unlock.setDisable(true);
+			}
+			else {
+				//All questions attempted, go to reward screen
+				toRewardScreen();
+			}
 			
-			gameStage.setScene(rewardScene);
-			gameStage.show();
 		}
 		//Check if International Questions can be unlocked
 		int numCompleted=0;
@@ -150,7 +151,24 @@ public class GameController {
 		}
 		
 	}
+	
 
+	/**
+	 * Switch to RewardScreen
+	 * @throws IOException
+	 */
+	@FXML
+	public void toRewardScreen() throws IOException {
+		FXMLLoader rewardLoad = new FXMLLoader(getClass().getResource("Reward.fxml"));
+		Parent rewardParent = rewardLoad.load();
+		RewardController rc = rewardLoad.getController();
+		rc.setPoints(new Winnings().getWinnings());
+
+		Scene rewardScene = new Scene(rewardParent);
+		
+		gameStage.setScene(rewardScene);
+		gameStage.show();
+	}
 	/**
 	 * When user selects a question, load the answer screen with that question's data.
 	 * @param e

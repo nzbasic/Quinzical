@@ -295,10 +295,10 @@ public class QuestionController {
 	 * Games or Practice module.
 	 * 
 	 * @param e
-	 * @throws IOException
+	 * @throws Exception 
 	 */
 	@FXML
-	public void returnToQuestionSelection(Event e) throws IOException {
+	public void returnToQuestionSelection(Event e) throws Exception {
 		if (practiceMode) {
 			FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Practice.fxml"));
 
