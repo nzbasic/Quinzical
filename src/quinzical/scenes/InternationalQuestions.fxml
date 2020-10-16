@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="412.0" prefWidth="555.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="quinzical.scenes.BonusQuestionController">
+<AnchorPane fx:id="back" prefHeight="412.0" prefWidth="555.0" stylesheets="@BonusQuestion.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.BonusQuestionController">
    <children>
-      <Button fx:id="b1q1" onAction="#changeToAnswerScreen" layoutX="205.0" layoutY="79.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="103.0" text="200" />
-      <Button fx:id="b2q1" onAction="#changeToAnswerScreen" layoutX="205.0" layoutY="143.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="103.0" text="200" />
-      <Button fx:id="b3q1" onAction="#changeToAnswerScreen" layoutX="205.0" layoutY="213.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="103.0" text="200" />
-      <Label fx:id="country1" layoutX="70.0" layoutY="75.0" prefHeight="54.0" prefWidth="103.0" text="Country1" />
-      <Label fx:id="country2" layoutX="70.0" layoutY="139.0" prefHeight="54.0" prefWidth="103.0" text="Country2" textAlignment="JUSTIFY" />
-      <Label fx:id="country3" layoutX="70.0" layoutY="209.0" prefHeight="54.0" prefWidth="103.0" text="Country3" />
-      <Button fx:id="b1q2" onAction="#changeToAnswerScreen" layoutX="319.0" layoutY="79.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="103.0" text="400" />
-      <Button fx:id="b2q2" onAction="#changeToAnswerScreen" layoutX="319.0" layoutY="143.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="103.0" text="400" />
-      <Button fx:id="b3q2" onAction="#changeToAnswerScreen" layoutX="319.0" layoutY="213.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="103.0" text="400" />
-      <Button fx:id="returnMenu" onAction="#returnToMenu" layoutX="15.0" layoutY="359.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="111.0" text="Main Menu" />
-      <Button fx:id="NZ" onAction="#returnToNZQuestion" layoutX="163.0" layoutY="359.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="130.0" text="NZ Questions" />
-      <Label layoutX="355.0" layoutY="363.0" prefHeight="26.0" prefWidth="93.0" text="Total Points:" />
-      <Text fx:id="points" layoutX="448.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="72.7294921875">
+      <ImageView fitHeight="335.0" fitWidth="555.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/world.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="b1q1" layoutX="205.0" layoutY="79.0" mnemonicParsing="false" onAction="#changeToAnswerScreen" prefHeight="47.0" prefWidth="103.0" text="200" />
+      <Button fx:id="b2q1" layoutX="205.0" layoutY="158.0" mnemonicParsing="false" onAction="#changeToAnswerScreen" prefHeight="47.0" prefWidth="103.0" text="200" />
+      <Button fx:id="b3q1" layoutX="205.0" layoutY="242.0" mnemonicParsing="false" onAction="#changeToAnswerScreen" prefHeight="47.0" prefWidth="103.0" text="200" />
+      <Label fx:id="country1" alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="79.0" prefHeight="57.0" prefWidth="111.0" text="Country1" />
+      <Label fx:id="country2" alignment="CENTER" layoutX="62.0" layoutY="158.0" prefHeight="57.0" prefWidth="111.0" text="Country2" textAlignment="CENTER" />
+      <Label fx:id="country3" alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="240.0" prefHeight="57.0" prefWidth="111.0" text="Country3" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="b1q2" layoutX="328.0" layoutY="79.0" mnemonicParsing="false" onAction="#changeToAnswerScreen" prefHeight="47.0" prefWidth="103.0" text="400" />
+      <Button fx:id="b2q2" layoutX="328.0" layoutY="158.0" mnemonicParsing="false" onAction="#changeToAnswerScreen" prefHeight="47.0" prefWidth="103.0" text="400" />
+      <Button fx:id="b3q2" layoutX="328.0" layoutY="242.0" mnemonicParsing="false" onAction="#changeToAnswerScreen" prefHeight="47.0" prefWidth="103.0" text="400" />
+      <Button fx:id="returnMenu" layoutX="14.0" layoutY="352.0" mnemonicParsing="false" onAction="#returnToMenu" prefHeight="43.0" prefWidth="111.0" text="Main Menu" />
+      <Button fx:id="NZ" layoutX="158.0" layoutY="353.0" mnemonicParsing="false" onAction="#returnToNZQuestion" prefHeight="43.0" prefWidth="154.0" text="NZ Questions" />
+      <Label fx:id="total" layoutX="337.0" layoutY="363.0" prefHeight="26.0" prefWidth="111.0" text="Total Points:" />
+      <Text fx:id="points" fill="WHITE" layoutX="448.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="72.7294921875">
          <font>
             <Font size="15.0" />
          </font>
