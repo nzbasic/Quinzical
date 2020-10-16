@@ -16,7 +16,7 @@
          <children>
             <Label alignment="CENTER" layoutX="375.0" layoutY="61.0" text="Please Select A Category To Practice From" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
-                  <Font name="System Bold" size="36.0" />
+                  <Font name="System Bold" size="27.0" />
                </font>
             </Label>
          </children>
@@ -28,9 +28,9 @@
                   <DropShadow />
                </effect>
                <children>
-                  <Label fx:id="ctg1" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ctg1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label fx:id="ctg1" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="Famous People" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="31.0" />
+                        <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
                </children>
@@ -45,7 +45,7 @@
                <children>
                   <Label fx:id="ctg2" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="31.0" />
+                        <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
                </children>
@@ -60,7 +60,7 @@
                <children>
                   <Label fx:id="ctg3" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="31.0" />
+                        <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
                </children>
@@ -75,7 +75,7 @@
                <children>
                   <Label fx:id="ctg4" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="31.0" />
+                        <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
                </children>
@@ -90,7 +90,7 @@
                <children>
                   <Label fx:id="ctg5" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="31.0" />
+                        <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
                </children>
@@ -109,7 +109,7 @@
                <children>
                   <Label fx:id="ctg6" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="31.0" />
+                        <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
                </children>
@@ -124,7 +124,7 @@
                <children>
                   <Label fx:id="ctg7" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="31.0" />
+                        <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
                </children>
@@ -139,7 +139,7 @@
                <children>
                   <Label fx:id="ctg8" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="31.0" />
+                        <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
                </children>
@@ -154,7 +154,7 @@
                <children>
                   <Label fx:id="ctg9" alignment="CENTER" layoutX="375.0" layoutY="61.0" onMouseClicked="#select" text="ct1" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="31.0" />
+                        <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
                </children>
@@ -173,7 +173,7 @@
                <children>
                   <Label alignment="CENTER" layoutX="375.0" layoutY="61.0" prefHeight="104.0" prefWidth="651.0" text="Practice a Question You Got Wrong" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="36.0" />
+                        <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
                </children>
@@ -188,7 +188,7 @@
                <children>
                   <Label alignment="CENTER" layoutX="375.0" layoutY="61.0" prefHeight="104.0" prefWidth="335.0" text="Return To Menu" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="36.0" />
+                        <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
                </children>
