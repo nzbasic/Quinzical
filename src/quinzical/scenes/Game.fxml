@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="background" prefHeight="531.0" prefWidth="654.0" stylesheets="@Game.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.GameController">
+<AnchorPane fx:id="background" prefHeight="720.0" prefWidth="1280.0" stylesheets="@Game.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.GameController">
    <children>
-      <HBox fx:id="game" layoutX="26.0" prefHeight="493.0" prefWidth="600.0">
+      <HBox fx:id="game" layoutX="26.0" prefHeight="612.0" prefWidth="1211.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
          <children>
             <GridPane prefHeight="299.0" prefWidth="528.0" HBox.hgrow="SOMETIMES">
               <columnConstraints>
@@ -60,11 +58,26 @@
                   <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label layoutX="201.0" layoutY="343.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="1" />
-                  <Label fx:id="category1" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
-                  <Label fx:id="category2" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.columnIndex="1" />
-                  <Label fx:id="category3" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.columnIndex="2" />
-                  <Label fx:id="category4" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.columnIndex="3" />
-                  <Label fx:id="category5" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="JUSTIFY" GridPane.columnIndex="4" />
+                  <Label fx:id="category1" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 1;" text="fghgfhfgh" textFill="WHITE">
+                     <font>
+                        <Font size="22.0" />
+                     </font></Label>
+                  <Label fx:id="category2" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 0;" textAlignment="JUSTIFY" textFill="WHITE" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="22.0" />
+                     </font></Label>
+                  <Label fx:id="category3" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 0;" textAlignment="JUSTIFY" textFill="WHITE" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="22.0" />
+                     </font></Label>
+                  <Label fx:id="category4" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 0;" textAlignment="JUSTIFY" textFill="WHITE" GridPane.columnIndex="3">
+                     <font>
+                        <Font size="22.0" />
+                     </font></Label>
+                  <Label fx:id="category5" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-border-color: #000000; -fx-border-width: 1 1 1 0;" textAlignment="JUSTIFY" textFill="WHITE" GridPane.columnIndex="4">
+                     <font>
+                        <Font size="22.0" />
+                     </font></Label>
                   <Button fx:id="c1q1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeToAnswerScreen" text="100" GridPane.rowIndex="1" />
                   <Button fx:id="c1q2" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeToAnswerScreen" text="200" GridPane.rowIndex="2" />
                   <Button fx:id="c1q3" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeToAnswerScreen" text="300" GridPane.rowIndex="3" />
@@ -98,15 +111,25 @@
             </GridPane>
          </children>
       </HBox>
-      <Button fx:id="returnMenu" layoutX="14.0" layoutY="504.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#returnToMenu" prefHeight="40.0" prefWidth="120.0" text="   return" />
-      <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="20.0" layoutY="512.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="returnMenu" layoutX="100.0" layoutY="633.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#returnToMenu" prefHeight="65.0" prefWidth="175.0" text="   return" />
+      <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="134.0" layoutY="650.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/home.png" />
          </image>
       </ImageView>
-      <Label layoutX="397.0" layoutY="518.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text=" Total points:" />
-      <Label fx:id="points" layoutX="520.0" layoutY="498.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="120.0" />
-      <Button fx:id="unlock" layoutX="150.0" layoutY="504.0" mnemonicParsing="false" onAction="#switchToInternationalQuestions" prefHeight="46.0" prefWidth="240.0" text="International Questions" visible="false" />
+      <Label layoutX="855.0" layoutY="642.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="46.0" prefWidth="205.0" text=" Total points:" textFill="WHITE">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="points" layoutX="1060.0" layoutY="635.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="59.0" prefWidth="120.0" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font></Label>
+      <Button fx:id="unlock" layoutX="292.0" layoutY="633.0" mnemonicParsing="false" onAction="#switchToInternationalQuestions" prefHeight="65.0" prefWidth="291.0" text="International Questions">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
       <AnchorPane fx:id="finalPopUp" layoutX="149.0" layoutY="150.0" prefHeight="232.0" prefWidth="344.0" visible="false">
          <children>
             <Text layoutX="26.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You still have some bonus International questions unattempted! Would you like to continue?" wrappingWidth="291.48779296875">
@@ -114,8 +137,8 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Button fx:id="endGame" onAction="#toRewardScreen" layoutX="35.0" layoutY="156.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="105.0" text="No" />
-            <Button fx:id="continueInternational" onAction="#switchToInternationalQuestions" layoutX="212.0" layoutY="156.0" mnemonicParsing="false" text="Yes" />
+            <Button fx:id="endGame" layoutX="35.0" layoutY="156.0" mnemonicParsing="false" onAction="#toRewardScreen" prefHeight="57.0" prefWidth="105.0" text="No" />
+            <Button fx:id="continueInternational" layoutX="212.0" layoutY="156.0" mnemonicParsing="false" onAction="#switchToInternationalQuestions" text="Yes" />
          </children>
       </AnchorPane>
    </children>

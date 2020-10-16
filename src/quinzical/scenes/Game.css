@@ -7,17 +7,13 @@
 }
 .label{
 	-fx-font-family:'dejavu sans';
-	-fx-background-color: #0a152b;
-	-fx-text-fill: slategrey;
-	-fx-font-weight: bold;
-	-fx-font-size: 14px;
 }
 
 .button{
 	-fx-background-color: #FF851B;
 	-fx-font-family:'rasa';
 	-fx-text-fill: antiquewhite;
-	-fx-font-size: 26px;
+	-fx-font-size: 35px;
 	-fx-font-weight: bold;
 	-fx-border-color: black;
 	-fx-border-width: 1 1 1 1;
@@ -33,7 +29,11 @@
 }
 .button:pressed{
 	-fx-background-color: lightsalmon;	
-	}
+}
+Line {
+	-fx-stroke: black;
+	-fx-stroke-width: 2px;
+}
 .button:hover{
 	-fx-border-color: palegoldenrod;
 	-fx-border-width: 1 1 1 1;
