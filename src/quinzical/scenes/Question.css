@@ -4,7 +4,7 @@
 	-fx-background-color:  #FF851B;
 	-fx-font-family:'rasa';
 	-fx-text-fill: antiquewhite;
-	-fx-font-size: 16px;
+	-fx-font-size: 20px;
 	-fx-font-weight: bold;
 	-fx-border-color: black;
 	-fx-border-width: 1 1 1 1;
@@ -15,10 +15,6 @@
 .label, #question{
 	-fx-font-family:'dejavu sans';
 	-fx-font-weight: bold;
-	-fx-font-size: 20px;
-}
-.label{
-	-fx-font-size: 14px;
 }
 #timerDisplay, #fixedDisplay{
 	-fx-background-color: #f9b3aa;
