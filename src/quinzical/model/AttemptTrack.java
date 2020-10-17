@@ -317,10 +317,9 @@ public class AttemptTrack {
 	 */
 	public int checkIfQuestionExistInFile(Question check) {
 		List <Question> wrongQList=getWrongQuestions();
-		System.out.println(check.getQuestion());
 		for (Question wrong:wrongQList) {
 			//found Question in file
-			//System.out.println(wrong.getQuestion());
+			
 			if (wrong.getQuestion().equals(check.getQuestion())) {
 				return wrongQList.indexOf(wrong);
 			}
