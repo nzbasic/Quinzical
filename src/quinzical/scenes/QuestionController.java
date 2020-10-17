@@ -24,6 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import quinzical.quinzicalExceptions;
+import quinzical.model.AttemptTrack;
 import quinzical.model.Question;
 import quinzical.model.Winnings;
 
@@ -179,13 +180,14 @@ public class QuestionController {
 				winningController.updateWinnings(Integer.parseInt(q.getPrize()));
 				message.setText("Correct!");
 				speaking("Correct!",1,1);
+				new AttemptTrack().removeCorrectlyAttemptedQuestion(q);
 				//new HelperThread("Correct!", 1, 1).run();
 			} else {
                
 				String answerTxt = "Your answer was incorrect";
 				message.setText(answerTxt);
 				speaking(answerTxt,1,1);
-				
+				new AttemptTrack().writeWrongQuestion(q);
 			}
 
 		}

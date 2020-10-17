@@ -248,12 +248,11 @@ public class AttemptTrack {
 		winningRec.resetWinnings();
 	}
 
-	public void recordWrongQuestion(Question question) {
-		List<Question> list = getWrongQuestions();
-		list.add(question);
-		writeWrongQuestions(list);
-	}
-
+	
+    /**
+     * Read file to get the questions the user got wrong
+     * @return List of Question Objects which are the questions users got wrong
+     */
 	public List<Question> getWrongQuestions() {
 		List<Question> output = new ArrayList<Question>();
 		File file = new File("./attempt/wrongQuestions.txt");
@@ -272,11 +271,14 @@ public class AttemptTrack {
 			}
 
 			for (String string : list) {
+				
 				String[] data = string.split(",");
 				String question = data[0];
+				
 				String answer = data[1];
 				Question questionObj = new Question(question,answer, null, null);
 				output.add(questionObj);
+				
 			}
 
 		} else {
@@ -288,16 +290,79 @@ public class AttemptTrack {
 		}
 		return output;
 	}
-
-	private void writeWrongQuestions(List<Question> list) {
+	
+	/**
+	 * The question user attempted correctly will be removed from the 
+	 * file which records the questions that they got wrong
+	 * @param correct the question they attempted correctly
+	 */
+	public void removeCorrectlyAttemptedQuestion(Question correct) {
+		int qIndex=checkIfQuestionExistInFile(correct);
+		if (qIndex!=-1) {
+			//If this question exists in wrongQuestion file
+			List <Question> newWrongList=getWrongQuestions();
+			    newWrongList.remove(qIndex);
+			    //Write new list to file
+			    writeWrongQuestion(newWrongList);
+		}
+		
+		
+	}
+    
+	/**
+	 * Returns index in List if this question exists in file, returns -1 if 
+	 * the question has not been added to file.
+	 * @param q
+	 * @return
+	 */
+	public int checkIfQuestionExistInFile(Question check) {
+		List <Question> wrongQList=getWrongQuestions();
+		System.out.println(check.getQuestion());
+		for (Question wrong:wrongQList) {
+			//found Question in file
+			//System.out.println(wrong.getQuestion());
+			if (wrong.getQuestion().equals(check.getQuestion())) {
+				return wrongQList.indexOf(wrong);
+			}
+		}
+		return -1;
+	}
+	/**
+	 * Append the question which the user got wrong to file wrongQuestion.txt
+	 * @param q Question Object
+	 */
+	public void writeWrongQuestion(Question q) {
+	
+		//Only append to file if the question is not inside text file already
+		if (checkIfQuestionExistInFile(q)==-1) {
+		try {
+			FileWriter fw = new FileWriter("./attempt/wrongQuestions.txt",true);
+		
+				String question = q.getQuestion();
+				String answer = q.getAnswer();
+				fw.write(question + "," + answer + "\n");
+			
+			fw.close();
+		} catch (Exception e) {
+			throw new quinzicalExceptions(e.getMessage());
+		}
+		}
+	}
+	
+	/**
+	 * Write a list of Questions to wrongQuestion.txt
+	 */
+	public void writeWrongQuestion(List<Question> qList) {
 		try {
 			FileWriter fw = new FileWriter("./attempt/wrongQuestions.txt");
-			for (Question q : list) {
+		       
+			for (Question q:qList) {
 				String question = q.getQuestion();
 				String answer = q.getAnswer();
 				fw.write(question + "," + answer + "\n");
 			}
 			fw.close();
+			
 		} catch (Exception e) {
 			throw new quinzicalExceptions(e.getMessage());
 		}
