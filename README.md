@@ -1,10 +1,10 @@
 # Quinzical
 
 Menu:\
-![alt text](https://cdn.discordapp.com/attachments/627267590862929961/761884795516485632/menu.png "Quinzical Menu")
+![alt text](https://cdn.discordapp.com/attachments/627267590862929961/767327293764009994/unknown.png "Quinzical Menu")
 
-Question Select:\
-![alt text](https://cdn.discordapp.com/attachments/627267590862929961/761885530727776266/unknown.png "Question Selection Screen")
+Question Answer:\
+![alt text](https://cdn.discordapp.com/attachments/627267590862929961/767327457606238248/unknown.png "Question Selection Screen")
 
 Find the current release [HERE](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-05/releases)
 
@@ -13,9 +13,13 @@ Option 1: Extract files from the [downloaded zip](https://github.com/SOFTENG206-
 Option 2: Run the jar file on your terminal/IDE.\
 Option 3: Import source files and all other files as a project in your IDE.
 
+Speech readouts will not work unless you have akl_nz_jdt_diphone installed for festival.
+
+You must have javafx installed locally at /usr/share/java/lib for this script to work.
+
 1) To run the script file from terminal:
-  chmod +x playQuinzical.sh
-  ./playQuinzical.sh
+  chmod +x play.sh
+  ./play.sh
   
 2) To run the application in Eclipse/Other IDE
    -Install javaFx inside Eclipse, https://marketplace.eclipse.org/content/efxclipse
