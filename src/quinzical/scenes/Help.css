@@ -1,0 +1,25 @@
+#help{
+    -fx-background-color: #FF851B;
+	-fx-font-family:'rasa';
+	-fx-text-fill: antiquewhite;
+	-fx-font-size: 20px;
+	-fx-font-weight: bold;
+	-fx-border-color: black;
+	-fx-border-width: 1 1 1 1;
+	-fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-insets: 0;
+}
+#help:hover{
+	-fx-border-color: palegoldenrod;
+	-fx-border-width: 1 1 1 1;
+	-fx-background-insets: 0;
+}
+#helpOverlay {
+    -fx-background-color: #000000;
+    -fx-opacity: 0.73;
+}
+SVGPath {
+    -fx-scale-x: 5;
+    -fx-scale-y: 5;
+}
