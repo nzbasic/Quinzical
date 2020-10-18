@@ -1,6 +1,5 @@
 package quinzical.model;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +17,13 @@ public class Question {
 
     /**
      * Default constructor for a question object.
+     * 
      * @param question The Question text
-     * @param answer The answer text
-     * @param prize The prize the user will win when they get the question correct
-     * @param type e.g. What is, Who is..
-     * @param parent The category which the question exists within
+     * @param answer   The answer text
+     * @param prize    The prize the user will win when they get the question
+     *                 correct
+     * @param type     e.g. What is, Who is..
+     * @param parent   The category which the question exists within
      */
     public Question(String question, String answer, String prize, String type, Category parent) {
         _question = question;
@@ -41,6 +42,7 @@ public class Question {
 
     /**
      * Sets the result of the question, if they got it right or wrong.
+     * 
      * @param result
      */
     public void setResult(boolean result) {
@@ -75,26 +77,26 @@ public class Question {
         return _question;
     }
 
-    /** 
+    /**
      * @return First answer for this question
      */
     public String sayAnswer() {
         String[] data = _answer.split("/");
         return data[0];
     }
-    
+
     /**
      * @return Full answer string for this question
      */
     public String getAnswer() {
-    	return _answer;
+        return _answer;
     }
 
     /**
      * @return Question type, e.g. "What is"
      */
     public String getType() {
-    	return _type;
+        return _type;
     }
 
     /**
@@ -122,7 +124,9 @@ public class Question {
     }
 
     /**
-     * Checks a user string against the answer stored in the object. Returns true if they match.
+     * Checks a user string against the answer stored in the object. Returns true if
+     * they match.
+     * 
      * @param userInput
      * @return true or false
      */

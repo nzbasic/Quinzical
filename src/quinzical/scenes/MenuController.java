@@ -18,7 +18,7 @@ import quinzical.quinzical;
 /**
  * Controller for the main menu screen.
  */
-public class MenuController extends Help{
+public class MenuController extends Help {
 	@FXML
 	private Label money;
 
@@ -65,7 +65,6 @@ public class MenuController extends Help{
 		}
 	}
 
-
 	/**
 	 * Practice module is loaded.
 	 * 
@@ -93,7 +92,7 @@ public class MenuController extends Help{
 	 * questions and the game continues.
 	 * 
 	 * @param e Button Event
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	@FXML
 	public void continueGame(Event e) throws Exception {
@@ -127,7 +126,5 @@ public class MenuController extends Help{
 		quinzicalStage.setScene(gameScene);
 		quinzicalStage.show();
 	}
-
-	
 
 }

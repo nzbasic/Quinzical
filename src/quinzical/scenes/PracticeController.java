@@ -20,34 +20,36 @@ import quinzical.model.CategoryLoader;
 import quinzical.model.Question;
 import quinzical.model.RandomGenerator;
 
-public class PracticeController extends Help{
+public class PracticeController extends Help {
     private CategoryLoader loader;
     private RandomGenerator generator;
     private List<Category> categories;
     private ToggleButton[] buttons;
     @FXML
-    private ToggleButton ctg1,ctg2,ctg3,ctg4,ctg5,ctg6,ctg7,ctg8,ctg9;
-    @FXML private ToggleButton tester;
-    @FXML private Button practise;
-    private boolean practiseMode=true;
-    
+    private ToggleButton ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9;
+    @FXML
+    private ToggleButton tester;
+    @FXML
+    private Button practise;
+    private boolean practiseMode = true;
+
     @FXML
     private void initialize() {
         loader = new CategoryLoader("NZ");
         generator = new RandomGenerator();
         categories = loader.getCategories();
-        buttons = new ToggleButton[]{ctg1,ctg2,ctg3,ctg4,ctg5,ctg6,ctg7,ctg8,ctg9};
-        for (int i=0; i < 9; i++) {
+        buttons = new ToggleButton[] { ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9 };
+        for (int i = 0; i < 9; i++) {
             buttons[i].setText(categories.get(i).getName());
         }
     }
-    
+
     /**
      * Display category selection screen
      */
     public void setCategorySelection() {
-    	practise.setVisible(false);
-    	practiseMode=false;
+        practise.setVisible(false);
+        practiseMode = false;
 
     }
 
@@ -83,26 +85,27 @@ public class PracticeController extends Help{
     @FXML
     public void select(Event e) throws IOException {
         // Grabbing the button the user pressed.
-    	if (practiseMode==true) {
-        String id = ((Control) e.getSource()).getId();
-        char[] chars = id.toCharArray();
-        int categoryNum = Integer.parseInt(Character.toString(chars[3]));
-        Category category = categories.get(categoryNum-1);
-        Question question = generator.generatePracticeQuestion(category);
-        loadQuestion(question,e);
-        //Question question = generator.generatePracticeQuestion(category);
-        //loadQuestion(question, e);
-    	}
-    	
+        if (practiseMode == true) {
+            String id = ((Control) e.getSource()).getId();
+            char[] chars = id.toCharArray();
+            int categoryNum = Integer.parseInt(Character.toString(chars[3]));
+            Category category = categories.get(categoryNum - 1);
+            Question question = generator.generatePracticeQuestion(category);
+            loadQuestion(question, e);
+            // Question question = generator.generatePracticeQuestion(category);
+            // loadQuestion(question, e);
+        }
+
     }
 
     /**
      * Return to main menu
-     * @throws IOException 
+     * 
+     * @throws IOException
      */
     @FXML
     public void returnToMenu(Event e) throws IOException {
-    	new GameController().returnToMenu(e);
+        new GameController().returnToMenu(e);
     }
 
 }

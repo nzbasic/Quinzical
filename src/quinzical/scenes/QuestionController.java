@@ -34,7 +34,7 @@ import quinzical.model.Winnings;
  * Controller to display questions and accept user text input for when they
  * answer a question.
  */
-public class QuestionController extends Help{
+public class QuestionController extends Help {
 	@FXML
 	private Label question, message, timerDisplay, fixedDisplay, firstLetter;
 	@FXML
@@ -51,7 +51,7 @@ public class QuestionController extends Help{
 	private int lineNumber;
 	private List<Question> questionsAndAnswers;
 	private boolean practiceMode = false;
-	private boolean internationalSection=false;
+	private boolean internationalSection = false;
 	private Question questionObj;
 	private int retryNumber = 0;
 	private String questionText;
@@ -78,12 +78,14 @@ public class QuestionController extends Help{
 		question.setText(questionObj.getQuestion());
 		questionText = replaceText(questionObj.getQuestion());
 		setType();
-		 speaking(questionText,1,1);
-	
+		speaking(questionText, 1, 1);
+
 	}
-    public void setBonusAttempt() {
-    	internationalSection=true;
-    }
+
+	public void setBonusAttempt() {
+		internationalSection = true;
+	}
+
 	public String getQuestionText() {
 		return questionText;
 	}
@@ -100,15 +102,15 @@ public class QuestionController extends Help{
 
 	@FXML
 	public void playQuestionSpeech(Event e) {
-		int playNum=1;
-        if (animation==null && !practiceMode) {
-        	playNum=3;
-        }
+		int playNum = 1;
+		if (animation == null && !practiceMode) {
+			playNum = 3;
+		}
 		String ButtonId = ((Control) e.getSource()).getId();
 		if (ButtonId.equals("normal")) {
-				speaking(questionText, 1, playNum);
+			speaking(questionText, 1, playNum);
 		} else if (ButtonId.equals("slow")) {
-				speaking(questionText, 0, playNum);
+			speaking(questionText, 0, playNum);
 		} else if (ButtonId.equals("fast")) {
 			speaking(questionText, 2, playNum);
 		}
@@ -150,8 +152,8 @@ public class QuestionController extends Help{
 		clock.setVisible(false);
 		fixedDisplay.setVisible(false);
 		timerDisplay.setVisible(false);
-		if (animation!=null) {
-	    animation.stop();
+		if (animation != null) {
+			animation.stop();
 		}
 		if (practiceMode) {
 			// increase retry number, once they hit 3 then they dont get any more attempts
@@ -183,9 +185,9 @@ public class QuestionController extends Help{
 				}
 			}
 		} else {
-			
-			//animation.stop();
-			
+
+			// animation.stop();
+
 			String usrInput = answer.getText();
 			// Check Answers
 			Question q = questionsAndAnswers.get(lineNumber - 1);
@@ -196,19 +198,19 @@ public class QuestionController extends Help{
 				winningController.readWinnings();
 				winningController.updateWinnings(Integer.parseInt(q.getPrize()));
 				message.setText("Correct!");
-				speaking("Correct!",1,1);
+				speaking("Correct!", 1, 1);
 				new AttemptTrack().removeCorrectlyAttemptedQuestion(q);
-				//new HelperThread("Correct!", 1, 1).run();
+				// new HelperThread("Correct!", 1, 1).run();
 			} else {
-               
+
 				String answerTxt = "Your answer was incorrect";
 				message.setText(answerTxt);
-				speaking(answerTxt,1,1);
+				speaking(answerTxt, 1, 1);
 				new AttemptTrack().writeWrongQuestion(q);
 			}
 
 		}
-		
+
 		popup.setVisible(true);
 		submit.setVisible(false);
 		giveup.setVisible(false);
@@ -223,7 +225,7 @@ public class QuestionController extends Help{
 		s = s.replace("/", "or");
 		return s;
 	}
-    
+
 	/**
 	 * Destroy all the current text-to-speech processes
 	 */
@@ -233,6 +235,7 @@ public class QuestionController extends Help{
 			ph.destroy();
 		});
 	}
+
 	/**
 	 * 
 	 * @param textToSpeech
@@ -243,7 +246,7 @@ public class QuestionController extends Help{
 	public void speaking(String textToSpeech, int speechRate, int playTime) {
 		textToSpeech = textToSpeech.replace("ā", "aa");
 		textToSpeech = textToSpeech.replace("/", "or");
-		String GameText=textToSpeech;
+		String GameText = textToSpeech;
 		Thread taskThread = new Thread(new Runnable() {
 
 			@Override
@@ -262,8 +265,7 @@ public class QuestionController extends Help{
 						bw.write("(Parameter.set \'Duration_Stretch 0.7)");
 						bw.newLine();
 					}
-                    
-					
+
 					bw.write("(SayText \"" + GameText + "\")");
 					bw.close();
 					Process p = new ProcessBuilder("bash", "-c", "festival -b ./attempt/question.scm").start();
@@ -271,42 +273,42 @@ public class QuestionController extends Help{
 					// TImer only appears after the first time the question gets played
 					if (playTime == 0 || playTime == 3) {
 						p.waitFor();
-						int gameExit=p.exitValue();
-						if (gameExit==0 || playTime == 3) {
-						Platform.runLater(new Runnable() {
-							private int count = 60;
-							private String display;
+						int gameExit = p.exitValue();
+						if (gameExit == 0 || playTime == 3) {
+							Platform.runLater(new Runnable() {
+								private int count = 60;
+								private String display;
 
-							private void updateTimer() {
-								if (count > 0) {
-									count--;
-									if (count < 10) {
-										display = "0" + count;
+								private void updateTimer() {
+									if (count > 0) {
+										count--;
+										if (count < 10) {
+											display = "0" + count;
+										} else {
+											display = count + "";
+										}
 									} else {
-										display = count + "";
+										checkAnswer(null);
 									}
-								} else {
-									checkAnswer(null);
+
+									timerDisplay.setText(display);
 								}
 
-								timerDisplay.setText(display);
-							}
+								@Override
+								public void run() {
+									clock.setVisible(true);
+									fixedDisplay.setVisible(true);
+									timerDisplay.setVisible(true);
+									animation = new Timeline(new KeyFrame(Duration.seconds(1), e -> updateTimer()));
+									animation.setCycleCount(Timeline.INDEFINITE);
+									animation.play();
 
-							@Override
-							public void run() {
-								clock.setVisible(true);
-								fixedDisplay.setVisible(true);
-								timerDisplay.setVisible(true);
-								animation = new Timeline(new KeyFrame(Duration.seconds(1), e -> updateTimer()));
-								animation.setCycleCount(Timeline.INDEFINITE);
-								animation.play();
+								}
 
-							}
-
-						});
+							});
 						}
 					}
-					
+
 				} catch (Exception e) {
 					// add our own exception class to handle runtime exceptions
 					throw new quinzicalExceptions(e.getMessage());
@@ -323,11 +325,11 @@ public class QuestionController extends Help{
 	 * Games or Practice module.
 	 * 
 	 * @param e
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	@FXML
 	public void returnToQuestionSelection(Event e) throws Exception {
-		FXMLLoader gameLoad=null;
+		FXMLLoader gameLoad = null;
 		if (practiceMode) {
 			gameLoad = new FXMLLoader(getClass().getResource("Practice.fxml"));
 
@@ -338,23 +340,22 @@ public class QuestionController extends Help{
 			quinzicalStage.setScene(gameScene);
 			quinzicalStage.show();
 		} else {
-		   if (internationalSection) {
-			   new GameController().switchToInternationalQuestions(e);
-		    }
-		    else {
-			gameLoad = new FXMLLoader(getClass().getResource("Game.fxml"));
-			Parent gameParent = gameLoad.load();
-			GameController gc = gameLoad.getController();
-			gc.oldGameData();
+			if (internationalSection) {
+				new GameController().switchToInternationalQuestions(e);
+			} else {
+				gameLoad = new FXMLLoader(getClass().getResource("Game.fxml"));
+				Parent gameParent = gameLoad.load();
+				GameController gc = gameLoad.getController();
+				gc.oldGameData();
 
-			Scene gameScene = new Scene(gameParent);
-			Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-			gc.setStage(quinzicalStage);
-			quinzicalStage.setScene(gameScene);
-			quinzicalStage.show();
-			gc.checkIfAllAttempted();
-		    }
-			
+				Scene gameScene = new Scene(gameParent);
+				Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+				gc.setStage(quinzicalStage);
+				quinzicalStage.setScene(gameScene);
+				quinzicalStage.show();
+				gc.checkIfAllAttempted();
+			}
+
 		}
 	}
 
@@ -374,18 +375,22 @@ public class QuestionController extends Help{
 	public void macronA() {
 		answer.appendText("ā");
 	}
+
 	@FXML
 	public void macronE() {
 		answer.appendText("ē");
 	}
+
 	@FXML
 	public void macronI() {
 		answer.appendText("ī");
 	}
+
 	@FXML
 	public void macronO() {
 		answer.appendText("ō");
 	}
+
 	@FXML
 	public void macronU() {
 		answer.appendText("ū");

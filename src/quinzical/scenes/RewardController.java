@@ -18,6 +18,7 @@ public class RewardController {
 
 	/**
 	 * Sets the current winnings of the user for display.
+	 * 
 	 * @param total
 	 */
 	public void setPoints(String total) {
@@ -26,6 +27,7 @@ public class RewardController {
 
 	/**
 	 * Returns user to the main menu, keeps data.
+	 * 
 	 * @param e
 	 * @throws IOException
 	 */
@@ -36,6 +38,7 @@ public class RewardController {
 
 	/**
 	 * Restarts the game, removing old data.
+	 * 
 	 * @param e
 	 * @throws IOException
 	 */

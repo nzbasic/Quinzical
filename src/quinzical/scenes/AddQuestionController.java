@@ -37,7 +37,7 @@ public class AddQuestionController {
         Category category = categoryBox.getValue();
         String questionString = questionText.getText();
         String answerString = answerText.getText();
-        if ( (category == null) || (questionString.equals("")) || (answerString.equals("")) ) {
+        if ((category == null) || (questionString.equals("")) || (answerString.equals(""))) {
             popup.setText("Please fill in the boxes");
             popup.setVisible(true);
             return;
@@ -52,7 +52,7 @@ public class AddQuestionController {
         File file = new File("./categories/" + name);
         try {
             FileWriter fw = new FileWriter(file, true);
-            fw.write("\n"+ questionString + "," + answerString);
+            fw.write("\n" + questionString + "," + answerString);
             fw.close();
         } catch (Exception e) {
             e.printStackTrace();

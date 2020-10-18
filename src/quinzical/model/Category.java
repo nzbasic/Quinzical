@@ -1,6 +1,5 @@
 package quinzical.model;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +12,7 @@ public class Category {
 
     /**
      * Default constructor for Category
+     * 
      * @param name Name of category
      */
     public Category(String name) {
@@ -36,6 +36,7 @@ public class Category {
 
     /**
      * Adds a question to the category
+     * 
      * @param question Question object to add
      */
     public void add(Question question) {
@@ -43,7 +44,9 @@ public class Category {
     }
 
     /**
-     * Checks if this category has any unattempted questions. Returns false if question is found.
+     * Checks if this category has any unattempted questions. Returns false if
+     * question is found.
+     * 
      * @return true or false
      */
     public boolean isEmpty() {
