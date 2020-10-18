@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +34,7 @@ import quinzical.model.Winnings;
  * Controller to display questions and accept user text input for when they
  * answer a question.
  */
-public class QuestionController {
+public class QuestionController extends Help{
 	@FXML
 	private Label question, message, timerDisplay, fixedDisplay, firstLetter;
 	@FXML
@@ -367,5 +368,26 @@ public class QuestionController {
 	public void returnToMenu(Event e) throws IOException {
 		killProcesses();
 		new GameController().returnToMenu(e);
+	}
+
+	@FXML
+	public void macronA() {
+		answer.appendText("ā");
+	}
+	@FXML
+	public void macronE() {
+		answer.appendText("ē");
+	}
+	@FXML
+	public void macronI() {
+		answer.appendText("ī");
+	}
+	@FXML
+	public void macronO() {
+		answer.appendText("ō");
+	}
+	@FXML
+	public void macronU() {
+		answer.appendText("ū");
 	}
 }
