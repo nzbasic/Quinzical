@@ -22,6 +22,9 @@
 	-fx-font-size: 18px;
 	-fx-font-weight: bold;
 }
+#answer:disabled{
+	-fx-opacity:1.0;
+}
 
 #normal, #slow, #fast{
 	-fx-background-color: transparent;

@@ -14,8 +14,6 @@ import java.util.Scanner;
 
 /**
  * This class manages the previous attempt history and game status
- * 
- * @author stephy
  *
  */
 public class AttemptTrack {
@@ -46,7 +44,8 @@ public class AttemptTrack {
 	 */
 	public static boolean checkDirExistence() {
 		tmpDir = new File("./attempt");
-		return tmpDir.exists();
+		boolean existance = tmpDir.exists();
+		return existance;
 	}
 
 	/**
@@ -62,12 +61,12 @@ public class AttemptTrack {
 
 	/**
 	 * Stores the randomly generated questions in a file named questionsAttempt.txt
-	 * or internationalAttempt.txt Each line contains question,answer,prize,category
+	 * or internatinalAttempt.txt Each line contains question,answer,prize,category
 	 * 
 	 * @param qList is a list of Question Objects.
 	 */
 	public void updateQuestionsGenerated(List<Question> qList, String section) {
-		FileWriter fw;
+		FileWriter fw = null;
 		try {
 			if (section.equals("NZ")) {
 				fw = new FileWriter("./attempt/questionsAttempt.txt");
@@ -101,9 +100,9 @@ public class AttemptTrack {
 	 * Read the questions from previous attempt/ continue game from last time
 	 */
 	public void readQuestionsAndCategoriesGenerated(String section) {
-		String line;
-		BufferedReader reader;
-		int questionsPerCategory;
+		String line = null;
+		BufferedReader reader = null;
+		int questionsPerCategory = 0;
 		try {
 			if (section.equals("NZ")) {
 				reader = new BufferedReader(new FileReader("./attempt/questionsAttempt.txt"));
@@ -118,15 +117,15 @@ public class AttemptTrack {
 				// For each line, this section of code should be reused when reading files,maybe
 				// place inside another method
 				// to avoid code duplication
-				String[] questionFields = line.split(",");
+				String[] questionfields = line.split(",");
 				// Add Category names for every 5or 2 elements
 				if (i % questionsPerCategory == 0) {
-					categories.add(new Category(questionFields[3]));
+					categories.add(new Category(questionfields[3]));
 
 					j++;
 				}
-				allQuestions.add(new Question(questionFields[0], questionFields[1], questionFields[2],
-						questionFields[4], categories.get(j - 1))); // j=0,1,2,3,4
+				allQuestions.add(new Question(questionfields[0], questionfields[1], questionfields[2],
+						questionfields[4], categories.get(j - 1))); // j=0,1,2,3,4
 				// add the question
 				categories.get(j - 1).add(allQuestions.get(i)); // when j=0, adds question0,1,2,3,4.j=1 adds5,6,7,8,9
 				i++;
@@ -139,10 +138,19 @@ public class AttemptTrack {
 	}
 
 	/**
+	 * resets previous attemptRecord for each question.
+	 */
+	public void resetAttemptRecord() {
+		record = new int[25];
+		updateAttemptRecord("NZ");
+
+	}
+
+	/**
 	 * Updates attemptRecord file
 	 */
 	public void updateAttemptRecord(String section) {
-		FileWriter fw;
+		FileWriter fw = null;
 		try {
 			if (section.equals("NZ")) {
 				fw = new FileWriter("./attempt/attemptRecord.txt");
@@ -172,12 +180,15 @@ public class AttemptTrack {
 	}
 
 	/**
-	 * Reads the attempted question file into the record field.
+	 * Returns an integer array of size 25, 0 means question[index] is not
+	 * attempted, 1 means the question at this index position has been attempted.
+	 * 
+	 * @return
 	 */
 	public void readAttempted(String section) {
 		record = new int[25];
-		BufferedReader reader;
-		String line;
+		BufferedReader reader = null;
+		String line = null;
 		try {
 			if (section.equals("NZ")) {
 				reader = new BufferedReader(new FileReader("./attempt/attemptRecord.txt"));
@@ -215,8 +226,8 @@ public class AttemptTrack {
 		categories.clear();
 		RandomGenerator rg = new RandomGenerator();
 
-		rg.generateCategoriesAtRandom(5, "NZ");
-		rg.generateGameQuestions(5, "NZ");
+		// rg.generateCategoriesAtRandom(5,"NZ");
+		// rg.generateGameQuestions(5,"NZ");
 		rg.generateCategoriesAtRandom(3, "International");
 		rg.generateGameQuestions(2, "International");
 
@@ -234,12 +245,12 @@ public class AttemptTrack {
 	 * @return List of Question Objects which are the questions users got wrong
 	 */
 	public List<Question> getWrongQuestions() {
-		List<Question> output = new ArrayList<>();
+		List<Question> output = new ArrayList<Question>();
 		File file = new File("./attempt/wrongQuestions.txt");
 		if (file.exists()) {
-			List<String> list = new ArrayList<>();
+			List<String> list = new ArrayList<String>();
 			try {
-				String line;
+				String line = null;
 				Scanner scanner = new Scanner(new FileReader("./attempt/wrongQuestions.txt"));
 				while (scanner.hasNextLine()) {
 					line = scanner.nextLine();
@@ -293,8 +304,8 @@ public class AttemptTrack {
 	 * Returns index in List if this question exists in file, returns -1 if the
 	 * question has not been added to file.
 	 * 
-	 * @param check Question to check
-	 * @return index
+	 * @param q
+	 * @return
 	 */
 	public int checkIfQuestionExistInFile(Question check) {
 		List<Question> wrongQList = getWrongQuestions();

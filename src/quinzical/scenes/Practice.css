@@ -3,12 +3,11 @@
 *{
 	-fx-background-color: #121F26;
 }
-
 .button,.toggle-button,.label{
-	-fx-background-color:  #FF851B;
+	-fx-background-color: #FF851B;
 	-fx-font-family:'rasa';
 	-fx-text-fill: white;
-	-fx-font-size: 24px;
+	-fx-font-size: 25px;
 	-fx-font-weight: bold;
 	-fx-border-color: black;
 	-fx-border-width: 1 1 1 1;
@@ -16,8 +15,11 @@
     -fx-faint-focus-color: transparent;
     -fx-background-insets: 0;
 }
+
+
+
 #returnMenu{
-	-fx-font-size: 20px;
+	-fx-font-size: 18px;
 }
 .button:pressed,.toggle-button:pressed{
 	-fx-background-color: lightsalmon;	

@@ -20,6 +20,7 @@ public class RandomGenerator {
 	private List<Category> categories = new ArrayList<>();
 	private List<String> randomCategoryNames = new ArrayList<>();
 	private final int[] points = { 100, 200, 300, 400, 500 };
+	private List<Question> gameQuestions = new ArrayList<Question>();
 
 	private AttemptTrack attempt = new AttemptTrack();
 
@@ -59,6 +60,13 @@ public class RandomGenerator {
 		return randomCategoryNames;
 	}
 
+	public void setGameCategories(List<String> usrChoice) {
+		for (String s : usrChoice) {
+			randomCategoryNames.add(s);
+			categories.add(new Category(s));
+		}
+	}
+
 	/**
 	 * Reads all lines in a category file
 	 * 
@@ -95,7 +103,7 @@ public class RandomGenerator {
 	public void generateGameQuestions(int n, String section) {
 
 		int categoryIndex = 0;
-		List<Question> gameQuestions = new ArrayList<Question>();
+		gameQuestions = new ArrayList<Question>();
 		Question q = null;
 		;
 		for (String cName : randomCategoryNames) {

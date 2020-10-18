@@ -114,14 +114,15 @@ public class MenuController extends Help {
 	 */
 	@FXML
 	public void newGame(Event e) throws IOException {
-		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Game.fxml"));
+		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Practice.fxml"));
 		Parent gameParent = gameLoad.load();
-		GameController gc = gameLoad.getController();
-		gc.newGameData();
+		PracticeController gc = gameLoad.getController();
+		gc.setCategorySelection();
 		Scene gameScene = new Scene(gameParent);
 		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 		quinzicalStage.setScene(gameScene);
 		quinzicalStage.show();
+
 	}
 
 }
