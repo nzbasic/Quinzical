@@ -21,9 +21,9 @@
             <Image url="@assets/starburst.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="firstLetter" alignment="CENTER" layoutX="243.0" layoutY="228.0" prefHeight="16.0" prefWidth="267.0" textFill="WHITE" wrapText="true">
+      <Label fx:id="firstLetter" alignment="CENTER" layoutX="512.0" layoutY="207.0" prefHeight="16.0" prefWidth="267.0" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
       <TextField fx:id="answer" layoutX="428.0" layoutY="397.0" onAction="#checkAnswer" prefHeight="48.0" prefWidth="428.0">
@@ -133,17 +133,17 @@
                </font></Label>
          </children>
       </AnchorPane>
-      <ImageView fx:id="clock" fitHeight="119.0" fitWidth="656.0" layoutX="1129.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="clock" fitHeight="119.0" fitWidth="656.0" layoutX="1129.0" layoutY="574.0" pickOnBounds="true" preserveRatio="true" translateX="-85.0" visible="false">
          <image>
             <Image url="@assets/clock.png" />
          </image>
       </ImageView>
-      <Label fx:id="timerDisplay" layoutX="1203.0" layoutY="636.0" prefHeight="21.0" prefWidth="33.0" text="60" textFill="#eeebeb" visible="false">
+      <Label fx:id="timerDisplay" layoutX="1203.0" layoutY="636.0" prefHeight="21.0" prefWidth="33.0" text="60" textFill="#eeebeb" translateX="-85.0" visible="false">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="fixedDisplay" layoutX="1168.0" layoutY="636.0" prefHeight="18.0" prefWidth="27.0" text="00" textAlignment="RIGHT" textFill="#eeebeb" visible="false">
+      <Label fx:id="fixedDisplay" layoutX="1168.0" layoutY="636.0" prefHeight="18.0" prefWidth="27.0" text="00" textAlignment="RIGHT" textFill="#eeebeb" translateX="-85.0" visible="false">
          <font>
             <Font size="15.0" />
          </font>
