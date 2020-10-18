@@ -1,5 +1,7 @@
 # Quinzical
 
+Quinzical is a javafx based quiz app about New Zealand (+bonus International questions). 
+
 Menu:\
 ![alt text](https://cdn.discordapp.com/attachments/627267590862929961/767327293764009994/unknown.png "Quinzical Menu")
 
@@ -17,9 +19,13 @@ Speech readouts will not work unless you have akl_nz_jdt_diphone installed for f
 
 You must have javafx installed locally at /usr/share/java/lib for this script to work.
 
-1) To run the script file from terminal:
-  chmod +x play.sh
-  ./play.sh
+1) Extract files from the release zip into a folder.
+
+2) Give yourself permission to run the play.sh script:\
+    chmod +x play.sh
+
+3) Run the script file:\
+    ./play.sh
   
 2) To run the application in Eclipse/Other IDE
    -Install javaFx inside Eclipse, https://marketplace.eclipse.org/content/efxclipse
