@@ -21,6 +21,7 @@ public class Question {
      * @param question The Question text
      * @param answer The answer text
      * @param prize The prize the user will win when they get the question correct
+     * @param type e.g. What is, Who is..
      * @param parent The category which the question exists within
      */
     public Question(String question, String answer, String prize, String type, Category parent) {
@@ -28,6 +29,7 @@ public class Question {
         _answer = answer;
         _prize = prize;
         _parent = parent;
+        _type = type;
     }
 
     /**
