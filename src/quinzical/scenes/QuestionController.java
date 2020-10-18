@@ -1,15 +1,8 @@
 package quinzical.scenes;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.List;
-import java.util.stream.Stream;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,10 +18,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import quinzical.quinzicalExceptions;
 import quinzical.model.AttemptTrack;
 import quinzical.model.Question;
 import quinzical.model.Winnings;
+import quinzical.quinzicalExceptions;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Controller to display questions and accept user text input for when they
@@ -42,7 +41,13 @@ public class QuestionController extends Help {
 	@FXML
 	private TextField answer;
 	@FXML
-	private Button giveup, submit, continueGame, mainMenu, normal, fast, slow;
+	private Button giveup;
+	@FXML
+	private Button submit;
+	@FXML
+	private Button continueGame;
+	@FXML
+	private Button mainMenu;
 	@FXML
 	private AnchorPane popup;
 	@FXML
@@ -107,12 +112,16 @@ public class QuestionController extends Help {
 			playNum = 3;
 		}
 		String ButtonId = ((Control) e.getSource()).getId();
-		if (ButtonId.equals("normal")) {
-			speaking(questionText, 1, playNum);
-		} else if (ButtonId.equals("slow")) {
-			speaking(questionText, 0, playNum);
-		} else if (ButtonId.equals("fast")) {
-			speaking(questionText, 2, playNum);
+		switch (ButtonId) {
+			case "normal":
+				speaking(questionText, 1, playNum);
+				break;
+			case "slow":
+				speaking(questionText, 0, playNum);
+				break;
+			case "fast":
+				speaking(questionText, 2, playNum);
+				break;
 		}
 
 	}
@@ -144,11 +153,10 @@ public class QuestionController extends Help {
 	/**
 	 * Called when user submits their answer. If practice mode is on, they get 3
 	 * attempts. Otherwise, show if they are right or wrong.
-	 * 
-	 * @param e
+	 *
 	 */
 	@FXML
-	public void checkAnswer(Event e) {
+	public void checkAnswer() {
 		clock.setVisible(false);
 		fixedDisplay.setVisible(false);
 		timerDisplay.setVisible(false);
@@ -231,14 +239,12 @@ public class QuestionController extends Help {
 	 */
 	public void killProcesses() {
 		Stream<ProcessHandle> descendents = ProcessHandle.current().descendants();
-		descendents.filter(ProcessHandle::isAlive).forEach(ph -> {
-			ph.destroy();
-		});
+		descendents.filter(ProcessHandle::isAlive).forEach(ProcessHandle::destroy);
 	}
 
 	/**
 	 * 
-	 * @param textToSpeech
+	 * @param textToSpeech String to speak
 	 * @param speechRate   0 for slow, 1 for normal,2 for fast
 	 * @param playTime     0 if this the first time the question gets played
 	 */
@@ -247,75 +253,70 @@ public class QuestionController extends Help {
 		textToSpeech = textToSpeech.replace("ā", "aa");
 		textToSpeech = textToSpeech.replace("/", "or");
 		String GameText = textToSpeech;
-		Thread taskThread = new Thread(new Runnable() {
+		Thread taskThread = new Thread(() -> {
 
-			@Override
-			public void run() {
-
-				try {
-					killProcesses();
-					FileWriter fw = new FileWriter("./attempt/question.scm");
-					BufferedWriter bw = new BufferedWriter(fw);
-					bw.write("(voice_akl_nz_jdt_diphone)");
+			try {
+				killProcesses();
+				FileWriter fw = new FileWriter("./attempt/question.scm");
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write("(voice_akl_nz_jdt_diphone)");
+				bw.newLine();
+				if (speechRate == 0) {
+					bw.write("(Parameter.set \'Duration_Stretch 2.1)");
 					bw.newLine();
-					if (speechRate == 0) {
-						bw.write("(Parameter.set \'Duration_Stretch 2.1)");
-						bw.newLine();
-					} else if (speechRate == 2) {
-						bw.write("(Parameter.set \'Duration_Stretch 0.7)");
-						bw.newLine();
-					}
-
-					bw.write("(SayText \"" + GameText + "\")");
-					bw.close();
-					Process p = new ProcessBuilder("bash", "-c", "festival -b ./attempt/question.scm").start();
-
-					// TImer only appears after the first time the question gets played
-					if (playTime == 0 || playTime == 3) {
-						p.waitFor();
-						int gameExit = p.exitValue();
-						if (gameExit == 0 || playTime == 3) {
-							Platform.runLater(new Runnable() {
-								private int count = 60;
-								private String display;
-
-								private void updateTimer() {
-									if (count > 0) {
-										count--;
-										if (count < 10) {
-											display = "0" + count;
-										} else {
-											display = count + "";
-										}
-									} else {
-										checkAnswer(null);
-									}
-
-									timerDisplay.setText(display);
-								}
-
-								@Override
-								public void run() {
-									clock.setVisible(true);
-									fixedDisplay.setVisible(true);
-									timerDisplay.setVisible(true);
-									animation = new Timeline(new KeyFrame(Duration.seconds(1), e -> updateTimer()));
-									animation.setCycleCount(Timeline.INDEFINITE);
-									animation.play();
-
-								}
-
-							});
-						}
-					}
-
-				} catch (Exception e) {
-					// add our own exception class to handle runtime exceptions
-					throw new quinzicalExceptions(e.getMessage());
+				} else if (speechRate == 2) {
+					bw.write("(Parameter.set \'Duration_Stretch 0.7)");
+					bw.newLine();
 				}
-				// bash process
-			}
 
+				bw.write("(SayText \"" + GameText + "\")");
+				bw.close();
+				Process p = new ProcessBuilder("bash", "-c", "festival -b ./attempt/question.scm").start();
+
+				// Timer only appears after the first time the question gets played
+				if (playTime == 0 || playTime == 3) {
+					p.waitFor();
+					int gameExit = p.exitValue();
+					if (gameExit == 0 || playTime == 3) {
+						Platform.runLater(new Runnable() {
+							private int count = 60;
+							private String display;
+
+							private void updateTimer() {
+								if (count > 0) {
+									count--;
+									if (count < 10) {
+										display = "0" + count;
+									} else {
+										display = count + "";
+									}
+								} else {
+									checkAnswer();
+								}
+
+								timerDisplay.setText(display);
+							}
+
+							@Override
+							public void run() {
+								clock.setVisible(true);
+								fixedDisplay.setVisible(true);
+								timerDisplay.setVisible(true);
+								animation = new Timeline(new KeyFrame(Duration.seconds(1), e -> updateTimer()));
+								animation.setCycleCount(Timeline.INDEFINITE);
+								animation.play();
+
+							}
+
+						});
+					}
+				}
+
+			} catch (Exception e) {
+				// add our own exception class to handle runtime exceptions
+				throw new quinzicalExceptions(e.getMessage());
+			}
+			// bash process
 		});
 		taskThread.start();
 	}
@@ -324,12 +325,12 @@ public class QuestionController extends Help {
 	 * Returns user to a question selection screen, depending on if they came from
 	 * Games or Practice module.
 	 * 
-	 * @param e
-	 * @throws Exception
+	 * @param e Button event
+	 * @throws Exception File not found
 	 */
 	@FXML
 	public void returnToQuestionSelection(Event e) throws Exception {
-		FXMLLoader gameLoad = null;
+		FXMLLoader gameLoad;
 		if (practiceMode) {
 			gameLoad = new FXMLLoader(getClass().getResource("Practice.fxml"));
 
@@ -362,8 +363,8 @@ public class QuestionController extends Help {
 	/**
 	 * Returns user to the main menu.
 	 * 
-	 * @param e
-	 * @throws IOException
+	 * @param e Button Event
+	 * @throws IOException File not found
 	 */
 	@FXML
 	public void returnToMenu(Event e) throws IOException {

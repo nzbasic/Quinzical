@@ -17,11 +17,9 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class RandomGenerator {
 
-	private List<Category> categories = new ArrayList<Category>();
-	private List<String> allCategoryNames = new ArrayList<String>();
-	private List<String> randomCategoryNames = new ArrayList<String>();
-	private int[] points = { 100, 200, 300, 400, 500 };
-	private List<Question> gameQuestions = new ArrayList<Question>();
+	private List<Category> categories = new ArrayList<>();
+	private List<String> randomCategoryNames = new ArrayList<>();
+	private final int[] points = { 100, 200, 300, 400, 500 };
 
 	private AttemptTrack attempt = new AttemptTrack();
 
@@ -31,7 +29,7 @@ public class RandomGenerator {
 	 * 
 	 */
 	public void generateCategoriesAtRandom(int n, String section) {
-		allCategoryNames = new ArrayList<String>();
+		List<String> allCategoryNames = new ArrayList<String>();
 		categories = new ArrayList<Category>();
 		randomCategoryNames = new ArrayList<String>();
 		File[] files = new File("./categories/" + section).listFiles();
@@ -97,7 +95,7 @@ public class RandomGenerator {
 	public void generateGameQuestions(int n, String section) {
 
 		int categoryIndex = 0;
-		gameQuestions = new ArrayList<Question>();
+		List<Question> gameQuestions = new ArrayList<Question>();
 		Question q = null;
 		;
 		for (String cName : randomCategoryNames) {

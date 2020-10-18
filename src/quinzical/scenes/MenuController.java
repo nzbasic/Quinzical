@@ -1,6 +1,5 @@
 package quinzical.scenes;
 
-import java.io.IOException;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,12 +7,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import quinzical.model.AttemptTrack;
 import quinzical.model.Winnings;
 import quinzical.quinzical;
+
+import java.io.IOException;
 
 /**
  * Controller for the main menu screen.
@@ -24,9 +24,6 @@ public class MenuController extends Help {
 
 	@FXML
 	private AnchorPane popup;
-
-	@FXML
-	private ImageView background, playImage, exitImage;
 
 	/**
 	 * Method run on fxml load. Loads the images in a new thread and displays
@@ -42,7 +39,7 @@ public class MenuController extends Help {
 	 * shown so the user can decide if they want to continue or start again.
 	 * 
 	 * @param e Button Event
-	 * @throws IOException
+	 * @throws IOException File not found
 	 */
 	@FXML
 	public void startGame(Event e) throws IOException {
@@ -55,6 +52,7 @@ public class MenuController extends Help {
 		for (int i : record) {
 			if (i == 1) {
 				flag = true;
+				break;
 			}
 		} // If they haven't, load a new game.
 		if (!flag) {
@@ -68,11 +66,10 @@ public class MenuController extends Help {
 	/**
 	 * Practice module is loaded.
 	 * 
-	 * @param e Button Event
-	 * @throws IOException
+	 * @throws IOException File not found
 	 */
 	@FXML
-	public void startPractice(Event e) throws IOException {
+	public void startPractice() throws IOException {
 		quinzical.loadFXML("Practice");
 	}
 
@@ -92,7 +89,7 @@ public class MenuController extends Help {
 	 * questions and the game continues.
 	 * 
 	 * @param e Button Event
-	 * @throws Exception
+	 * @throws Exception File not found
 	 */
 	@FXML
 	public void continueGame(Event e) throws Exception {
@@ -113,7 +110,7 @@ public class MenuController extends Help {
 	 * questions are loaded.
 	 * 
 	 * @param e Button Event
-	 * @throws IOException
+	 * @throws IOException File not found
 	 */
 	@FXML
 	public void newGame(Event e) throws IOException {

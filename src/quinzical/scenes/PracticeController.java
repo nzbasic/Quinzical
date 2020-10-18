@@ -1,44 +1,35 @@
 package quinzical.scenes;
 
-import java.io.IOException;
-import java.util.List;
-
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
-import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
-import javafx.scene.Node;
-import quinzical.model.AttemptTrack;
-import quinzical.model.Category;
-import quinzical.model.CategoryLoader;
-import quinzical.model.Question;
-import quinzical.model.RandomGenerator;
+import quinzical.model.*;
+
+import java.io.IOException;
+import java.util.List;
 
 public class PracticeController extends Help {
-    private CategoryLoader loader;
     private RandomGenerator generator;
     private List<Category> categories;
-    private ToggleButton[] buttons;
     @FXML
     private ToggleButton ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9;
-    @FXML
-    private ToggleButton tester;
     @FXML
     private Button practise;
     private boolean practiseMode = true;
 
     @FXML
     private void initialize() {
-        loader = new CategoryLoader("NZ");
+        CategoryLoader loader = new CategoryLoader("NZ");
         generator = new RandomGenerator();
         categories = loader.getCategories();
-        buttons = new ToggleButton[] { ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9 };
+        ToggleButton[] buttons = new ToggleButton[]{ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9};
         for (int i = 0; i < 9; i++) {
             buttons[i].setText(categories.get(i).getName());
         }
@@ -80,12 +71,12 @@ public class PracticeController extends Help {
      * Called when the user presses any of the buttons.
      * 
      * @param e Button Event
-     * @throws IOException
+     * @throws IOException File not found
      */
     @FXML
     public void select(Event e) throws IOException {
         // Grabbing the button the user pressed.
-        if (practiseMode == true) {
+        if (practiseMode) {
             String id = ((Control) e.getSource()).getId();
             char[] chars = id.toCharArray();
             int categoryNum = Integer.parseInt(Character.toString(chars[3]));
@@ -101,7 +92,7 @@ public class PracticeController extends Help {
     /**
      * Return to main menu
      * 
-     * @throws IOException
+     * @throws IOException File not found
      */
     @FXML
     public void returnToMenu(Event e) throws IOException {
