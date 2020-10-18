@@ -18,7 +18,7 @@ import quinzical.quinzical;
 /**
  * Controller for the main menu screen.
  */
-public class MenuController {
+public class MenuController extends Help{
 	@FXML
 	private Label money;
 
@@ -127,5 +127,7 @@ public class MenuController {
 		quinzicalStage.setScene(gameScene);
 		quinzicalStage.show();
 	}
+
+	
 
 }
