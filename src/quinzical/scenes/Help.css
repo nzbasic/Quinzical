@@ -22,4 +22,5 @@
 SVGPath {
     -fx-scale-x: 5;
     -fx-scale-y: 5;
+    -fx-fill: #FFFFFF;
 }
