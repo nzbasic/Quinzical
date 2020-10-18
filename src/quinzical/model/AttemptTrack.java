@@ -82,7 +82,7 @@ public class AttemptTrack {
 			BufferedWriter bw = new BufferedWriter(fw);
 			for (Question q : qList) {
 				String questionLine = q.getQuestion() + "," + q.getAnswer() + "," + q.getPrize() + ","
-						+ q.getParentCategory().getName();
+						+ q.getParentCategory().getName() + "," + q.getType();
 				bw.write(questionLine);
 				bw.newLine();
 			}
@@ -131,7 +131,7 @@ public class AttemptTrack {
 					j++; 
 				}
 				allQuestions.add(
-						new Question(questionfields[0], questionfields[1], questionfields[2], categories.get(j - 1))); // j=0,1,2,3,4
+						new Question(questionfields[0], questionfields[1], questionfields[2], questionfields[3], categories.get(j - 1))); // j=0,1,2,3,4
 				// add the question
 				categories.get(j - 1).add(allQuestions.get(i)); // when j=0, adds question0,1,2,3,4.j=1 adds5,6,7,8,9
 				i++;
@@ -274,9 +274,9 @@ public class AttemptTrack {
 				
 				String[] data = string.split(",");
 				String question = data[0];
-				
+				String type = data[2];
 				String answer = data[1];
-				Question questionObj = new Question(question,answer, null, null);
+				Question questionObj = new Question(question,answer, null,type, null);
 				output.add(questionObj);
 				
 			}

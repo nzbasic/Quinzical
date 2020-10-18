@@ -14,6 +14,7 @@ public class Question {
     private boolean _attempted = false;
     private boolean _result;
     private Category _parent;
+    private String _type;
 
     /**
      * Default constructor for a question object.
@@ -22,7 +23,7 @@ public class Question {
      * @param prize The prize the user will win when they get the question correct
      * @param parent The category which the question exists within
      */
-    public Question(String question, String answer, String prize, Category parent) {
+    public Question(String question, String answer, String prize, String type, Category parent) {
         _question = question;
         _answer = answer;
         _prize = prize;
@@ -85,6 +86,13 @@ public class Question {
      */
     public String getAnswer() {
     	return _answer;
+    }
+
+    /**
+     * @return Question type, e.g. "What is"
+     */
+    public String getType() {
+    	return _type;
     }
 
     /**

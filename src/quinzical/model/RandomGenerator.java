@@ -107,11 +107,11 @@ public class RandomGenerator {
 				String[] questionfields = questionLines.get(randomNum).split(",");
 				Category current = categories.get(categoryIndex);
 				if (n==5) {
-				q = new Question(questionfields[0], questionfields[1], Integer.toString(points[i]), current);
+				q = new Question(questionfields[0], questionfields[1],  Integer.toString(points[i]), questionfields[2], current);
 				}
 				else {
 					int index=1+i*2;
-			    q = new Question(questionfields[0], questionfields[1], Integer.toString(points[index]), current);
+			    q = new Question(questionfields[0], questionfields[1],  Integer.toString(points[index]), questionfields[2], current);
 				}
 				current.add(q);
 				gameQuestions.add(q);
@@ -133,7 +133,7 @@ public class RandomGenerator {
 		// Generate one question Object at Random
 		int randomNum = ThreadLocalRandom.current().nextInt(0, avaiableQuestions.size());
 		String[] questionfields = avaiableQuestions.get(randomNum).split(",");
-		Question q = new Question(questionfields[0], questionfields[1], Integer.toString(0), c);
+		Question q = new Question(questionfields[0], questionfields[1], Integer.toString(0),questionfields[2],  c);
 		return q;
 	}
 

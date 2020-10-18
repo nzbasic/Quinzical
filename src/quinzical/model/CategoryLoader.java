@@ -26,7 +26,7 @@ public class CategoryLoader {
                 while (sc.hasNextLine()) {
                     String line = sc.nextLine();
                     String[] data = line.split(",");
-                    Question question = new Question(data[0], data[1], "0", category);
+                    Question question = new Question(data[0], data[1], "0", data[2], category);
                     category.add(question);
                 }
 
