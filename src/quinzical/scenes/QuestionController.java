@@ -34,7 +34,7 @@ import quinzical.model.Winnings;
  */
 public class QuestionController {
 	@FXML
-	private Label question, message, timerDisplay, fixedDisplay, firstLetter;
+	private Label question, message, timerDisplay, fixedDisplay, firstLetter, type;
 	@FXML
 	private TextField answer;
 	@FXML
