@@ -24,3 +24,15 @@ SVGPath {
     -fx-scale-y: 5;
     -fx-fill: #FFFFFF;
 }
+#label {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: black;
+    -fx-font-family:'system';
+    -fx-font-size: 13px;
+}
+#message {
+    -fx-background-color: null;
+    -fx-text-fill: white;
+    -fx-font-family:'system';
+    -fx-font-size: 35px;
+}
