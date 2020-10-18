@@ -3,10 +3,10 @@
 *{
 	-fx-background-color: #121F26;
 }
-.button{
+.button,.toggle-button,.label{
 	-fx-background-color: darkorange;
 	-fx-font-family:'rasa';
-	-fx-text-fill: antiquewhite;
+	-fx-text-fill: white;
 	-fx-font-size: 16px;
 	-fx-font-weight: bold;
 	-fx-border-color: black;
@@ -16,13 +16,15 @@
     -fx-background-insets: 0;
 }
 
+
+
 #returnMenu{
 	-fx-font-size: 20px;
 }
-.button:pressed{
+.button:pressed,.toggle-button:pressed{
 	-fx-background-color: lightsalmon;	
 	}
-.button:hover{
+.button:hover,.toggle-button:hover{
 	-fx-border-color: palegoldenrod;
 	-fx-border-width: 1 1 1 1;
 	-fx-background-insets: 0;

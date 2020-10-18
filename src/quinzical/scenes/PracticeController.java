@@ -8,8 +8,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import quinzical.model.AttemptTrack;
@@ -22,19 +24,31 @@ public class PracticeController {
     private CategoryLoader loader;
     private RandomGenerator generator;
     private List<Category> categories;
-    private Label[] labels;
+    private ToggleButton[] buttons;
     @FXML
-    private Label ctg1,ctg2,ctg3,ctg4,ctg5,ctg6,ctg7,ctg8,ctg9;
-
+    private ToggleButton ctg1,ctg2,ctg3,ctg4,ctg5,ctg6,ctg7,ctg8,ctg9;
+    @FXML private ToggleButton tester;
+    @FXML private Button practise;
+    private boolean practiseMode=true;
+    
     @FXML
     private void initialize() {
         loader = new CategoryLoader("NZ");
         generator = new RandomGenerator();
         categories = loader.getCategories();
-        labels = new Label[]{ctg1,ctg2,ctg3,ctg4,ctg5,ctg6,ctg7,ctg8,ctg9};
+        buttons = new ToggleButton[]{ctg1,ctg2,ctg3,ctg4,ctg5,ctg6,ctg7,ctg8,ctg9};
         for (int i=0; i < 9; i++) {
-            labels[i].setText(categories.get(i).getName());
+            buttons[i].setText(categories.get(i).getName());
         }
+    }
+    
+    /**
+     * Display category selection screen
+     */
+    public void setCategorySelection() {
+    	practise.setVisible(false);
+    	practiseMode=false;
+
     }
 
     @FXML
@@ -69,6 +83,7 @@ public class PracticeController {
     @FXML
     public void select(Event e) throws IOException {
         // Grabbing the button the user pressed.
+    	if (practiseMode==true) {
         String id = ((Control) e.getSource()).getId();
         char[] chars = id.toCharArray();
         int categoryNum = Integer.parseInt(Character.toString(chars[3]));
@@ -77,7 +92,8 @@ public class PracticeController {
         loadQuestion(question,e);
         //Question question = generator.generatePracticeQuestion(category);
         //loadQuestion(question, e);
-
+    	}
+    	
     }
 
     /**

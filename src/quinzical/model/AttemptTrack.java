@@ -339,7 +339,8 @@ public class AttemptTrack {
 		
 				String question = q.getQuestion();
 				String answer = q.getAnswer();
-				fw.write(question + "," + answer + "\n");
+				String type =q.getType();
+				fw.write(question + "," + answer + ","+type+"\n");
 			
 			fw.close();
 		} catch (Exception e) {
