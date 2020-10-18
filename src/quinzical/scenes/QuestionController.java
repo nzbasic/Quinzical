@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import quinzical.quinzicalExceptions;
@@ -34,7 +35,9 @@ import quinzical.model.Winnings;
  */
 public class QuestionController {
 	@FXML
-	private Label question, message, timerDisplay, fixedDisplay, firstLetter, type;
+	private Label question, message, timerDisplay, fixedDisplay, firstLetter;
+	@FXML
+	private Text type;
 	@FXML
 	private TextField answer;
 	@FXML
@@ -59,6 +62,7 @@ public class QuestionController {
 	 */
 	public void setPracticeMode() {
 		practiceMode = true;
+		submit.setTranslateX(-175);
 		giveup.setVisible(false);
 	}
 
@@ -72,6 +76,7 @@ public class QuestionController {
 		questionObj = q;
 		question.setText(questionObj.getQuestion());
 		questionText = replaceText(questionObj.getQuestion());
+		setType();
 		 speaking(questionText,1,1);
 	
 	}
@@ -119,7 +124,18 @@ public class QuestionController {
 	public void setQuestionLines(int index, List<Question> questionLines) {
 		lineNumber = index;
 		questionsAndAnswers = questionLines;
+		setType();
+	}
 
+	private void setType() {
+		String typeString;
+		if (questionObj != null) {
+			typeString = questionObj.getType();
+		} else {
+			Question q = questionsAndAnswers.get(lineNumber - 1);
+			typeString = q.getType();
+		}
+		type.setText(typeString + ":");
 	}
 
 	/**

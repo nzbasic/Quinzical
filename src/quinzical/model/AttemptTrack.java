@@ -131,7 +131,7 @@ public class AttemptTrack {
 					j++; 
 				}
 				allQuestions.add(
-						new Question(questionfields[0], questionfields[1], questionfields[2], questionfields[3], categories.get(j - 1))); // j=0,1,2,3,4
+						new Question(questionfields[0], questionfields[1], questionfields[2], questionfields[4], categories.get(j - 1))); // j=0,1,2,3,4
 				// add the question
 				categories.get(j - 1).add(allQuestions.get(i)); // when j=0, adds question0,1,2,3,4.j=1 adds5,6,7,8,9
 				i++;
