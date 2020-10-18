@@ -129,7 +129,6 @@ public class RandomGenerator {
 	 */
 	public Question generatePracticeQuestion(Category c) {
 		List<String> avaiableQuestions = readAllLinesInFile(c.getName(),"NZ");
-		System.out.println(c.getName());
 		// Generate one question Object at Random
 		int randomNum = ThreadLocalRandom.current().nextInt(0, avaiableQuestions.size());
 		String[] questionfields = avaiableQuestions.get(randomNum).split(",");
