@@ -23,7 +23,7 @@ import quinzical.quinzical;
  * Controller for the screen where the user selects which question they would
  * like to pick.
  */
-public class GameController {
+public class GameController extends Help{
 
 	@FXML
 	private Label category1, category2, category3, category4, category5, points;
@@ -252,5 +252,15 @@ public class GameController {
 	@FXML
 	public void returnToMenu(Event e) throws IOException {
 		quinzical.loadFXML("Menu");
+	}
+
+	@Override
+	@FXML
+	public void help() {
+		if (finalPopUp.isVisible()) {
+			return;
+		} else {
+			super.help();
+		}
 	}
 }
