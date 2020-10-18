@@ -20,7 +20,7 @@ import quinzical.model.CategoryLoader;
 import quinzical.model.Question;
 import quinzical.model.RandomGenerator;
 
-public class PracticeController {
+public class PracticeController extends Help{
     private CategoryLoader loader;
     private RandomGenerator generator;
     private List<Category> categories;
