@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.TreeSet;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -41,7 +42,7 @@ public class PracticeController extends Help {
 	private Label selectionLabel, title;
 	private boolean practiseMode = true;
 	private int[] numberSelected = new int[5];
-	private List<Integer> freeSpace = new ArrayList<Integer>();
+	private TreeSet<Integer> freeSpace = new TreeSet<Integer>();
 	private int total = 0;
 
 	@FXML
@@ -122,11 +123,11 @@ public class PracticeController extends Help {
 			}
 
 			if (total < 5) {
-				index = freeSpace.get(0); // might try sorted list
+				index = freeSpace.first(); // might try sorted list
 				numberSelected[index] = categoryNum - 1; // stores button index
 				buttons[categoryNum - 1].setVisible(false);
 				selected[index].setVisible(true);
-				freeSpace.remove(Integer.valueOf(index));
+				freeSpace.remove(index);
 				selected[index].setText(category.getName());
 				total++;
 			}
