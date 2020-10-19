@@ -63,7 +63,8 @@ public class AttemptTrack {
 	 * Stores the randomly generated questions in a file named questionsAttempt.txt
 	 * or internatinalAttempt.txt Each line contains question,answer,prize,category
 	 * 
-	 * @param qList is a list of Question Objects.
+	 * @param qList   is a list of Question Objects.
+	 * @param section questions for NZ categories or International categories
 	 */
 	public void updateQuestionsGenerated(List<Question> qList, String section) {
 		FileWriter fw = null;
@@ -89,7 +90,10 @@ public class AttemptTrack {
 	}
 
 	/**
-	 * get 25 Question Objects
+	 * Get the question objects generated for the specified category.
+	 * 
+	 * @param section NZ or International
+	 * @return List of question objects generated for the specified section.
 	 */
 	public List<Question> getQuestionsGenerated(String section) {
 		readQuestionsAndCategoriesGenerated(section);
@@ -99,7 +103,7 @@ public class AttemptTrack {
 	/**
 	 * Read the questions from previous attempt/ continue game from last time
 	 */
-	public void readQuestionsAndCategoriesGenerated(String section) {
+	private void readQuestionsAndCategoriesGenerated(String section) {
 		String line = null;
 		BufferedReader reader = null;
 		int questionsPerCategory = 0;
@@ -114,14 +118,10 @@ public class AttemptTrack {
 			int i = 0;
 			int j = 0;
 			while ((line = reader.readLine()) != null) {
-				// For each line, this section of code should be reused when reading files,maybe
-				// place inside another method
-				// to avoid code duplication
 				String[] questionfields = line.split(",");
-				// Add Category names for every 5or 2 elements
+				// Add Category names for every 5 or 2 elements
 				if (i % questionsPerCategory == 0) {
 					categories.add(new Category(questionfields[3]));
-
 					j++;
 				}
 				allQuestions.add(new Question(questionfields[0], questionfields[1], questionfields[2],
@@ -226,8 +226,6 @@ public class AttemptTrack {
 		categories.clear();
 		RandomGenerator rg = new RandomGenerator();
 
-		// rg.generateCategoriesAtRandom(5,"NZ");
-		// rg.generateGameQuestions(5,"NZ");
 		rg.generateCategoriesAtRandom(3, "International");
 		rg.generateGameQuestions(2, "International");
 

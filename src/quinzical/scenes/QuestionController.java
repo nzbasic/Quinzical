@@ -55,6 +55,7 @@ public class QuestionController extends Help {
 	private int retryNumber = 0;
 	private String questionText;
 	private Timeline animation;
+	private boolean gameExit=false;
 
 	/**
 	 * Sets the controller to be in practice mode. Changes behaviour when getting a
@@ -101,17 +102,13 @@ public class QuestionController extends Help {
 
 	@FXML
 	public void playQuestionSpeech(Event e) {
-		int playNum = 1;
-		if (animation == null && !practiceMode) {
-			playNum = 3;
-		}
 		String ButtonId = ((Control) e.getSource()).getId();
 		if (ButtonId.equals("normal")) {
-			speaking(questionText, 1, playNum);
+			speaking(questionText, 1, 1);
 		} else if (ButtonId.equals("slow")) {
-			speaking(questionText, 0, playNum);
+			speaking(questionText, 0, 1);
 		} else if (ButtonId.equals("fast")) {
-			speaking(questionText, 2, playNum);
+			speaking(questionText, 2, 1);
 		}
 
 	}
@@ -139,6 +136,18 @@ public class QuestionController extends Help {
 		}
 		type.setText(typeString + ":");
 	}
+	
+	/**
+	 * stop timer
+	 */
+	private void stopTimerAnimation(){
+		clock.setVisible(false);
+		fixedDisplay.setVisible(false);
+		timerDisplay.setVisible(false);
+		if (animation != null) {
+			animation.stop();
+		}
+	}
 
 	/**
 	 * Called when user submits their answer. If practice mode is on, they get 3
@@ -148,12 +157,8 @@ public class QuestionController extends Help {
 	 */
 	@FXML
 	public void checkAnswer(Event e) {
-		clock.setVisible(false);
-		fixedDisplay.setVisible(false);
-		timerDisplay.setVisible(false);
-		if (animation != null) {
-			animation.stop();
-		}
+		gameExit=true;
+		stopTimerAnimation();
 		if (practiceMode) {
 			// increase retry number, once they hit 3 then they dont get any more attempts
 			retryNumber++;
@@ -163,6 +168,7 @@ public class QuestionController extends Help {
 				questionObj.setResult(true);
 				message.setText("Correct!");
 				speaking("Correct!", 1, 1);
+				
 			} else {
 
 				if (retryNumber == 2) {
@@ -170,7 +176,7 @@ public class QuestionController extends Help {
 					popup.setVisible(true);
 					String textHint = "The first letter is: " + Character.toUpperCase(first);
 					firstLetter.setText(textHint);
-					speaking(textHint, 1, 1);
+					speaking(textHint, 1, 2);
 				}
 				if (retryNumber < 3) {
 					message.setText("Incorrect, " + (3 - retryNumber) + " attempts remain");
@@ -180,7 +186,7 @@ public class QuestionController extends Help {
 					firstLetter.setVisible(false);
 					String answerText = "The correct answer was " + questionObj.sayAnswer();
 					message.setText(answerText);
-					speaking(answerText, 1, 1);
+					speaking(answerText, 1, 2);
 				}
 			}
 		} else {
@@ -197,14 +203,14 @@ public class QuestionController extends Help {
 				winningController.readWinnings();
 				winningController.updateWinnings(Integer.parseInt(q.getPrize()));
 				message.setText("Correct!");
-				speaking("Correct!", 1, 1);
+				speaking("Correct!", 1, 2);
 				new AttemptTrack().removeCorrectlyAttemptedQuestion(q);
 				// new HelperThread("Correct!", 1, 1).run();
 			} else {
 
 				String answerTxt = "Your answer was incorrect";
 				message.setText(answerTxt);
-				speaking(answerTxt, 1, 1);
+				speaking(answerTxt, 1, 2);
 				new AttemptTrack().writeWrongQuestion(q);
 			}
 
@@ -271,10 +277,10 @@ public class QuestionController extends Help {
 					Process p = new ProcessBuilder("bash", "-c", "festival -b ./attempt/question.scm").start();
 
 					// TImer only appears after the first time the question gets played
-					if (playTime == 0 || playTime == 3) {
+					if (playTime == 0 ) {
 						p.waitFor();
-						int gameExit = p.exitValue();
-						if (gameExit == 0 || playTime == 3) {
+						//int gameExit = p.exitValue();
+						if (!gameExit || playTime == 3) {
 							Platform.runLater(new Runnable() {
 								private int count = 60;
 								private String display;
@@ -367,6 +373,7 @@ public class QuestionController extends Help {
 	 */
 	@FXML
 	public void returnToMenu(Event e) throws IOException {
+		stopTimerAnimation();
 		killProcesses();
 		new GameController().returnToMenu(e);
 	}

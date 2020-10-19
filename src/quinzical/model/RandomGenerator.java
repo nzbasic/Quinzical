@@ -95,10 +95,9 @@ public class RandomGenerator {
 
 	/**
 	 * Creates question objects, must have called generateCategoriesAtRandom()
-	 * before calling this method n=number of questions per category section: NZ or
-	 * International
-	 * 
-	 * @return
+	 * before calling this method 
+	 * @param n=number of questions per category 
+	 * @param section: NZ or International
 	 */
 	public void generateGameQuestions(int n, String section) {
 
@@ -111,18 +110,18 @@ public class RandomGenerator {
 			List<String> questionLines = readAllLinesInFile(cName, section);
 			// Generate 5 question objects
 			for (int i = 0; i < n; i++) {
+				int index=0;
 				int randomNum = ThreadLocalRandom.current().nextInt(0, questionLines.size());
 				// creates a question object and attach to its category object
 				String[] questionfields = questionLines.get(randomNum).split(",");
 				Category current = categories.get(categoryIndex);
 				if (n == 5) {
-					q = new Question(questionfields[0], questionfields[1], Integer.toString(points[i]),
-							questionfields[2], current);
+					index = i;
 				} else {
-					int index = 1 + i * 2;
-					q = new Question(questionfields[0], questionfields[1], Integer.toString(points[index]),
-							questionfields[2], current);
+					index = 1 + i * 2; //2 questions per category
 				}
+				q = new Question(questionfields[0], questionfields[1], Integer.toString(points[index]),
+						questionfields[2], current);
 				current.add(q);
 				gameQuestions.add(q);
 				questionLines.remove(randomNum);
