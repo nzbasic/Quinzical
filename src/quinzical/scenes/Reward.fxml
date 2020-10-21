@@ -60,9 +60,9 @@
             <Image url="@assets/donut.gif" />
          </image>
       </ImageView>
-      <TableView fx:id="table" layoutX="540.0" layoutY="240.0" prefHeight="295.0" prefWidth="193.0" style="-fx-background-color: #0a152b;">
+      <TableView fx:id="table" layoutX="544.0" layoutY="241.0" prefHeight="295.0" prefWidth="193.0" style="-fx-background-color: #0a152b;">
         <columns>
-          <TableColumn fx:id="highscores" prefWidth="191.0" text="High Scores" />
+          <TableColumn fx:id="highscores" prefWidth="190.0" text="High Scores" />
         </columns>
       </TableView>
    </children>
