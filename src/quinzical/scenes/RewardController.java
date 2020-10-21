@@ -27,6 +27,7 @@ public class RewardController {
 
 	@FXML
 	private void initialize() {
+		new AttemptTrack().resetAll();
 		HighscoreTrack reader = new HighscoreTrack();
 		List<Score> scores = reader.getScores();
 		highscores.setCellValueFactory(new PropertyValueFactory<>("score"));
@@ -52,7 +53,6 @@ public class RewardController {
 	 */
 	@FXML
 	public void returnToMainMenu(Event e) throws IOException {
-		new AttemptTrack().resetAll();
 		new GameController().returnToMenu(e);
 	}
 
