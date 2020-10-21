@@ -15,7 +15,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import quinzical.model.AttemptTrack;
@@ -35,7 +38,7 @@ public class PracticeController extends Help {
 	@FXML
 	private ToggleButton tester;
 	@FXML
-	private Button practise, confirm;
+	private Button practise, confirm, help;
 	@FXML
 	private HBox selection;
 	@FXML
@@ -65,6 +68,7 @@ public class PracticeController extends Help {
 	 * Display category selection screen
 	 */
 	public void setCategorySelection() {
+		help.setVisible(false);
 		practise.setVisible(false);
 		practiseMode = false;
 		selection.setVisible(true);
