@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import quinzical.model.AttemptTrack;
 import quinzical.model.HighscoreTrack;
 import quinzical.model.Score;
 
@@ -51,6 +52,7 @@ public class RewardController {
 	 */
 	@FXML
 	public void returnToMainMenu(Event e) throws IOException {
+		new AttemptTrack().resetAll();
 		new GameController().returnToMenu(e);
 	}
 
