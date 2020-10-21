@@ -6,8 +6,8 @@ public class Score {
 	public Score(String score) {
         this.score = score;
     }
-    public String getScore() {
-        return score;
+    public int getScore() {
+        return Integer.parseInt(score);
     }
     
 }
