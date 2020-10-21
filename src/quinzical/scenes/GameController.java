@@ -15,7 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import quinzical.model.AttemptTrack;
+import quinzical.model.HighscoreTrack;
 import quinzical.model.Question;
+import quinzical.model.Score;
 import quinzical.model.Winnings;
 import quinzical.quinzical;
 
@@ -168,7 +170,11 @@ public class GameController extends Help {
 		FXMLLoader rewardLoad = new FXMLLoader(getClass().getResource("Reward.fxml"));
 		Parent rewardParent = rewardLoad.load();
 		RewardController rc = rewardLoad.getController();
-		rc.setPoints(new Winnings().getWinnings());
+		String winnings = new Winnings().getWinnings();
+		Score score = new Score(winnings);
+		HighscoreTrack tracker = new HighscoreTrack();
+		tracker.addScore(score);
+		rc.setPoints(winnings);
 
 		Scene rewardScene = new Scene(rewardParent);
 
