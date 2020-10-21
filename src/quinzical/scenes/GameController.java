@@ -167,13 +167,13 @@ public class GameController extends Help {
 	 */
 	@FXML
 	public void toRewardScreen() throws IOException {
-		FXMLLoader rewardLoad = new FXMLLoader(getClass().getResource("Reward.fxml"));
-		Parent rewardParent = rewardLoad.load();
-		RewardController rc = rewardLoad.getController();
 		String winnings = new Winnings().getWinnings();
 		Score score = new Score(winnings);
 		HighscoreTrack tracker = new HighscoreTrack();
 		tracker.addScore(score);
+		FXMLLoader rewardLoad = new FXMLLoader(getClass().getResource("Reward.fxml"));
+		Parent rewardParent = rewardLoad.load();
+		RewardController rc = rewardLoad.getController();
 		rc.setPoints(winnings);
 
 		Scene rewardScene = new Scene(rewardParent);
