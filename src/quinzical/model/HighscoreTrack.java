@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,6 +37,8 @@ public class HighscoreTrack {
     }
 
     public List<Score> getScores() {
+        Collections.sort(scores, Comparator.comparing(Score::getScore));
+        Collections.reverse(scores);
         return scores;
     }
 
