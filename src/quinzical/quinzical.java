@@ -18,6 +18,7 @@ public class quinzical extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
+		primaryStage.setResizable(false);
 		stage = primaryStage;
 		loadFXML("Menu");
 		primaryStage.setTitle("Quinzical");
