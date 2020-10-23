@@ -16,11 +16,13 @@ public class Winnings {
 	private int _points;
 	private boolean _exist;
 
+	private final static String _winningsFile = "./attempt/winnings.txt";
+
 	/**
 	 * Default constructor for Winnings. Loads the current winnings file.
 	 */
 	public Winnings() {
-		File winningsFile = new File("./attempt/winnings.txt");
+		File winningsFile = new File(_winningsFile);
 		_exist = winningsFile.exists();
 	}
 
@@ -33,7 +35,7 @@ public class Winnings {
 	public void updateWinnings(int amount) {
 		_points = _points + amount;
 		try {
-			FileWriter fw = new FileWriter("./attempt/winnings.txt");
+			FileWriter fw = new FileWriter(_winningsFile);
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(Integer.toString(_points));
 			bw.newLine();
@@ -49,7 +51,7 @@ public class Winnings {
 	public void readWinnings() {
 		try {
 			String line = null;
-			BufferedReader reader = new BufferedReader(new FileReader("./attempt/winnings.txt"));
+			BufferedReader reader = new BufferedReader(new FileReader(_winningsFile));
 			while ((line = reader.readLine()) != null) {
 				_points = Integer.parseInt(line);
 			}

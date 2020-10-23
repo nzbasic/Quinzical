@@ -21,8 +21,10 @@ public class RandomGenerator {
 	private List<String> _randomCategoryNames = new ArrayList<>();
 	private final int[] _points = { 100, 200, 300, 400, 500 };
 	private List<Question> _gameQuestions = new ArrayList<Question>();
-
 	private AttemptTrack _attempt = new AttemptTrack();
+
+	private static final String _categoriesFolder = "./categories/";
+
 
 	/**
 	 * Uses random number generation to generate lists of categories and questions
@@ -33,7 +35,7 @@ public class RandomGenerator {
 		List<String> allCategoryNames = new ArrayList<String>();
 		_categories = new ArrayList<Category>();
 		_randomCategoryNames = new ArrayList<String>();
-		File[] files = new File("./categories/" + section).listFiles();
+		File[] files = new File(_categoriesFolder + section).listFiles();
 		for (File file : files) {
 			allCategoryNames.add(file.getName());
 		}
@@ -78,7 +80,7 @@ public class RandomGenerator {
 		List<String> listOfLines = new ArrayList<>();
 		try {
 			// read each file
-			bufReader = new BufferedReader(new FileReader("./categories/" + section + "/" + nameOfFile));
+			bufReader = new BufferedReader(new FileReader(_categoriesFolder + section + "/" + nameOfFile));
 			// read all lines in that file
 			String line = bufReader.readLine();
 			while (line != null) {
@@ -113,7 +115,7 @@ public class RandomGenerator {
 				int index=0;
 				int randomNum = ThreadLocalRandom.current().nextInt(0, questionLines.size());
 				// creates a question object and attach to its category object
-				String[] questionfields = questionLines.get(randomNum).split(",");
+				String[] questionfields = questionLines.get(randomNum).split(Question.delimiter);
 				Category current = _categories.get(categoryIndex);
 				if (n == 5) {
 					index = i;
@@ -140,7 +142,7 @@ public class RandomGenerator {
 		List<String> avaiableQuestions = readAllLinesInFile(c.getName(), Sections.NZ);
 		// Generate one question Object at Random
 		int randomNum = ThreadLocalRandom.current().nextInt(0, avaiableQuestions.size());
-		String[] questionfields = avaiableQuestions.get(randomNum).split(",");
+		String[] questionfields = avaiableQuestions.get(randomNum).split(Question.delimiter);
 		Question q = new Question(questionfields[0], questionfields[1], Integer.toString(0), questionfields[2], c);
 		return q;
 	}

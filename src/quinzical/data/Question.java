@@ -15,6 +15,9 @@ public class Question {
 	private Category _parent;
 	private String _type;
 
+	public final static String delimiter = ",";
+	public final static String answerDelimiter = "/";
+
 	/**
 	 * Default constructor for a question object.
 	 * 
@@ -81,7 +84,7 @@ public class Question {
 	 * @return First answer for this question
 	 */
 	public String sayAnswer() {
-		String[] data = _answer.split("/");
+		String[] data = _answer.split(Question.answerDelimiter);
 		return data[0];
 	}
 
@@ -115,7 +118,7 @@ public class Question {
 
 	// Returns all the possible answers for a question (some have multiple answers)
 	public List<String> getAnswersAsList() {
-		String[] data = _answer.split("/");
+		String[] data = _answer.split(Question.answerDelimiter);
 		List<String> output = new ArrayList<String>();
 		for (String answer : data) {
 			output.add(answer);
@@ -162,11 +165,11 @@ public class Question {
 	}
 
 	public String getFormattedStringWrong() {
-		return _question + "," + _answer + "," + _type + "\n";
+		return _question + Question.delimiter + _answer + Question.delimiter + _type + "\n";
 	}
 
 	public String getFormattedString() {
-		return _question + "," + _answer + "," + _prize + ","
-		+ _parent.getName() + "," + _type;
+		return _question + Question.delimiter + _answer + Question.delimiter + _prize + Question.delimiter
+		+ _parent.getName() + Question.delimiter + _type;
 	}
 }

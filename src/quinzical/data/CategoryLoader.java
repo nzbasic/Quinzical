@@ -13,10 +13,12 @@ public class CategoryLoader {
 
 	private List<Category> _categories;
 
+	private static final String _categoryFolder = "./categories/";
+
 	public CategoryLoader(Sections section) {
 		_categories = new ArrayList<Category>();
 
-		File[] files = new File("./categories/" + section).listFiles();
+		File[] files = new File(_categoryFolder + section).listFiles();
 		Scanner sc = null;
 		for (File file : files) {
 			Category category = new Category(file.getName());
@@ -25,7 +27,7 @@ public class CategoryLoader {
 
 				while (sc.hasNextLine()) {
 					String line = sc.nextLine();
-					String[] data = line.split(",");
+					String[] data = line.split(Question.delimiter);
 					Question question = new Question(data[0], data[1], "0", data[2], category);
 					category.add(question);
 				}
