@@ -214,5 +214,15 @@
             </Label>
          </children>
       </AnchorPane>
+      <ImageView fitHeight="451.0" fitWidth="590.0" layoutX="835.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" rotate="-39.8">
+         <image>
+            <Image url="@assets/fern.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="451.0" fitWidth="590.0" layoutX="-139.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" rotate="39.8" scaleX="-1.0">
+         <image>
+            <Image url="@assets/fern.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
