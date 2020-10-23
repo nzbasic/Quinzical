@@ -1,4 +1,4 @@
-package quinzical.model;
+package quinzical.data;
 
 import quinzical.QuinzicalExceptions;
 
@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import javax.swing.text.InternationalFormatter;
 
 /**
  * This class manages the previous attempt history and game status

@@ -14,12 +14,12 @@ import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import quinzical.model.AttemptTrack;
-import quinzical.model.HighscoreTrack;
-import quinzical.model.Question;
-import quinzical.model.Score;
-import quinzical.model.Sections;
-import quinzical.model.Winnings;
+import quinzical.data.AttemptTrack;
+import quinzical.data.HighscoreTrack;
+import quinzical.data.Question;
+import quinzical.data.Score;
+import quinzical.data.Sections;
+import quinzical.data.Winnings;
 import quinzical.Quinzical;
 
 /**

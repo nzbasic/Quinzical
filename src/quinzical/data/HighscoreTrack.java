@@ -1,4 +1,4 @@
-package quinzical.model;
+package quinzical.data;
 
 import java.io.File;
 import java.io.FileWriter;

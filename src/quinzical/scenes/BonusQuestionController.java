@@ -9,9 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import quinzical.Quinzical;
-import quinzical.model.AttemptTrack;
-import quinzical.model.Sections;
-import quinzical.model.Winnings;
+import quinzical.data.AttemptTrack;
+import quinzical.data.Sections;
+import quinzical.data.Winnings;
 
 public class BonusQuestionController {
 	@FXML

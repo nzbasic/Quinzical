@@ -9,9 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import quinzical.model.AttemptTrack;
-import quinzical.model.Sections;
-import quinzical.model.Winnings;
+import quinzical.data.AttemptTrack;
+import quinzical.data.Sections;
+import quinzical.data.Winnings;
 import quinzical.Quinzical;
 
 import java.io.IOException;

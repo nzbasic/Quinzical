@@ -1,4 +1,4 @@
-package quinzical.model;
+package quinzical.data;
 
 import quinzical.QuinzicalExceptions;
 

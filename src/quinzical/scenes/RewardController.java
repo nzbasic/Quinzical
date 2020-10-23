@@ -6,9 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import quinzical.model.AttemptTrack;
-import quinzical.model.HighscoreTrack;
-import quinzical.model.Score;
+import quinzical.data.AttemptTrack;
+import quinzical.data.HighscoreTrack;
+import quinzical.data.Score;
 
 import java.io.IOException;
 import java.util.List;

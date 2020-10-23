@@ -1,4 +1,4 @@
-package quinzical.model;
+package quinzical.data;
 
 import java.util.ArrayList;
 import java.util.List;

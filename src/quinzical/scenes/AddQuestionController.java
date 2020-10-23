@@ -10,9 +10,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import quinzical.Quinzical;
-import quinzical.model.Category;
-import quinzical.model.CategoryLoader;
-import quinzical.model.Sections;
+import quinzical.data.Category;
+import quinzical.data.CategoryLoader;
+import quinzical.data.Sections;
 
 public class AddQuestionController {
 	@FXML

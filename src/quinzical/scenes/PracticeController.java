@@ -2,7 +2,6 @@ package quinzical.scenes;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -15,18 +14,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-import quinzical.model.AttemptTrack;
-import quinzical.model.Category;
-import quinzical.model.CategoryLoader;
-import quinzical.model.Question;
-import quinzical.model.RandomGenerator;
-import quinzical.model.Sections;
+import quinzical.data.AttemptTrack;
+import quinzical.data.Category;
+import quinzical.data.CategoryLoader;
+import quinzical.data.Question;
+import quinzical.data.RandomGenerator;
+import quinzical.data.Sections;
 
 public class PracticeController extends Help {
 	private CategoryLoader _loader;

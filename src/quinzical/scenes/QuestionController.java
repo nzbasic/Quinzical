@@ -25,9 +25,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import quinzical.QuinzicalExceptions;
-import quinzical.model.AttemptTrack;
-import quinzical.model.Question;
-import quinzical.model.Winnings;
+import quinzical.data.AttemptTrack;
+import quinzical.data.Question;
+import quinzical.data.Winnings;
 
 /**
  * Controller to display questions and accept user text input for when they
