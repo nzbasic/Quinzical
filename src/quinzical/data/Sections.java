@@ -5,5 +5,10 @@ package quinzical.data;
  */
 public enum Sections {
    NZ,
-   INTERNATIONAL 
+   INTERNATIONAL {
+      @Override 
+      public String toString() {
+         return "International";
+      }
+   } 
 }
