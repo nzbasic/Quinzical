@@ -1,4 +1,4 @@
-package quinzical.data;
+package quinzical.data.tracking;
 
 import quinzical.QuinzicalExceptions;
 
@@ -11,7 +11,7 @@ import java.io.FileWriter;
 /**
  * Handles the users winnings during the game.
  */
-public class Winnings {
+public class WinningsTrack {
 
 	private int _points;
 	private boolean _exist;
@@ -21,7 +21,7 @@ public class Winnings {
 	/**
 	 * Default constructor for Winnings. Loads the current winnings file.
 	 */
-	public Winnings() {
+	public WinningsTrack() {
 		File winningsFile = new File(_winningsFile);
 		_exist = winningsFile.exists();
 	}

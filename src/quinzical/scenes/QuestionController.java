@@ -25,9 +25,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import quinzical.QuinzicalExceptions;
-import quinzical.data.AttemptTrack;
-import quinzical.data.Question;
-import quinzical.data.Winnings;
+import quinzical.data.tracking.AttemptTrack;
+import quinzical.data.model.Question;
+import quinzical.data.tracking.WinningsTrack;
 
 /**
  * Controller to display questions and accept user text input for when they
@@ -199,7 +199,7 @@ public class QuestionController extends Help {
 			if (q.checkAnswer(usrInput)) {
 
 				// Add Winnings
-				Winnings winningController = new Winnings();
+				WinningsTrack winningController = new WinningsTrack();
 				winningController.readWinnings();
 				winningController.updateWinnings(Integer.parseInt(q.getPrize()));
 				message.setText("Correct!");

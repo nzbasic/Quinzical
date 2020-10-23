@@ -14,12 +14,12 @@ import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import quinzical.data.AttemptTrack;
-import quinzical.data.HighscoreTrack;
-import quinzical.data.Question;
-import quinzical.data.Score;
+import quinzical.data.tracking.AttemptTrack;
+import quinzical.data.tracking.HighscoreTrack;
+import quinzical.data.model.Question;
+import quinzical.data.model.Score;
 import quinzical.data.Sections;
-import quinzical.data.Winnings;
+import quinzical.data.tracking.WinningsTrack;
 import quinzical.Quinzical;
 
 /**
@@ -74,7 +74,7 @@ public class GameController extends Help {
 	public void setupGame() throws IOException {
 		int attemptedInCurrentCate = 0;
 		Label[] categories = { category1, category2, category3, category4, category5 };
-		points.setText(new Winnings().getWinnings());
+		points.setText(new WinningsTrack().getWinnings());
 		_categoryNames = _attempt.readCategoriesGenerated(Sections.NZ);
 		for (int i = 0; i < 5; i++) {
 			categories[i].setText(_categoryNames.get(i));
@@ -168,7 +168,7 @@ public class GameController extends Help {
 	 */
 	@FXML
 	public void toRewardScreen() throws IOException {
-		String winnings = new Winnings().getWinnings();
+		String winnings = new WinningsTrack().getWinnings();
 		Score score = new Score(winnings);
 		HighscoreTrack tracker = new HighscoreTrack();
 		tracker.addScore(score);

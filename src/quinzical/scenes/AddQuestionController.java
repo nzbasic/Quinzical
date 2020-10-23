@@ -10,7 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import quinzical.Quinzical;
-import quinzical.data.Category;
+import quinzical.data.model.Category;
 import quinzical.data.CategoryLoader;
 import quinzical.data.Sections;
 

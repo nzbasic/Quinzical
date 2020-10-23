@@ -1,5 +1,9 @@
 package quinzical.data;
 
+import quinzical.data.Sections;
+import quinzical.data.model.Category;
+import quinzical.data.model.Question;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

@@ -1,4 +1,6 @@
-package quinzical.data;
+package quinzical.data.tracking;
+
+import quinzical.data.model.Score;
 
 import java.io.File;
 import java.io.FileWriter;

@@ -1,6 +1,10 @@
-package quinzical.data;
+package quinzical.data.tracking;
 
 import quinzical.QuinzicalExceptions;
+import quinzical.data.RandomGenerator;
+import quinzical.data.Sections;
+import quinzical.data.model.Category;
+import quinzical.data.model.Question;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -22,7 +26,7 @@ public class AttemptTrack {
 	private final List<String> _categoryNames = new ArrayList<>();
 	private final List<Question> _allQuestions = new ArrayList<>();
 	private int[] _record; // default value 0 means never attempted before, 1 means attempted.
-	private final Winnings _winningRec = new Winnings();
+	private final WinningsTrack _winningRec = new WinningsTrack();
 	private static File _tmpDir;
 
 	private static final int _questionsPerCategoryNormal = 5;

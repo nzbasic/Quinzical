@@ -1,4 +1,4 @@
-package quinzical.data;
+package quinzical.data.model;
 
 public class Score {
 

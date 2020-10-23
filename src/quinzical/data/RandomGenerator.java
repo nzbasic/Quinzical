@@ -1,6 +1,9 @@
 package quinzical.data;
 
 import quinzical.QuinzicalExceptions;
+import quinzical.data.model.Category;
+import quinzical.data.model.Question;
+import quinzical.data.tracking.AttemptTrack;
 
 import java.io.BufferedReader;
 import java.io.File;

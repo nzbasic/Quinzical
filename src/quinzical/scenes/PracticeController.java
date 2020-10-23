@@ -17,10 +17,10 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-import quinzical.data.AttemptTrack;
-import quinzical.data.Category;
+import quinzical.data.tracking.AttemptTrack;
+import quinzical.data.model.Category;
 import quinzical.data.CategoryLoader;
-import quinzical.data.Question;
+import quinzical.data.model.Question;
 import quinzical.data.RandomGenerator;
 import quinzical.data.Sections;
 

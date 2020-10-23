@@ -9,9 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import quinzical.Quinzical;
-import quinzical.data.AttemptTrack;
+import quinzical.data.tracking.AttemptTrack;
 import quinzical.data.Sections;
-import quinzical.data.Winnings;
+import quinzical.data.tracking.WinningsTrack;
 
 public class BonusQuestionController {
 	@FXML
@@ -33,7 +33,7 @@ public class BonusQuestionController {
 	@FXML
 	public void setUp() throws IOException {
 		Label[] categories = { country1, country2, country3 };
-		points.setText(new Winnings().getWinnings());
+		points.setText(new WinningsTrack().getWinnings());
 		_categoryNames = _attempt.readCategoriesGenerated(Sections.INTERNATIONAL);
 		for (int i = 0; i < 3; i++) {
 			categories[i].setText(_categoryNames.get(i));

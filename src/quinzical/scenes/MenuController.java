@@ -9,9 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import quinzical.data.AttemptTrack;
+import quinzical.data.tracking.AttemptTrack;
 import quinzical.data.Sections;
-import quinzical.data.Winnings;
+import quinzical.data.tracking.WinningsTrack;
 import quinzical.Quinzical;
 
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class MenuController extends Help {
 	 */
 	@FXML
 	public void initialize() {
-		money.setText("Current Winnings: $" + new Winnings().getWinnings());
+		money.setText("Current Winnings: $" + new WinningsTrack().getWinnings());
 	}
 
 	/**
