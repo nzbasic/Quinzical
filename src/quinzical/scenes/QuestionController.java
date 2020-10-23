@@ -26,6 +26,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import quinzical.QuinzicalExceptions;
 import quinzical.data.tracking.AttemptTrack;
+import quinzical.data.Files;
+import quinzical.data.Folders;
+import quinzical.data.FxmlFile;
 import quinzical.data.model.Question;
 import quinzical.data.tracking.WinningsTrack;
 
@@ -260,7 +263,7 @@ public class QuestionController extends Help {
 
 				try {
 					killProcesses();
-					FileWriter fw = new FileWriter("./attempt/question.scm");
+					FileWriter fw = new FileWriter(Folders.ATTEMPT.toString() + Files.QUESTIONSCM.toString());
 					BufferedWriter bw = new BufferedWriter(fw);
 					bw.write("(voice_akl_nz_jdt_diphone)");
 					bw.newLine();
@@ -337,7 +340,7 @@ public class QuestionController extends Help {
 	public void returnToQuestionSelection(Event e) throws Exception {
 		FXMLLoader gameLoad = null;
 		if (_practiceMode) {
-			gameLoad = new FXMLLoader(getClass().getResource("./fxml/Practice.fxml"));
+			gameLoad = new FXMLLoader(getClass().getResource(FxmlFile.PRACTICE.getPath()));
 
 			Parent gameParent = gameLoad.load();
 
@@ -349,7 +352,7 @@ public class QuestionController extends Help {
 			if (_internationalSection) {
 				new GameController().switchToInternationalQuestions(e);
 			} else {
-				gameLoad = new FXMLLoader(getClass().getResource("./fxml/Game.fxml"));
+				gameLoad = new FXMLLoader(getClass().getResource(FxmlFile.GAME.getPath()));
 				Parent gameParent = gameLoad.load();
 				GameController gc = gameLoad.getController();
 				gc.oldGameData();

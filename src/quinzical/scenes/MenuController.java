@@ -95,7 +95,7 @@ public class MenuController extends Help {
 	 */
 	@FXML
 	public void continueGame(Event e) throws Exception {
-		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("./fxml/Game.fxml"));
+		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource(FxmlFile.GAME.getPath()));
 		Parent gameParent = gameLoad.load();
 		GameController gc = gameLoad.getController();
 		gc.oldGameData();
@@ -116,7 +116,7 @@ public class MenuController extends Help {
 	 */
 	@FXML
 	public void newGame(Event e) throws IOException {
-		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("./fxml/Practice.fxml"));
+		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource(FxmlFile.PRACTICE.getPath()));
 		Parent gameParent = gameLoad.load();
 		PracticeController gc = gameLoad.getController();
 		gc.setCategorySelection();

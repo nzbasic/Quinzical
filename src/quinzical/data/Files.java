@@ -42,5 +42,11 @@ public enum Files {
         public String toString() {
             return "./scores.txt";
         }
+    },
+    QUESTIONSCM {
+        @Override
+        public String toString() {
+            return "/question.scm";
+        }
     }
 }

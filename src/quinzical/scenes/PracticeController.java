@@ -20,6 +20,7 @@ import javafx.scene.Node;
 import quinzical.data.tracking.AttemptTrack;
 import quinzical.data.model.Category;
 import quinzical.data.CategoryLoader;
+import quinzical.data.FxmlFile;
 import quinzical.data.model.Question;
 import quinzical.data.RandomGenerator;
 import quinzical.data.Sections;
@@ -85,7 +86,7 @@ public class PracticeController extends Help {
 	}
 
 	private void loadQuestion(Question question, Event e) throws IOException {
-		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("./fxml/QuestionAndAnswer.fxml"));
+		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource(FxmlFile.QUESTION_AND_ANSWER.getPath()));
 		Parent questionParent = questionLoad.load();
 		QuestionController qc = questionLoad.getController();
 		qc.setPracticeMode();
@@ -173,7 +174,7 @@ public class PracticeController extends Help {
 		rg.setGameCategories(gameCategories);
 		rg.generateGameQuestions(5, Sections.NZ);
 
-		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("./fxml/Game.fxml"));
+		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource(FxmlFile.GAME.getPath()));
 		Parent gameParent = gameLoad.load();
 		GameController gc = gameLoad.getController();
 		gc.newGameData();

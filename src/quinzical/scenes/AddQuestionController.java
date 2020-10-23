@@ -11,7 +11,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import quinzical.Quinzical;
 import quinzical.data.model.Category;
+import quinzical.data.model.Question;
 import quinzical.data.CategoryLoader;
+import quinzical.data.Folders;
 import quinzical.data.FxmlFile;
 import quinzical.data.Sections;
 
@@ -51,10 +53,10 @@ public class AddQuestionController {
 		answerText.setText("");
 
 		String name = category.getName();
-		File file = new File("./categories/" + name);
+		File file = new File(Folders.CATEGORIES + "/" + name);
 		try {
 			FileWriter fw = new FileWriter(file, true);
-			fw.write("\n" + questionString + "," + answerString);
+			fw.write("\n" + questionString + Question.delimiter + answerString);
 			fw.close();
 		} catch (Exception e) {
 			e.printStackTrace();
