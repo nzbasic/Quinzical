@@ -73,7 +73,7 @@ public enum FxmlFile implements IFxmlFile {
         public String getPath() {
             return "./fxml/";
         }
-    };
+    }
 
 
 }

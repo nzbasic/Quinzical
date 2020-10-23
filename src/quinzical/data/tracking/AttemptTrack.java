@@ -59,8 +59,7 @@ public class AttemptTrack {
 	 */
 	public static boolean checkDirExistence() {
 		_tmpDir = new File(Folders.ATTEMPT.toString());
-		boolean existance = _tmpDir.exists();
-		return existance;
+		return _tmpDir.exists();
 	}
 
 	/**
@@ -121,7 +120,7 @@ public class AttemptTrack {
 	 * Read the questions from previous attempt/ continue game from last time
 	 */
 	private void readQuestionsAndCategoriesGenerated(Sections section) {
-		String line = null;
+		String line;
 		BufferedReader reader = null;
 		int questionsPerCategory = 0;
 		try {
@@ -156,15 +155,6 @@ public class AttemptTrack {
 		} catch (Exception e) {
 			throw new QuinzicalExceptions(e.getMessage());
 		}
-
-	}
-
-	/**
-	 * resets previous attemptRecord for each question.
-	 */
-	public void resetAttemptRecord() {
-		_record = new int[_numberOfQuestions];
-		updateAttemptRecord(Sections.NZ);
 
 	}
 
@@ -209,13 +199,11 @@ public class AttemptTrack {
 	/**
 	 * Returns an integer array of size 25, 0 means question[index] is not
 	 * attempted, 1 means the question at this index position has been attempted.
-	 * 
-	 * @return
 	 */
 	public void readAttempted(Sections section) {
 		_record = new int[_numberOfQuestions];
 		BufferedReader reader = null;
-		String line = null;
+		String line;
 		try {
 
 			switch(section) {
@@ -274,12 +262,12 @@ public class AttemptTrack {
 	 * @return List of Question Objects which are the questions users got wrong
 	 */
 	public List<Question> getWrongQuestions() {
-		List<Question> output = new ArrayList<Question>();
+		List<Question> output = new ArrayList<>();
 		File file = new File(_wrongQuestions);
 		if (file.exists()) {
-			List<String> list = new ArrayList<String>();
+			List<String> list = new ArrayList<>();
 			try {
-				String line = null;
+				String line;
 				Scanner scanner = new Scanner(new FileReader(_wrongQuestions));
 				while (scanner.hasNextLine()) {
 					line = scanner.nextLine();
@@ -333,8 +321,8 @@ public class AttemptTrack {
 	 * Returns index in List if this question exists in file, returns -1 if the
 	 * question has not been added to file.
 	 * 
-	 * @param check
-	 * @return
+	 * @param check Question to check
+	 * @return index of question, -1 if not found
 	 */
 	public int checkIfQuestionExistInFile(Question check) {
 		List<Question> wrongQList = getWrongQuestions();

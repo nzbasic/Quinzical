@@ -22,20 +22,18 @@ public class BonusQuestionController {
 	@FXML
 	Button b1q1, b1q2, b2q1, b2q2, b3q1, b3q2, returnMenu, NZ;
 
-	private List<String> _categoryNames;
-	private AttemptTrack _attempt = new AttemptTrack();
+	private final AttemptTrack _attempt = new AttemptTrack();
 	private int _count;
 
 	/**
 	 * Loads the buttons in the Game Screen with question data.
-	 * 
-	 * @throws IOException
+	 *
 	 */
 	@FXML
-	public void setUp() throws IOException {
+	public void setUp() {
 		Label[] categories = { country1, country2, country3 };
 		points.setText(new WinningsTrack().getWinnings());
-		_categoryNames = _attempt.readCategoriesGenerated(Sections.INTERNATIONAL);
+		List<String> _categoryNames = _attempt.readCategoriesGenerated(Sections.INTERNATIONAL);
 		for (int i = 0; i < 3; i++) {
 			categories[i].setText(_categoryNames.get(i));
 		}
@@ -57,7 +55,7 @@ public class BonusQuestionController {
 				questions[i].setVisible(false);
 
 				_count++;
-			} else if (attemptedRecord[i] == 0 && countCate == true) {
+			} else if (attemptedRecord[i] == 0 && countCate) {
 				questions[i].setDisable(false);
 				countCate = false;
 			}
@@ -69,21 +67,19 @@ public class BonusQuestionController {
 	/**
 	 * Returns to main menu
 	 * 
-	 * @param e
-	 * @throws IOException
+	 * @throws IOException file not found
 	 */
 	@FXML
-	public void returnToMenu(Event e) throws IOException {
+	public void returnToMenu() throws IOException {
 		Quinzical.loadFXML(FxmlFile.MENU);
 	}
 
 	/**
 	 * Get the total Number of Questions Attempted for International Section
 	 * 
-	 * @return
-	 * @throws Exception
+	 * @return Number of questions attempted
 	 */
-	public int getNumberOfQuestionsAttempted() throws Exception {
+	public int getNumberOfQuestionsAttempted() {
 		int[] attemptedRecord = _attempt.getAttemptedRecord(Sections.INTERNATIONAL);
 		// check if all questions attempted
 		_count = 0;
@@ -101,7 +97,7 @@ public class BonusQuestionController {
 	/**
 	 * Returns to NZ question set
 	 * 
-	 * @throws Exception
+	 * @throws Exception File not found
 	 */
 	@FXML
 	public void returnToNZQuestion(Event e) throws Exception {

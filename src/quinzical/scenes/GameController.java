@@ -33,25 +33,22 @@ public class GameController extends Help {
 	private Label category1, category2, category3, category4, category5, points;
 	@FXML
 	private Button c1q1, c1q2, c1q3, c1q4, c1q5, c2q1, c2q2, c2q3, c2q4, c2q5, c3q1, c3q2, c3q3, c3q4, c3q5, c4q1, c4q2,
-			c4q3, c4q4, c4q5, c5q1, c5q2, c5q3, c5q4, c5q5, returnMenu, unlock;
+			c4q3, c4q4, c4q5, c5q1, c5q2, c5q3, c5q4, c5q5, unlock;
 	@FXML
 	AnchorPane finalPopUp;
 
 	private Button[] _questionbuttons;
-	private int[] _completedCategories = { 0, 0, 0, 0, 0 };
-	private AttemptTrack _attempt = new AttemptTrack();
-	private List<String> _categoryNames;
-	private List<Question> _allq;
+	private final int[] _completedCategories = { 0, 0, 0, 0, 0 };
+	private final AttemptTrack _attempt = new AttemptTrack();
 	private int _count;
 	private boolean _internationalSection = false;
 	private Stage _gameStage;
 
 	/**
 	 * Starts a new game of quinzical, throws out old data.
-	 * 
-	 * @throws IOException
+	 *
 	 */
-	public void newGameData() throws IOException {
+	public void newGameData() {
 		_attempt.resetAll();
 		setupGame();
 
@@ -59,24 +56,22 @@ public class GameController extends Help {
 
 	/**
 	 * Loads data from old save file.
-	 * 
-	 * @throws IOException
+	 *
 	 */
-	public void oldGameData() throws IOException {
+	public void oldGameData() {
 		setupGame();
 
 	}
 
 	/**
 	 * Loads the buttons in the Game Screen with question data.
-	 * 
-	 * @throws IOException
+	 *
 	 */
-	public void setupGame() throws IOException {
+	public void setupGame() {
 		int attemptedInCurrentCate = 0;
 		Label[] categories = { category1, category2, category3, category4, category5 };
 		points.setText(new WinningsTrack().getWinnings());
-		_categoryNames = _attempt.readCategoriesGenerated(Sections.NZ);
+		List<String> _categoryNames = _attempt.readCategoriesGenerated(Sections.NZ);
 		for (int i = 0; i < 5; i++) {
 			categories[i].setText(_categoryNames.get(i));
 		}
@@ -106,7 +101,7 @@ public class GameController extends Help {
 				attemptedInCurrentCate++;
 
 				_count++;
-			} else if (attemptedRecord[i] == 0 && countCate == true) {
+			} else if (attemptedRecord[i] == 0 && countCate) {
 				questions[i].setDisable(false);
 				countCate = false;
 			}
@@ -122,7 +117,7 @@ public class GameController extends Help {
 	/**
 	 * Sets the stage of this controller.
 	 * 
-	 * @param s
+	 * @param s stage
 	 */
 	public void setStage(Stage s) {
 		_gameStage = s;
@@ -132,7 +127,7 @@ public class GameController extends Help {
 	 * Checks if all questions have been attempted, if they have, go to reward
 	 * screen. If 2 categories have been attempted unlock International questions.
 	 * 
-	 * @throws Exception
+	 * @throws Exception file not found
 	 */
 	public void checkIfAllAttempted() throws Exception {
 
@@ -165,7 +160,7 @@ public class GameController extends Help {
 	/**
 	 * Switch to RewardScreen
 	 * 
-	 * @throws IOException
+	 * @throws IOException file not found
 	 */
 	@FXML
 	public void toRewardScreen() throws IOException {
@@ -193,15 +188,15 @@ public class GameController extends Help {
 	 * When user selects a question, load the answer screen with that question's
 	 * data.
 	 * 
-	 * @param e
-	 * @throws IOException
+	 * @param e button event
+	 * @throws IOException file not found
 	 */
 	@FXML
 	public void changeToAnswerScreen(Event e) throws IOException {
 		// Get Id of button clicked, works if clicked object extends control
-		Sections section = null;
+		Sections section;
 		String ButtonId = ((Control) e.getSource()).getId();
-		int lineNumber = 0;
+		int lineNumber;
 		// Set button invisible
 		((Button) e.getSource()).setVisible(false);
 
@@ -209,7 +204,7 @@ public class GameController extends Help {
 		int categoryIndex = Integer.parseInt(ButtonId.substring(1, 2));
 		int questionIndex = Integer.parseInt(ButtonId.substring(3));
 		// Set Question as attempted
-		if (ButtonId.substring(0, 1).equals("c")) {
+		if (ButtonId.charAt(0) == 'c') {
 			section = Sections.NZ;
 			lineNumber = (categoryIndex - 1) * 5 + questionIndex;
 			// Enable nextbutton click
@@ -222,7 +217,7 @@ public class GameController extends Help {
 		}
 		new AttemptTrack().setAttempted(lineNumber - 1, section);
 		// questionObjects
-		_allq = _attempt.getQuestionsGenerated(section);
+		List<Question> _allq = _attempt.getQuestionsGenerated(section);
 
 		String question = _allq.get(lineNumber - 1).getQuestion();
 
@@ -245,8 +240,8 @@ public class GameController extends Help {
 	/**
 	 * User chooses to attempt Questions from the international Section
 	 * 
-	 * @param e
-	 * @throws IOException
+	 * @param e button event
+	 * @throws IOException file not found
 	 */
 	@FXML
 	public void switchToInternationalQuestions(Event e) throws IOException {
@@ -263,20 +258,17 @@ public class GameController extends Help {
 	/**
 	 * Returns user to the main menu.
 	 * 
-	 * @param e
-	 * @throws IOException
+	 * @throws IOException file not found
 	 */
 	@FXML
-	public void returnToMenu(Event e) throws IOException {
+	public void returnToMenu() throws IOException {
 		Quinzical.loadFXML(FxmlFile.MENU);
 	}
 
 	@Override
 	@FXML
 	public void help() {
-		if (finalPopUp.isVisible()) {
-			return;
-		} else {
+		if (!finalPopUp.isVisible()) {
 			super.help();
 		}
 	}

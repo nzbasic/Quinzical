@@ -16,16 +16,4 @@ public enum Folders {
             return "./attempt";
         }
     },
-    CATEGORIES_INTERNATIONAL {
-        @Override
-        public String toString() {
-            return CATEGORIES.toString() + "/International";
-        }
-    },
-    CATEGORIES_NZ {
-        @Override
-        public String toString() {
-            return CATEGORIES.toString() + "/NZ";
-        }
-    },
 }

@@ -16,7 +16,7 @@ import java.io.FileWriter;
 public class WinningsTrack {
 
 	private int _points;
-	private boolean _exist;
+	private final boolean _exist;
 
 	private final static String _winningsFile = Folders.ATTEMPT.toString() + Files.WINNINGS.toString();
 
@@ -52,7 +52,7 @@ public class WinningsTrack {
 	 */
 	public void readWinnings() {
 		try {
-			String line = null;
+			String line;
 			BufferedReader reader = new BufferedReader(new FileReader(_winningsFile));
 			while ((line = reader.readLine()) != null) {
 				_points = Integer.parseInt(line);
@@ -66,7 +66,7 @@ public class WinningsTrack {
 	/**
 	 * This method returns the total winnings as a string.
 	 * 
-	 * @return
+	 * @return user winnings
 	 */
 	public String getWinnings() {
 		if (_exist) {

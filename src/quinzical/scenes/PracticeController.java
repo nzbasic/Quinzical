@@ -26,20 +26,17 @@ import quinzical.data.RandomGenerator;
 import quinzical.data.Sections;
 
 public class PracticeController extends Help {
-	private CategoryLoader _loader;
 	private RandomGenerator _generator;
 	private List<Category> _categories;
 	private ToggleButton[] _buttons;
 	private ToggleButton[] _selected;
 	private boolean _practiseMode = true;
-	private int[] _numberSelected = new int[5];
-	private TreeSet<Integer> _freeSpace = new TreeSet<Integer>();
+	private final int[] _numberSelected = new int[5];
+	private final TreeSet<Integer> _freeSpace = new TreeSet<>();
 	private int _total = 0;
 
 	@FXML
 	private ToggleButton ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9, s1, s2, s3, s4, s5;
-	@FXML
-	private ToggleButton tester;
 	@FXML
 	private Button practise, confirm, help;
 	@FXML
@@ -49,7 +46,7 @@ public class PracticeController extends Help {
 
 	@FXML
 	private void initialize() {
-		_loader = new CategoryLoader(Sections.NZ);
+		CategoryLoader _loader = new CategoryLoader(Sections.NZ);
 		_generator = new RandomGenerator();
 		_categories = _loader.getCategories();
 		_buttons = new ToggleButton[] { ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9 };
@@ -102,7 +99,7 @@ public class PracticeController extends Help {
 	 * Called when the user presses any of the buttons.
 	 * 
 	 * @param e Button Event
-	 * @throws IOException
+	 * @throws IOException file not found
 	 */
 	@FXML
 	public void select(Event e) throws IOException {
@@ -111,13 +108,13 @@ public class PracticeController extends Help {
 		char[] chars = id.toCharArray();
 		int categoryNum = Integer.parseInt(Character.toString(chars[3]));
 		Category category = _categories.get(categoryNum - 1);
-		if (_practiseMode == true) {
+		if (_practiseMode) {
 
 			Question question = _generator.generatePracticeQuestion(category);
 			loadQuestion(question, e);
 
 		} else {
-			int index = 0;
+			int index;
 			// User selects five categories
 
 			// Check if the space is free
@@ -160,12 +157,12 @@ public class PracticeController extends Help {
 	/**
 	 * When user presses confirm button after they've done the selection start game
 	 * 
-	 * @param e
-	 * @throws IOException
+	 * @param e button event
+	 * @throws IOException file not found
 	 */
 	@FXML
 	public void finishSelection(Event e) throws IOException {
-		List<String> gameCategories = new ArrayList<String>();
+		List<String> gameCategories = new ArrayList<>();
 		for (int i = 0; i < 5; i++) {
 			gameCategories.add(_selected[i].getText());
 		}
@@ -187,11 +184,11 @@ public class PracticeController extends Help {
 	/**
 	 * Return to main menu
 	 * 
-	 * @throws IOException
+	 * @throws IOException file not found
 	 */
 	@FXML
-	public void returnToMenu(Event e) throws IOException {
-		new GameController().returnToMenu(e);
+	public void returnToMenu() throws IOException {
+		new GameController().returnToMenu();
 	}
 
 }

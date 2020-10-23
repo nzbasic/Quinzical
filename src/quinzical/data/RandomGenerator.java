@@ -23,8 +23,7 @@ public class RandomGenerator {
 	private List<Category> _categories = new ArrayList<>();
 	private List<String> _randomCategoryNames = new ArrayList<>();
 	private final int[] _points = { 100, 200, 300, 400, 500 };
-	private List<Question> _gameQuestions = new ArrayList<Question>();
-	private AttemptTrack _attempt = new AttemptTrack();
+	private final AttemptTrack _attempt = new AttemptTrack();
 
 
 	/**
@@ -33,12 +32,14 @@ public class RandomGenerator {
 	 * 
 	 */
 	public void generateCategoriesAtRandom(int n, Sections section) {
-		List<String> allCategoryNames = new ArrayList<String>();
-		_categories = new ArrayList<Category>();
-		_randomCategoryNames = new ArrayList<String>();
+		List<String> allCategoryNames = new ArrayList<>();
+		_categories = new ArrayList<>();
+		_randomCategoryNames = new ArrayList<>();
 		File[] files = new File(Folders.CATEGORIES.toString() + "/" + section).listFiles();
-		for (File file : files) {
-			allCategoryNames.add(file.getName());
+		if (files != null) {
+			for (File file : files) {
+				allCategoryNames.add(file.getName());
+			}
 		}
 
 		// Generate n categories at random
@@ -77,7 +78,7 @@ public class RandomGenerator {
 	 * @return A List of strings, one for each line in the file.
 	 */
 	public List<String> readAllLinesInFile(String nameOfFile, Sections section) {
-		BufferedReader bufReader = null;
+		BufferedReader bufReader;
 		List<String> listOfLines = new ArrayList<>();
 		try {
 			// read each file
@@ -105,15 +106,14 @@ public class RandomGenerator {
 	public void generateGameQuestions(int n, Sections section) {
 
 		int categoryIndex = 0;
-		_gameQuestions = new ArrayList<Question>();
-		Question q = null;
-		;
+		List<Question> _gameQuestions = new ArrayList<>();
+		Question q;
 		for (String cName : _randomCategoryNames) {
 			// get all lines inside file
 			List<String> questionLines = readAllLinesInFile(cName, section);
 			// Generate 5 question objects
 			for (int i = 0; i < n; i++) {
-				int index=0;
+				int index;
 				int randomNum = ThreadLocalRandom.current().nextInt(0, questionLines.size());
 				// creates a question object and attach to its category object
 				String[] questionfields = questionLines.get(randomNum).split(Question.delimiter);
@@ -144,8 +144,7 @@ public class RandomGenerator {
 		// Generate one question Object at Random
 		int randomNum = ThreadLocalRandom.current().nextInt(0, avaiableQuestions.size());
 		String[] questionfields = avaiableQuestions.get(randomNum).split(Question.delimiter);
-		Question q = new Question(questionfields[0], questionfields[1], Integer.toString(0), questionfields[2], c);
-		return q;
+		return new Question(questionfields[0], questionfields[1], Integer.toString(0), questionfields[2], c);
 	}
 
 	public Question generateRandomQuestionFromList(List<Question> list) {

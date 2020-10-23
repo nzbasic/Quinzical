@@ -48,12 +48,11 @@ public class RewardController {
 	/**
 	 * Returns user to the main menu, keeps data.
 	 * 
-	 * @param e Button event
 	 * @throws IOException File not found
 	 */
 	@FXML
-	public void returnToMainMenu(Event e) throws IOException {
-		new GameController().returnToMenu(e);
+	public void returnToMainMenu() throws IOException {
+		new GameController().returnToMenu();
 	}
 
 	/**

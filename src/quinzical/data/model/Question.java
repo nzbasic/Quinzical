@@ -1,19 +1,20 @@
 package quinzical.data.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Object to store Quinzical question data
  */
 public class Question {
-	private String _question;
-	private String _answer;
-	private String _prize;
+	private final String _question;
+	private final String _answer;
+	private final String _prize;
 	private boolean _attempted = false;
 	private boolean _result;
-	private Category _parent;
-	private String _type;
+	private final Category _parent;
+	private final String _type;
 
 	public final static String delimiter = ",";
 	public final static String answerDelimiter = "/";
@@ -37,16 +38,9 @@ public class Question {
 	}
 
 	/**
-	 * Sets the status of this question, if it has been attempted or not.
-	 */
-	public void setAttemped() {
-		_attempted = true;
-	}
-
-	/**
 	 * Sets the result of the question, if they got it right or wrong.
 	 * 
-	 * @param result
+	 * @param result true for correct false for incorrect
 	 */
 	public void setResult(boolean result) {
 		_result = result;
@@ -64,13 +58,6 @@ public class Question {
 	 */
 	public boolean getResult() {
 		return _result;
-	}
-
-	/**
-	 * @return Parent category of this question.
-	 */
-	public Category getParentCategory() {
-		return _parent;
 	}
 
 	/**
@@ -119,10 +106,8 @@ public class Question {
 	// Returns all the possible answers for a question (some have multiple answers)
 	public List<String> getAnswersAsList() {
 		String[] data = _answer.split(Question.answerDelimiter);
-		List<String> output = new ArrayList<String>();
-		for (String answer : data) {
-			output.add(answer);
-		}
+		List<String> output = new ArrayList<>();
+		Collections.addAll(output, data);
 		return output;
 	}
 
@@ -130,25 +115,25 @@ public class Question {
 	 * Checks a user string against the answer stored in the object. Returns true if
 	 * they match.
 	 * 
-	 * @param userInput
+	 * @param userInput the users answer
 	 * @return true or false
 	 */
 	public boolean checkAnswer(String userInput) {
 
 		List<String> possibleAnswers = getAnswersAsList();
 
-		String output = "";
+		StringBuilder output = new StringBuilder();
 		String[] data = userInput.split(" ");
 		if (data[0].equals("the")) {
 			int length = data.length;
 			for (int i = 1; i < length; i++) {
-				output = output + data[i];
+				output.append(data[i]);
 			}
 		} else {
-			output = userInput;
+			output = new StringBuilder(userInput);
 		}
 
-		userInput = output.toLowerCase().trim();
+		userInput = output.toString().toLowerCase().trim();
 
 		for (String answer : possibleAnswers) {
 			if (userInput.equals(answer.toLowerCase().trim())) {

@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class HighscoreTrack {
 
-    private List<Score> _scores = new ArrayList<Score>();
+    private final List<Score> _scores = new ArrayList<>();
 
     public HighscoreTrack() {
         File file = new File(Files.SCORES.toString());
@@ -40,7 +40,7 @@ public class HighscoreTrack {
     }
 
     public List<Score> getScores() {
-        Collections.sort(_scores, Comparator.comparing(Score::getScore));
+        _scores.sort(Comparator.comparing(Score::getScore));
         Collections.reverse(_scores);
         return _scores;
     }

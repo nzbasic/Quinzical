@@ -14,30 +14,32 @@ import java.util.Scanner;
  */
 public class CategoryLoader {
 
-	private List<Category> _categories;
+	private final List<Category> _categories;
 
 	public CategoryLoader(Sections section) {
-		_categories = new ArrayList<Category>();
+		_categories = new ArrayList<>();
 
 		File[] files = new File(Folders.CATEGORIES.toString() + "/" + section).listFiles();
-		Scanner sc = null;
-		for (File file : files) {
-			Category category = new Category(file.getName());
-			try {
-				sc = new Scanner(file);
+		Scanner sc;
+		if (files != null) {
+			for (File file : files) {
+				Category category = new Category(file.getName());
+				try {
+					sc = new Scanner(file);
 
-				while (sc.hasNextLine()) {
-					String line = sc.nextLine();
-					String[] data = line.split(Question.delimiter);
-					Question question = new Question(data[0], data[1], "0", data[2], category);
-					category.add(question);
+					while (sc.hasNextLine()) {
+						String line = sc.nextLine();
+						String[] data = line.split(Question.delimiter);
+						Question question = new Question(data[0], data[1], "0", data[2], category);
+						category.add(question);
+					}
+
+					sc.close();
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
 				}
-
-				sc.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+				_categories.add(category);
 			}
-			_categories.add(category);
 		}
 	}
 

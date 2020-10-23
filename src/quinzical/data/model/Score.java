@@ -2,7 +2,7 @@ package quinzical.data.model;
 
 public class Score {
 
-    private String _score;
+    private final String _score;
 	public Score(String score) {
         this._score = score;
     }

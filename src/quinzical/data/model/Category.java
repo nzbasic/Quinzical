@@ -7,8 +7,8 @@ import java.util.List;
  * Object to store a category, and its list of questions
  */
 public class Category {
-	private List<Question> _questions = null;
-	private String _name;
+	private final List<Question> _questions;
+	private final String _name;
 
 	/**
 	 * Default constructor for Category
@@ -17,7 +17,7 @@ public class Category {
 	 */
 	public Category(String name) {
 		_name = name;
-		_questions = new ArrayList<Question>();
+		_questions = new ArrayList<>();
 	}
 
 	/**
