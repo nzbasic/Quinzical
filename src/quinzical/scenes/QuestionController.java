@@ -277,7 +277,7 @@ public class QuestionController extends Help {
 
 					bw.write("(SayText \"" + GameText + "\")");
 					bw.close();
-					Process p = new ProcessBuilder("bash", "-c", "festival -b ./attempt/question.scm").start();
+					Process p = new ProcessBuilder("bash", "-c", "festival -b ./.attempt/.question.scm").start();
 
 					// TImer only appears after the first time the question gets played
 					if (playTime == 0 ) {
@@ -338,6 +338,7 @@ public class QuestionController extends Help {
 	 */
 	@FXML
 	public void returnToQuestionSelection(Event e) throws Exception {
+		killProcesses();
 		FXMLLoader gameLoad = null;
 		if (_practiceMode) {
 			gameLoad = new FXMLLoader(getClass().getResource(FxmlFile.PRACTICE.getPath()));

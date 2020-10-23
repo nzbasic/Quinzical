@@ -13,7 +13,7 @@ public enum Folders {
     ATTEMPT {
         @Override
         public String toString() {
-            return "./attempt";
+            return "./.attempt";
         }
     },
     CATEGORIES_INTERNATIONAL {
