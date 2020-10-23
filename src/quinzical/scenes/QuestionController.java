@@ -11,10 +11,6 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
@@ -22,8 +18,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
+import quinzical.Quinzical;
 import quinzical.QuinzicalExceptions;
 import quinzical.data.tracking.AttemptTrack;
 import quinzical.data.Files;
@@ -334,30 +330,15 @@ public class QuestionController extends Help {
 	 */
 	@FXML
 	public void returnToQuestionSelection(Event e) throws Exception {
-		FXMLLoader gameLoad;
 		if (_practiceMode) {
-			gameLoad = new FXMLLoader(getClass().getResource(FxmlFile.PRACTICE.getPath()));
-
-			Parent gameParent = gameLoad.load();
-
-			Scene gameScene = new Scene(gameParent);
-			Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-			quinzicalStage.setScene(gameScene);
-			quinzicalStage.show();
+			Quinzical.loadFXML(FxmlFile.PRACTICE);
 		} else {
 			if (_internationalSection) {
 				new GameController().switchToInternationalQuestions(e);
 			} else {
-				gameLoad = new FXMLLoader(getClass().getResource(FxmlFile.GAME.getPath()));
-				Parent gameParent = gameLoad.load();
-				GameController gc = gameLoad.getController();
+				GameController gc = (GameController) Quinzical.loadGetController(FxmlFile.GAME);
 				gc.oldGameData();
-
-				Scene gameScene = new Scene(gameParent);
-				Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-				gc.setStage(quinzicalStage);
-				quinzicalStage.setScene(gameScene);
-				quinzicalStage.show();
+				Quinzical.loadStoredFXML();
 				gc.checkIfAllAttempted();
 			}
 

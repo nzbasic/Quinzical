@@ -36,4 +36,18 @@ public class Quinzical extends Application {
 		_stage.show();
 	}
 
+	private static Parent _controllerParent;
+
+	public static Object loadGetController(FxmlFile fxmlfile) throws IOException {
+		FXMLLoader load = new FXMLLoader(GameController.class.getResource(fxmlfile.getPath()));
+		_controllerParent = load.load();
+		return load.getController();
+	}
+
+	public static void loadStoredFXML() throws IOException {
+		Scene scene = new Scene(_controllerParent);
+		_stage.setScene(scene);
+		_stage.show();
+	}
+
 }

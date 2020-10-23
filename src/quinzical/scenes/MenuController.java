@@ -2,10 +2,7 @@ package quinzical.scenes;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -95,15 +92,9 @@ public class MenuController extends Help {
 	 */
 	@FXML
 	public void continueGame(Event e) throws Exception {
-		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource(FxmlFile.GAME.getPath()));
-		Parent gameParent = gameLoad.load();
-		GameController gc = gameLoad.getController();
+		GameController gc = (GameController) Quinzical.loadGetController(FxmlFile.GAME);
 		gc.oldGameData();
-		Scene gameScene = new Scene(gameParent);
-		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-		gc.setStage(quinzicalStage);
-		quinzicalStage.setScene(gameScene);
-		quinzicalStage.show();
+		Quinzical.loadStoredFXML();
 		gc.checkIfAllAttempted();
 	}
 
@@ -116,14 +107,9 @@ public class MenuController extends Help {
 	 */
 	@FXML
 	public void newGame(Event e) throws IOException {
-		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource(FxmlFile.PRACTICE.getPath()));
-		Parent gameParent = gameLoad.load();
-		PracticeController gc = gameLoad.getController();
+		PracticeController gc = (PracticeController) Quinzical.loadGetController(FxmlFile.PRACTICE);
 		gc.setCategorySelection();
-		Scene gameScene = new Scene(gameParent);
-		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-		quinzicalStage.setScene(gameScene);
-		quinzicalStage.show();
+		Quinzical.loadStoredFXML();
 
 	}
 
