@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
-import quinzical.quinzical;
+import quinzical.Quinzical;
 import quinzical.model.AttemptTrack;
 import quinzical.model.Winnings;
 
@@ -71,7 +71,7 @@ public class BonusQuestionController {
 	 */
 	@FXML
 	public void returnToMenu(Event e) throws IOException {
-		quinzical.loadFXML("Menu");
+		Quinzical.loadFXML("Menu");
 	}
 
 	/**

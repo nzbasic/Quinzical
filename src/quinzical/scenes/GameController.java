@@ -19,7 +19,7 @@ import quinzical.model.HighscoreTrack;
 import quinzical.model.Question;
 import quinzical.model.Score;
 import quinzical.model.Winnings;
-import quinzical.quinzical;
+import quinzical.Quinzical;
 
 /**
  * Controller for the screen where the user selects which question they would
@@ -266,7 +266,7 @@ public class GameController extends Help {
 	 */
 	@FXML
 	public void returnToMenu(Event e) throws IOException {
-		quinzical.loadFXML("Menu");
+		Quinzical.loadFXML("Menu");
 	}
 
 	@Override

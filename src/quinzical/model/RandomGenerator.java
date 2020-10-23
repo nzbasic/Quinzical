@@ -1,6 +1,6 @@
 package quinzical.model;
 
-import quinzical.quinzicalExceptions;
+import quinzical.QuinzicalExceptions;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -88,7 +88,7 @@ public class RandomGenerator {
 			bufReader.close();
 
 		} catch (Exception e) {
-			throw new quinzicalExceptions(e.getMessage());
+			throw new QuinzicalExceptions(e.getMessage());
 		}
 		return listOfLines;
 	}

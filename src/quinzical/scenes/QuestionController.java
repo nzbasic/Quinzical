@@ -24,7 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import quinzical.quinzicalExceptions;
+import quinzical.QuinzicalExceptions;
 import quinzical.model.AttemptTrack;
 import quinzical.model.Question;
 import quinzical.model.Winnings;
@@ -317,7 +317,7 @@ public class QuestionController extends Help {
 
 				} catch (Exception e) {
 					// add our own exception class to handle runtime exceptions
-					throw new quinzicalExceptions(e.getMessage());
+					throw new QuinzicalExceptions(e.getMessage());
 				}
 				// bash process
 			}

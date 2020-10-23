@@ -1,6 +1,6 @@
 package quinzical.model;
 
-import quinzical.quinzicalExceptions;
+import quinzical.QuinzicalExceptions;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -85,7 +85,7 @@ public class AttemptTrack {
 			bw.close();
 		} catch (Exception e) {
 			// add our own exception class to handle runtime exceptions
-			throw new quinzicalExceptions(e.getMessage());
+			throw new QuinzicalExceptions(e.getMessage());
 		}
 	}
 
@@ -132,7 +132,7 @@ public class AttemptTrack {
 			}
 			reader.close();
 		} catch (Exception e) {
-			throw new quinzicalExceptions(e.getMessage());
+			throw new QuinzicalExceptions(e.getMessage());
 		}
 
 	}
@@ -164,7 +164,7 @@ public class AttemptTrack {
 			}
 			bw.close();
 		} catch (Exception e) {
-			throw new quinzicalExceptions(e.getMessage());
+			throw new QuinzicalExceptions(e.getMessage());
 		}
 	}
 
@@ -202,7 +202,7 @@ public class AttemptTrack {
 			}
 			reader.close();
 		} catch (Exception e) {
-			throw new quinzicalExceptions(e.getMessage());
+			throw new QuinzicalExceptions(e.getMessage());
 		}
 		// return record;
 	}
@@ -256,7 +256,7 @@ public class AttemptTrack {
 				}
 				scanner.close();
 			} catch (Exception e) {
-				throw new quinzicalExceptions(e.getMessage());
+				throw new QuinzicalExceptions(e.getMessage());
 			}
 
 			for (String string : list) {
@@ -274,7 +274,7 @@ public class AttemptTrack {
 			try {
 				file.createNewFile();
 			} catch (IOException e) {
-				throw new quinzicalExceptions(e.getMessage());
+				throw new QuinzicalExceptions(e.getMessage());
 			}
 		}
 		return output;
@@ -336,7 +336,7 @@ public class AttemptTrack {
 
 				fw.close();
 			} catch (Exception e) {
-				throw new quinzicalExceptions(e.getMessage());
+				throw new QuinzicalExceptions(e.getMessage());
 			}
 		}
 	}
@@ -357,7 +357,7 @@ public class AttemptTrack {
 			fw.close();
 
 		} catch (Exception e) {
-			throw new quinzicalExceptions(e.getMessage());
+			throw new QuinzicalExceptions(e.getMessage());
 		}
 	}
 }

@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import quinzical.quinzical;
+import quinzical.Quinzical;
 import quinzical.model.Category;
 import quinzical.model.CategoryLoader;
 
@@ -62,6 +62,6 @@ public class AddQuestionController {
 
 	@FXML
 	private void cancel() throws IOException {
-		quinzical.loadFXML("Menu");
+		Quinzical.loadFXML("Menu");
 	}
 }

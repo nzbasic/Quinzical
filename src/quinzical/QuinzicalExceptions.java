@@ -3,13 +3,13 @@ package quinzical;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
-public class quinzicalExceptions extends RuntimeException {
+public class QuinzicalExceptions extends RuntimeException {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public quinzicalExceptions(String err) {
+	public QuinzicalExceptions(String err) {
 
 		Alert errormsg = new Alert(AlertType.ERROR);
 		errormsg.setTitle("Error");

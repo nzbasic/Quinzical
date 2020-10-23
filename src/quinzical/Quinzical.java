@@ -12,7 +12,7 @@ import quinzical.scenes.GameController;
 /**
  * Entry point class for the program. Loads the menu and starts the game.
  */
-public class quinzical extends Application {
+public class Quinzical extends Application {
 
 	private static Stage stage;
 

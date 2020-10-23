@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import quinzical.model.AttemptTrack;
 import quinzical.model.Winnings;
-import quinzical.quinzical;
+import quinzical.Quinzical;
 
 import java.io.IOException;
 
@@ -70,7 +70,7 @@ public class MenuController extends Help {
 	 */
 	@FXML
 	public void startPractice() throws IOException {
-		quinzical.loadFXML("Practice");
+		Quinzical.loadFXML("Practice");
 	}
 
 	/**

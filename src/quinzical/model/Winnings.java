@@ -1,6 +1,6 @@
 package quinzical.model;
 
-import quinzical.quinzicalExceptions;
+import quinzical.QuinzicalExceptions;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -39,7 +39,7 @@ public class Winnings {
 			bw.newLine();
 			bw.close();
 		} catch (Exception e) {
-			throw new quinzicalExceptions(e.getMessage());
+			throw new QuinzicalExceptions(e.getMessage());
 		}
 	}
 
@@ -55,7 +55,7 @@ public class Winnings {
 			}
 			reader.close();
 		} catch (Exception e) {
-			throw new quinzicalExceptions(e.getMessage());
+			throw new QuinzicalExceptions(e.getMessage());
 		}
 	}
 
