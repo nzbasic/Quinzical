@@ -1,6 +1,5 @@
 package quinzical.data;
 
-import quinzical.data.Sections;
 import quinzical.data.model.Category;
 import quinzical.data.model.Question;
 
@@ -17,12 +16,10 @@ public class CategoryLoader {
 
 	private List<Category> _categories;
 
-	private static final String _categoryFolder = "./categories/";
-
 	public CategoryLoader(Sections section) {
 		_categories = new ArrayList<Category>();
 
-		File[] files = new File(_categoryFolder + section).listFiles();
+		File[] files = new File(Folders.CATEGORIES.toString() + "/" + section).listFiles();
 		Scanner sc = null;
 		for (File file : files) {
 			Category category = new Category(file.getName());

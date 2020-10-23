@@ -1,5 +1,6 @@
 package quinzical.data.tracking;
 
+import quinzical.data.Files;
 import quinzical.data.model.Score;
 
 import java.io.File;
@@ -16,7 +17,7 @@ public class HighscoreTrack {
     private List<Score> _scores = new ArrayList<Score>();
 
     public HighscoreTrack() {
-        File file = new File("./scores.txt");
+        File file = new File(Files.SCORES.toString());
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -46,7 +47,7 @@ public class HighscoreTrack {
 
     public void addScore(Score newScore) throws IOException {
         _scores.add(newScore);
-        File file = new File("./scores.txt");
+        File file = new File(Files.SCORES.toString());
         FileWriter fw = new FileWriter(file);
         for (Score score : _scores) {
             fw.write(score.getScore() + "\n");

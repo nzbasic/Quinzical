@@ -26,8 +26,6 @@ public class RandomGenerator {
 	private List<Question> _gameQuestions = new ArrayList<Question>();
 	private AttemptTrack _attempt = new AttemptTrack();
 
-	private static final String _categoriesFolder = "./categories/";
-
 
 	/**
 	 * Uses random number generation to generate lists of categories and questions
@@ -38,7 +36,7 @@ public class RandomGenerator {
 		List<String> allCategoryNames = new ArrayList<String>();
 		_categories = new ArrayList<Category>();
 		_randomCategoryNames = new ArrayList<String>();
-		File[] files = new File(_categoriesFolder + section).listFiles();
+		File[] files = new File(Folders.CATEGORIES.toString() + "/" + section).listFiles();
 		for (File file : files) {
 			allCategoryNames.add(file.getName());
 		}
@@ -83,7 +81,7 @@ public class RandomGenerator {
 		List<String> listOfLines = new ArrayList<>();
 		try {
 			// read each file
-			bufReader = new BufferedReader(new FileReader(_categoriesFolder + section + "/" + nameOfFile));
+			bufReader = new BufferedReader(new FileReader(Folders.CATEGORIES.toString() + "/" + section.toString() + "/" + nameOfFile));
 			// read all lines in that file
 			String line = bufReader.readLine();
 			while (line != null) {

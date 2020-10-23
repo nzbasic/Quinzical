@@ -1,6 +1,8 @@
 package quinzical.data.tracking;
 
 import quinzical.QuinzicalExceptions;
+import quinzical.data.Files;
+import quinzical.data.Folders;
 import quinzical.data.RandomGenerator;
 import quinzical.data.Sections;
 import quinzical.data.model.Category;
@@ -32,12 +34,11 @@ public class AttemptTrack {
 	private static final int _questionsPerCategoryNormal = 5;
 	private static final int _questionsPerCategoryInternational = 2;
 	private static final int _numberOfQuestions = 25;
-	private static final String _attemptFolder = "./attempt";
-	private static final String _questionsAttemptFile = _attemptFolder + "/questionsAttempt.txt";
-	private static final String _internationalAttemptFile = _attemptFolder + "/internationalAttempt.txt";
-	private static final String _attemptRecord = _attemptFolder + "/attemptRecord.txt";
-	private static final String _internationalAttemptRecord = _attemptFolder + "/bonusAttemptRecord.txt";
-	private static final String _wrongQuestions = _attemptFolder + "/wrongQuestions.txt";
+    private static final String _questionsAttemptFile = Folders.ATTEMPT.toString() + Files.QUESTIONS_ATTEMPT.toString();
+	private static final String _internationalAttemptFile = Folders.ATTEMPT.toString() + Files.INTERNATIONAL_ATTEMPT.toString();
+	private static final String _attemptRecord = Folders.ATTEMPT.toString() + Files.ATTEMPT_RECORD.toString();
+	private static final String _internationalAttemptRecord = Folders.ATTEMPT.toString() + Files.BONUS_ATTEMPT_RECORD.toString();
+	private static final String _wrongQuestions = Folders.ATTEMPT.toString() + Files.WRONG_QUESTIONS.toString();
 	
 	/**
 	 * Constructor method, creates all necessary files and folder if not created
@@ -57,7 +58,7 @@ public class AttemptTrack {
 	 * @return true if exists, false if doesn't exist.
 	 */
 	public static boolean checkDirExistence() {
-		_tmpDir = new File(_attemptFolder);
+		_tmpDir = new File(Folders.ATTEMPT.toString());
 		boolean existance = _tmpDir.exists();
 		return existance;
 	}

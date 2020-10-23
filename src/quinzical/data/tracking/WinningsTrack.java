@@ -1,6 +1,8 @@
 package quinzical.data.tracking;
 
 import quinzical.QuinzicalExceptions;
+import quinzical.data.Files;
+import quinzical.data.Folders;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,7 +18,7 @@ public class WinningsTrack {
 	private int _points;
 	private boolean _exist;
 
-	private final static String _winningsFile = "./attempt/winnings.txt";
+	private final static String _winningsFile = Folders.ATTEMPT.toString() + Files.WINNINGS.toString();
 
 	/**
 	 * Default constructor for Winnings. Loads the current winnings file.
