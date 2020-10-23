@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import quinzical.model.AttemptTrack;
+import quinzical.model.Sections;
 import quinzical.model.Winnings;
 import quinzical.Quinzical;
 
@@ -45,7 +46,7 @@ public class MenuController extends Help {
 	public void startGame(Event e) throws IOException {
 
 		AttemptTrack track = new AttemptTrack();
-		int[] record = track.getAttemptedRecord("NZ");
+		int[] record = track.getAttemptedRecord(Sections.NZ);
 		boolean flag = false;
 
 		// Check if the user has attempted any questions in the current save.

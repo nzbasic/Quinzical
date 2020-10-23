@@ -160,4 +160,13 @@ public class Question {
 		_result = false;
 		return false;
 	}
+
+	public String getFormattedStringWrong() {
+		return _question + "," + _answer + "," + _type + "\n";
+	}
+
+	public String getFormattedString() {
+		return _question + "," + _answer + "," + _prize + ","
+		+ _parent.getName() + "," + _type;
+	}
 }

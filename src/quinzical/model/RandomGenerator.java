@@ -29,7 +29,7 @@ public class RandomGenerator {
 	 * from all loaded questions. n:number of categories to generate
 	 * 
 	 */
-	public void generateCategoriesAtRandom(int n, String section) {
+	public void generateCategoriesAtRandom(int n, Sections section) {
 		List<String> allCategoryNames = new ArrayList<String>();
 		_categories = new ArrayList<Category>();
 		_randomCategoryNames = new ArrayList<String>();
@@ -73,7 +73,7 @@ public class RandomGenerator {
 	 * @param nameOfFile Name of the file to search
 	 * @return A List of strings, one for each line in the file.
 	 */
-	public List<String> readAllLinesInFile(String nameOfFile, String section) {
+	public List<String> readAllLinesInFile(String nameOfFile, Sections section) {
 		BufferedReader bufReader = null;
 		List<String> listOfLines = new ArrayList<>();
 		try {
@@ -99,7 +99,7 @@ public class RandomGenerator {
 	 * @param n=number of questions per category 
 	 * @param section: NZ or International
 	 */
-	public void generateGameQuestions(int n, String section) {
+	public void generateGameQuestions(int n, Sections section) {
 
 		int categoryIndex = 0;
 		_gameQuestions = new ArrayList<Question>();
@@ -137,7 +137,7 @@ public class RandomGenerator {
 	 * Generate one question at Random
 	 */
 	public Question generatePracticeQuestion(Category c) {
-		List<String> avaiableQuestions = readAllLinesInFile(c.getName(), "NZ");
+		List<String> avaiableQuestions = readAllLinesInFile(c.getName(), Sections.NZ);
 		// Generate one question Object at Random
 		int randomNum = ThreadLocalRandom.current().nextInt(0, avaiableQuestions.size());
 		String[] questionfields = avaiableQuestions.get(randomNum).split(",");

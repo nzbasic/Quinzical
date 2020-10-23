@@ -18,6 +18,7 @@ import quinzical.model.AttemptTrack;
 import quinzical.model.HighscoreTrack;
 import quinzical.model.Question;
 import quinzical.model.Score;
+import quinzical.model.Sections;
 import quinzical.model.Winnings;
 import quinzical.Quinzical;
 
@@ -74,7 +75,7 @@ public class GameController extends Help {
 		int attemptedInCurrentCate = 0;
 		Label[] categories = { category1, category2, category3, category4, category5 };
 		points.setText(new Winnings().getWinnings());
-		_categoryNames = _attempt.readCategoriesGenerated("NZ");
+		_categoryNames = _attempt.readCategoriesGenerated(Sections.NZ);
 		for (int i = 0; i < 5; i++) {
 			categories[i].setText(_categoryNames.get(i));
 		}
@@ -83,7 +84,7 @@ public class GameController extends Help {
 		_questionbuttons = questions;
 		// Hide questions already attempted
 		boolean countCate = true;
-		int[] attemptedRecord = _attempt.getAttemptedRecord("NZ");
+		int[] attemptedRecord = _attempt.getAttemptedRecord(Sections.NZ);
 		// check if all questions attempted
 		_count = 0;
 
@@ -197,7 +198,7 @@ public class GameController extends Help {
 	@FXML
 	public void changeToAnswerScreen(Event e) throws IOException {
 		// Get Id of button clicked, works if clicked object extends control
-		String section = null;
+		Sections section = null;
 		String ButtonId = ((Control) e.getSource()).getId();
 		int lineNumber = 0;
 		// Set button invisible
@@ -208,14 +209,14 @@ public class GameController extends Help {
 		int questionIndex = Integer.parseInt(ButtonId.substring(3));
 		// Set Question as attempted
 		if (ButtonId.substring(0, 1).equals("c")) {
-			section = "NZ";
+			section = Sections.NZ;
 			lineNumber = (categoryIndex - 1) * 5 + questionIndex;
 			// Enable nextbutton click
 			if (questionIndex < 5) {
 				(_questionbuttons[lineNumber]).setDisable(false);
 			}
 		} else {
-			section = "International";
+			section = Sections.INTERNATIONAL;
 			lineNumber = (categoryIndex - 1) * 2 + questionIndex;
 		}
 		new AttemptTrack().setAttempted(lineNumber - 1, section);

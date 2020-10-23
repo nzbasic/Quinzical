@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import quinzical.Quinzical;
 import quinzical.model.Category;
 import quinzical.model.CategoryLoader;
+import quinzical.model.Sections;
 
 public class AddQuestionController {
 	@FXML
@@ -25,7 +26,7 @@ public class AddQuestionController {
 
 	@FXML
 	private void initialize() {
-		CategoryLoader loader = new CategoryLoader("NZ");
+		CategoryLoader loader = new CategoryLoader(Sections.NZ);
 		List<Category> list = loader.getCategories();
 		for (Category category : list) {
 			categoryBox.getItems().add(category);

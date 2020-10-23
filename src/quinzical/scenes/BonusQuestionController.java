@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import quinzical.Quinzical;
 import quinzical.model.AttemptTrack;
+import quinzical.model.Sections;
 import quinzical.model.Winnings;
 
 public class BonusQuestionController {
@@ -33,14 +34,14 @@ public class BonusQuestionController {
 	public void setUp() throws IOException {
 		Label[] categories = { country1, country2, country3 };
 		points.setText(new Winnings().getWinnings());
-		_categoryNames = _attempt.readCategoriesGenerated("International");
+		_categoryNames = _attempt.readCategoriesGenerated(Sections.INTERNATIONAL);
 		for (int i = 0; i < 3; i++) {
 			categories[i].setText(_categoryNames.get(i));
 		}
 		Button[] questions = { b1q1, b1q2, b2q1, b2q2, b3q1, b3q2 };
 		// Hide questions already attempted
 		boolean countCate = true;
-		int[] attemptedRecord = _attempt.getAttemptedRecord("International");
+		int[] attemptedRecord = _attempt.getAttemptedRecord(Sections.INTERNATIONAL);
 		// check if all questions attempted
 		_count = 0;
 
@@ -82,7 +83,7 @@ public class BonusQuestionController {
 	 * @throws Exception
 	 */
 	public int getNumberOfQuestionsAttempted() throws Exception {
-		int[] attemptedRecord = _attempt.getAttemptedRecord("International");
+		int[] attemptedRecord = _attempt.getAttemptedRecord(Sections.INTERNATIONAL);
 		// check if all questions attempted
 		_count = 0;
 		for (int i = 0; i < 6; i++) {

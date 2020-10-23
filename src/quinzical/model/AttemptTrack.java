@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.swing.text.InternationalFormatter;
+
 /**
  * This class manages the previous attempt history and game status
  *
@@ -25,6 +27,16 @@ public class AttemptTrack {
 	private final Winnings _winningRec = new Winnings();
 	private static File _tmpDir;
 
+	private static final int _questionsPerCategoryNormal = 5;
+	private static final int _questionsPerCategoryInternational = 2;
+	private static final int _numberOfQuestions = 25;
+	private static final String _attemptFolder = "./attempt";
+	private static final String _questionsAttemptFile = _attemptFolder + "/questionsAttempt.txt";
+	private static final String _internationalAttemptFile = _attemptFolder + "/internationalAttempt.txt";
+	private static final String _attemptRecord = _attemptFolder + "/attemptRecord.txt";
+	private static final String _internationalAttemptRecord = _attemptFolder + "/bonusAttemptRecord.txt";
+	private static final String _wrongQuestions = _attemptFolder + "/wrongQuestions.txt";
+	
 	/**
 	 * Constructor method, creates all necessary files and folder if not created
 	 * already.
@@ -43,7 +55,7 @@ public class AttemptTrack {
 	 * @return true if exists, false if doesn't exist.
 	 */
 	public static boolean checkDirExistence() {
-		_tmpDir = new File("./attempt");
+		_tmpDir = new File(_attemptFolder);
 		boolean existance = _tmpDir.exists();
 		return existance;
 	}
@@ -51,7 +63,7 @@ public class AttemptTrack {
 	/**
 	 * get the names of the five categories generated from previous attempts
 	 */
-	public List<String> readCategoriesGenerated(String section) {
+	public List<String> readCategoriesGenerated(Sections section) {
 		readQuestionsAndCategoriesGenerated(section);
 		for (Category c : _categories) {
 			_categoryNames.add(c.getName());
@@ -66,19 +78,21 @@ public class AttemptTrack {
 	 * @param qList   is a list of Question Objects.
 	 * @param section questions for NZ categories or International categories
 	 */
-	public void updateQuestionsGenerated(List<Question> qList, String section) {
+	public void updateQuestionsGenerated(List<Question> qList, Sections section) {
 		FileWriter fw = null;
 		try {
-			if (section.equals("NZ")) {
-				fw = new FileWriter("./attempt/questionsAttempt.txt");
-			} else {
-				fw = new FileWriter("./attempt/internationalAttempt.txt");
+			switch(section) {
+				case NZ:
+					fw = new FileWriter(_questionsAttemptFile);
+					break;
+				case INTERNATIONAL:
+					fw = new FileWriter(_internationalAttemptFile);
+					break;
 			}
 
 			BufferedWriter bw = new BufferedWriter(fw);
 			for (Question q : qList) {
-				String questionLine = q.getQuestion() + "," + q.getAnswer() + "," + q.getPrize() + ","
-						+ q.getParentCategory().getName() + "," + q.getType();
+				String questionLine = q.getFormattedString();
 				bw.write(questionLine);
 				bw.newLine();
 			}
@@ -95,7 +109,7 @@ public class AttemptTrack {
 	 * @param section NZ or International
 	 * @return List of question objects generated for the specified section.
 	 */
-	public List<Question> getQuestionsGenerated(String section) {
+	public List<Question> getQuestionsGenerated(Sections section) {
 		readQuestionsAndCategoriesGenerated(section);
 		return _allQuestions;
 	}
@@ -103,18 +117,23 @@ public class AttemptTrack {
 	/**
 	 * Read the questions from previous attempt/ continue game from last time
 	 */
-	private void readQuestionsAndCategoriesGenerated(String section) {
+	private void readQuestionsAndCategoriesGenerated(Sections section) {
 		String line = null;
 		BufferedReader reader = null;
 		int questionsPerCategory = 0;
 		try {
-			if (section.equals("NZ")) {
-				reader = new BufferedReader(new FileReader("./attempt/questionsAttempt.txt"));
-				questionsPerCategory = 5;
-			} else {
-				reader = new BufferedReader(new FileReader("./attempt/internationalAttempt.txt"));
-				questionsPerCategory = 2;
+
+			switch(section) {
+				case NZ:
+					reader = new BufferedReader(new FileReader(_questionsAttemptFile));
+					questionsPerCategory = _questionsPerCategoryNormal;
+					break;
+				case INTERNATIONAL:
+					reader = new BufferedReader(new FileReader(_internationalAttemptFile));
+					questionsPerCategory = _questionsPerCategoryInternational;
+					break;
 			}
+	
 			int i = 0;
 			int j = 0;
 			while ((line = reader.readLine()) != null) {
@@ -141,22 +160,27 @@ public class AttemptTrack {
 	 * resets previous attemptRecord for each question.
 	 */
 	public void resetAttemptRecord() {
-		_record = new int[25];
-		updateAttemptRecord("NZ");
+		_record = new int[_numberOfQuestions];
+		updateAttemptRecord(Sections.NZ);
 
 	}
 
 	/**
 	 * Updates attemptRecord file
 	 */
-	public void updateAttemptRecord(String section) {
+	public void updateAttemptRecord(Sections section) {
 		FileWriter fw = null;
 		try {
-			if (section.equals("NZ")) {
-				fw = new FileWriter("./attempt/attemptRecord.txt");
-			} else {
-				fw = new FileWriter("./attempt/bonusAttemptRecord.txt");
+
+			switch(section) {
+				case NZ:
+					fw = new FileWriter(_attemptRecord);
+					break;
+				case INTERNATIONAL:
+					fw = new FileWriter(_internationalAttemptRecord);
+					break;
 			}
+
 			BufferedWriter bw = new BufferedWriter(fw);
 			for (int i : _record) {
 				bw.write(Integer.toString(i));
@@ -172,7 +196,7 @@ public class AttemptTrack {
 	 * Sets the question index inside record to 1 when the question has been
 	 * attempted
 	 */
-	public void setAttempted(int questionIndex, String section) {
+	public void setAttempted(int questionIndex, Sections section) {
 		readAttempted(section);
 		_record[questionIndex] = 1;
 		// save changes inside attemptRecord file
@@ -185,15 +209,19 @@ public class AttemptTrack {
 	 * 
 	 * @return
 	 */
-	public void readAttempted(String section) {
-		_record = new int[25];
+	public void readAttempted(Sections section) {
+		_record = new int[_numberOfQuestions];
 		BufferedReader reader = null;
 		String line = null;
 		try {
-			if (section.equals("NZ")) {
-				reader = new BufferedReader(new FileReader("./attempt/attemptRecord.txt"));
-			} else {
-				reader = new BufferedReader(new FileReader("./attempt/bonusAttemptRecord.txt"));
+
+			switch(section) {
+				case NZ:
+					reader = new BufferedReader(new FileReader(_attemptRecord));
+					break;
+				case INTERNATIONAL:
+					reader = new BufferedReader(new FileReader(_internationalAttemptRecord));
+					break;
 			}
 			int i = 0;
 			while ((line = reader.readLine()) != null) {
@@ -210,7 +238,7 @@ public class AttemptTrack {
 	/**
 	 * Get attempt Record
 	 */
-	public int[] getAttemptedRecord(String section) {
+	public int[] getAttemptedRecord(Sections section) {
 		readAttempted(section);
 		return _record;
 	}
@@ -226,14 +254,14 @@ public class AttemptTrack {
 		_categories.clear();
 		RandomGenerator rg = new RandomGenerator();
 
-		rg.generateCategoriesAtRandom(3, "International");
-		rg.generateGameQuestions(2, "International");
+		rg.generateCategoriesAtRandom(3, Sections.INTERNATIONAL);
+		rg.generateGameQuestions(2, Sections.INTERNATIONAL);
 
 		// clears attempt record
-		_record = new int[25];
+		_record = new int[_numberOfQuestions];
 		// writes to attemptRecord file
-		updateAttemptRecord("NZ");
-		updateAttemptRecord("International");
+		updateAttemptRecord(Sections.NZ);
+		updateAttemptRecord(Sections.INTERNATIONAL);
 		_winningRec.resetWinnings();
 	}
 
@@ -244,12 +272,12 @@ public class AttemptTrack {
 	 */
 	public List<Question> getWrongQuestions() {
 		List<Question> output = new ArrayList<Question>();
-		File file = new File("./attempt/wrongQuestions.txt");
+		File file = new File(_wrongQuestions);
 		if (file.exists()) {
 			List<String> list = new ArrayList<String>();
 			try {
 				String line = null;
-				Scanner scanner = new Scanner(new FileReader("./attempt/wrongQuestions.txt"));
+				Scanner scanner = new Scanner(new FileReader(_wrongQuestions));
 				while (scanner.hasNextLine()) {
 					line = scanner.nextLine();
 					list.add(line);
@@ -293,7 +321,7 @@ public class AttemptTrack {
 			List<Question> newWrongList = getWrongQuestions();
 			newWrongList.remove(qIndex);
 			// Write new list to file
-			writeWrongQuestion(newWrongList);
+			writeWrongQuestionList(newWrongList);
 		}
 
 	}
@@ -327,12 +355,9 @@ public class AttemptTrack {
 		// Only append to file if the question is not inside text file already
 		if (checkIfQuestionExistInFile(q) == -1) {
 			try {
-				FileWriter fw = new FileWriter("./attempt/wrongQuestions.txt", true);
+				FileWriter fw = new FileWriter(_wrongQuestions, true);
 
-				String question = q.getQuestion();
-				String answer = q.getAnswer();
-				String type = q.getType();
-				fw.write(question + "," + answer + "," + type + "\n");
+				fw.write(q.getFormattedStringWrong());
 
 				fw.close();
 			} catch (Exception e) {
@@ -344,15 +369,12 @@ public class AttemptTrack {
 	/**
 	 * Write a list of Questions to wrongQuestion.txt
 	 */
-	public void writeWrongQuestion(List<Question> qList) {
+	public void writeWrongQuestionList(List<Question> qList) {
 		try {
-			FileWriter fw = new FileWriter("./attempt/wrongQuestions.txt");
+			FileWriter fw = new FileWriter(_wrongQuestions);
 
 			for (Question q : qList) {
-				String question = q.getQuestion();
-				String answer = q.getAnswer();
-				String type = q.getType();
-				fw.write(question + "," + answer + "," + type + "\n");
+				fw.write(q.getFormattedStringWrong());
 			}
 			fw.close();
 

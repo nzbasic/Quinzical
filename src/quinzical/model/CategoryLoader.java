@@ -13,7 +13,7 @@ public class CategoryLoader {
 
 	private List<Category> _categories;
 
-	public CategoryLoader(String section) {
+	public CategoryLoader(Sections section) {
 		_categories = new ArrayList<Category>();
 
 		File[] files = new File("./categories/" + section).listFiles();

@@ -26,6 +26,7 @@ import quinzical.model.Category;
 import quinzical.model.CategoryLoader;
 import quinzical.model.Question;
 import quinzical.model.RandomGenerator;
+import quinzical.model.Sections;
 
 public class PracticeController extends Help {
 	private CategoryLoader _loader;
@@ -51,7 +52,7 @@ public class PracticeController extends Help {
 
 	@FXML
 	private void initialize() {
-		_loader = new CategoryLoader("NZ");
+		_loader = new CategoryLoader(Sections.NZ);
 		_generator = new RandomGenerator();
 		_categories = _loader.getCategories();
 		_buttons = new ToggleButton[] { ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9 };
@@ -174,7 +175,7 @@ public class PracticeController extends Help {
 		RandomGenerator rg = new RandomGenerator();
 		// generate game questions
 		rg.setGameCategories(gameCategories);
-		rg.generateGameQuestions(5, "NZ");
+		rg.generateGameQuestions(5, Sections.NZ);
 
 		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("./fxml/Game.fxml"));
 		Parent gameParent = gameLoad.load();
