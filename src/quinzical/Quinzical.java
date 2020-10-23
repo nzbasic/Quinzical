@@ -1,7 +1,7 @@
 package quinzical;
 
 import java.io.IOException;
-
+import quinzical.data.FxmlFile;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +20,7 @@ public class Quinzical extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setResizable(false);
 		_stage = primaryStage;
-		loadFXML("Menu");
+		loadFXML(FxmlFile.MENU);
 		primaryStage.setTitle("Quinzical");
 	}
 
@@ -28,8 +28,8 @@ public class Quinzical extends Application {
 		launch(args);
 	}
 
-	public static void loadFXML(String fxmlName) throws IOException {
-		FXMLLoader fxml = new FXMLLoader(GameController.class.getResource("./fxml/" + fxmlName + ".fxml"));
+	public static void loadFXML(FxmlFile fxmlfile) throws IOException {
+		FXMLLoader fxml = new FXMLLoader(GameController.class.getResource(fxmlfile.getPath()));
 		Parent parent = fxml.load();
 		Scene scene = new Scene(parent);
 		_stage.setScene(scene);

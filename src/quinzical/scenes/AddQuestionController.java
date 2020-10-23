@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import quinzical.Quinzical;
 import quinzical.data.model.Category;
 import quinzical.data.CategoryLoader;
+import quinzical.data.FxmlFile;
 import quinzical.data.Sections;
 
 public class AddQuestionController {
@@ -63,6 +64,6 @@ public class AddQuestionController {
 
 	@FXML
 	private void cancel() throws IOException {
-		Quinzical.loadFXML("Menu");
+		Quinzical.loadFXML(FxmlFile.MENU);
 	}
 }

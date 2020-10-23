@@ -18,6 +18,7 @@ import quinzical.data.tracking.AttemptTrack;
 import quinzical.data.tracking.HighscoreTrack;
 import quinzical.data.model.Question;
 import quinzical.data.model.Score;
+import quinzical.data.FxmlFile;
 import quinzical.data.Sections;
 import quinzical.data.tracking.WinningsTrack;
 import quinzical.Quinzical;
@@ -267,7 +268,7 @@ public class GameController extends Help {
 	 */
 	@FXML
 	public void returnToMenu(Event e) throws IOException {
-		Quinzical.loadFXML("Menu");
+		Quinzical.loadFXML(FxmlFile.MENU);
 	}
 
 	@Override

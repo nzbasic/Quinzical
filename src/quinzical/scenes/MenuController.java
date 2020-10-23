@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import quinzical.data.tracking.AttemptTrack;
+import quinzical.data.FxmlFile;
 import quinzical.data.Sections;
 import quinzical.data.tracking.WinningsTrack;
 import quinzical.Quinzical;
@@ -71,7 +72,7 @@ public class MenuController extends Help {
 	 */
 	@FXML
 	public void startPractice() throws IOException {
-		Quinzical.loadFXML("Practice");
+		Quinzical.loadFXML(FxmlFile.PRACTICE);
 	}
 
 	/**
