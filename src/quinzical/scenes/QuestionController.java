@@ -337,7 +337,7 @@ public class QuestionController extends Help {
 	public void returnToQuestionSelection(Event e) throws Exception {
 		FXMLLoader gameLoad = null;
 		if (practiceMode) {
-			gameLoad = new FXMLLoader(getClass().getResource("Practice.fxml"));
+			gameLoad = new FXMLLoader(getClass().getResource("./fxml/Practice.fxml"));
 
 			Parent gameParent = gameLoad.load();
 
@@ -349,7 +349,7 @@ public class QuestionController extends Help {
 			if (internationalSection) {
 				new GameController().switchToInternationalQuestions(e);
 			} else {
-				gameLoad = new FXMLLoader(getClass().getResource("Game.fxml"));
+				gameLoad = new FXMLLoader(getClass().getResource("./fxml/Game.fxml"));
 				Parent gameParent = gameLoad.load();
 				GameController gc = gameLoad.getController();
 				gc.oldGameData();

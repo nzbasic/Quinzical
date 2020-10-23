@@ -28,7 +28,7 @@ public class quinzical extends Application {
 	}
 
 	public static void loadFXML(String fxmlName) throws IOException {
-		FXMLLoader fxml = new FXMLLoader(GameController.class.getResource(fxmlName + ".fxml"));
+		FXMLLoader fxml = new FXMLLoader(GameController.class.getResource("./fxml/" + fxmlName + ".fxml"));
 		Parent parent = fxml.load();
 		Scene scene = new Scene(parent);
 		stage.setScene(scene);

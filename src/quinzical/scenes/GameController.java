@@ -171,7 +171,7 @@ public class GameController extends Help {
 		Score score = new Score(winnings);
 		HighscoreTrack tracker = new HighscoreTrack();
 		tracker.addScore(score);
-		FXMLLoader rewardLoad = new FXMLLoader(getClass().getResource("Reward.fxml"));
+		FXMLLoader rewardLoad = new FXMLLoader(getClass().getResource("./fxml/Reward.fxml"));
 		Parent rewardParent = rewardLoad.load();
 		RewardController rc = rewardLoad.getController();
 		rc.setPoints(winnings);
@@ -224,7 +224,7 @@ public class GameController extends Help {
 
 		String question = allq.get(lineNumber - 1).getQuestion();
 
-		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("QuestionAndAnswer.fxml"));
+		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("./fxml/QuestionAndAnswer.fxml"));
 		Parent questionParent = questionLoad.load();
 		QuestionController qc = questionLoad.getController();
 		if (internationalSection) {
@@ -248,7 +248,7 @@ public class GameController extends Help {
 	 */
 	@FXML
 	public void switchToInternationalQuestions(Event e) throws IOException {
-		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("InternationalQuestions.fxml"));
+		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("./fxml/InternationalQuestions.fxml"));
 		Parent questionParent = questionLoad.load();
 		BonusQuestionController qc = questionLoad.getController();
 		qc.setUp();

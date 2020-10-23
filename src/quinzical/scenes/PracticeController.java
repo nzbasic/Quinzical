@@ -87,7 +87,7 @@ public class PracticeController extends Help {
 	}
 
 	private void loadQuestion(Question question, Event e) throws IOException {
-		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("QuestionAndAnswer.fxml"));
+		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("./fxml/QuestionAndAnswer.fxml"));
 		Parent questionParent = questionLoad.load();
 		QuestionController qc = questionLoad.getController();
 		qc.setPracticeMode();
@@ -175,7 +175,7 @@ public class PracticeController extends Help {
 		rg.setGameCategories(gameCategories);
 		rg.generateGameQuestions(5, "NZ");
 
-		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("Game.fxml"));
+		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource("./fxml/Game.fxml"));
 		Parent gameParent = gameLoad.load();
 		GameController gc = gameLoad.getController();
 		gc.newGameData();
