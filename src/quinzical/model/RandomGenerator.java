@@ -17,12 +17,12 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class RandomGenerator {
 
-	private List<Category> categories = new ArrayList<>();
-	private List<String> randomCategoryNames = new ArrayList<>();
-	private final int[] points = { 100, 200, 300, 400, 500 };
-	private List<Question> gameQuestions = new ArrayList<Question>();
+	private List<Category> _categories = new ArrayList<>();
+	private List<String> _randomCategoryNames = new ArrayList<>();
+	private final int[] _points = { 100, 200, 300, 400, 500 };
+	private List<Question> _gameQuestions = new ArrayList<Question>();
 
-	private AttemptTrack attempt = new AttemptTrack();
+	private AttemptTrack _attempt = new AttemptTrack();
 
 	/**
 	 * Uses random number generation to generate lists of categories and questions
@@ -31,8 +31,8 @@ public class RandomGenerator {
 	 */
 	public void generateCategoriesAtRandom(int n, String section) {
 		List<String> allCategoryNames = new ArrayList<String>();
-		categories = new ArrayList<Category>();
-		randomCategoryNames = new ArrayList<String>();
+		_categories = new ArrayList<Category>();
+		_randomCategoryNames = new ArrayList<String>();
 		File[] files = new File("./categories/" + section).listFiles();
 		for (File file : files) {
 			allCategoryNames.add(file.getName());
@@ -42,12 +42,12 @@ public class RandomGenerator {
 		for (int i = 0; i < n; i++) {
 			int randomNum = ThreadLocalRandom.current().nextInt(0, allCategoryNames.size());
 			// Create n category objects
-			categories.add(new Category(allCategoryNames.get(randomNum)));
+			_categories.add(new Category(allCategoryNames.get(randomNum)));
 			allCategoryNames.remove(randomNum);
 		}
 		// Store as list of strings
-		for (Category s : categories) {
-			randomCategoryNames.add(s.getName());
+		for (Category s : _categories) {
+			_randomCategoryNames.add(s.getName());
 		}
 	}
 
@@ -57,13 +57,13 @@ public class RandomGenerator {
 	 * @return List of generated category names.
 	 */
 	public List<String> getGeneratedCategories() {
-		return randomCategoryNames;
+		return _randomCategoryNames;
 	}
 
 	public void setGameCategories(List<String> usrChoice) {
 		for (String s : usrChoice) {
-			randomCategoryNames.add(s);
-			categories.add(new Category(s));
+			_randomCategoryNames.add(s);
+			_categories.add(new Category(s));
 		}
 	}
 
@@ -102,10 +102,10 @@ public class RandomGenerator {
 	public void generateGameQuestions(int n, String section) {
 
 		int categoryIndex = 0;
-		gameQuestions = new ArrayList<Question>();
+		_gameQuestions = new ArrayList<Question>();
 		Question q = null;
 		;
-		for (String cName : randomCategoryNames) {
+		for (String cName : _randomCategoryNames) {
 			// get all lines inside file
 			List<String> questionLines = readAllLinesInFile(cName, section);
 			// Generate 5 question objects
@@ -114,22 +114,22 @@ public class RandomGenerator {
 				int randomNum = ThreadLocalRandom.current().nextInt(0, questionLines.size());
 				// creates a question object and attach to its category object
 				String[] questionfields = questionLines.get(randomNum).split(",");
-				Category current = categories.get(categoryIndex);
+				Category current = _categories.get(categoryIndex);
 				if (n == 5) {
 					index = i;
 				} else {
 					index = 1 + i * 2; //2 questions per category
 				}
-				q = new Question(questionfields[0], questionfields[1], Integer.toString(points[index]),
+				q = new Question(questionfields[0], questionfields[1], Integer.toString(_points[index]),
 						questionfields[2], current);
 				current.add(q);
-				gameQuestions.add(q);
+				_gameQuestions.add(q);
 				questionLines.remove(randomNum);
 			}
 			categoryIndex++;
 		}
 		// Update in file
-		attempt.updateQuestionsGenerated(gameQuestions, section);
+		_attempt.updateQuestionsGenerated(_gameQuestions, section);
 
 	}
 

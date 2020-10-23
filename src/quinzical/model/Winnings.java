@@ -13,15 +13,15 @@ import java.io.FileWriter;
  */
 public class Winnings {
 
-	private int points;
-	private boolean exist;
+	private int _points;
+	private boolean _exist;
 
 	/**
 	 * Default constructor for Winnings. Loads the current winnings file.
 	 */
 	public Winnings() {
 		File winningsFile = new File("./attempt/winnings.txt");
-		exist = winningsFile.exists();
+		_exist = winningsFile.exists();
 	}
 
 	/**
@@ -31,11 +31,11 @@ public class Winnings {
 	 * @param amount The amount to be added/subtracted.
 	 */
 	public void updateWinnings(int amount) {
-		points = points + amount;
+		_points = _points + amount;
 		try {
 			FileWriter fw = new FileWriter("./attempt/winnings.txt");
 			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(Integer.toString(points));
+			bw.write(Integer.toString(_points));
 			bw.newLine();
 			bw.close();
 		} catch (Exception e) {
@@ -51,7 +51,7 @@ public class Winnings {
 			String line = null;
 			BufferedReader reader = new BufferedReader(new FileReader("./attempt/winnings.txt"));
 			while ((line = reader.readLine()) != null) {
-				points = Integer.parseInt(line);
+				_points = Integer.parseInt(line);
 			}
 			reader.close();
 		} catch (Exception e) {
@@ -65,9 +65,9 @@ public class Winnings {
 	 * @return
 	 */
 	public String getWinnings() {
-		if (exist) {
+		if (_exist) {
 			readWinnings();
-			return Integer.toString(points);
+			return Integer.toString(_points);
 		}
 		return "0";
 
@@ -77,7 +77,7 @@ public class Winnings {
 	 * Sets the current winnings to 0.
 	 */
 	public void resetWinnings() {
-		points = 0;
+		_points = 0;
 		updateWinnings(0);
 	}
 }

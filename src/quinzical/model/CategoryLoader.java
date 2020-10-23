@@ -11,10 +11,10 @@ import java.util.Scanner;
  */
 public class CategoryLoader {
 
-	private List<Category> categories;
+	private List<Category> _categories;
 
 	public CategoryLoader(String section) {
-		categories = new ArrayList<Category>();
+		_categories = new ArrayList<Category>();
 
 		File[] files = new File("./categories/" + section).listFiles();
 		Scanner sc = null;
@@ -34,12 +34,12 @@ public class CategoryLoader {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-			categories.add(category);
+			_categories.add(category);
 		}
 	}
 
 	public List<Category> getCategories() {
-		return categories;
+		return _categories;
 	}
 
 }

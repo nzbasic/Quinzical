@@ -34,15 +34,15 @@ public class GameController extends Help {
 			c4q3, c4q4, c4q5, c5q1, c5q2, c5q3, c5q4, c5q5, returnMenu, unlock;
 	@FXML
 	AnchorPane finalPopUp;
-	private Button[] questionbuttons;
-	private int[] completedCategories = { 0, 0, 0, 0, 0 };
-	private AttemptTrack attempt = new AttemptTrack();
-	private List<String> categoryNames;
-	private List<Question> allq;
-	private int count;
-	private boolean internationalSection = false;
 
-	private Stage gameStage;
+	private Button[] _questionbuttons;
+	private int[] _completedCategories = { 0, 0, 0, 0, 0 };
+	private AttemptTrack _attempt = new AttemptTrack();
+	private List<String> _categoryNames;
+	private List<Question> _allq;
+	private int _count;
+	private boolean _internationalSection = false;
+	private Stage _gameStage;
 
 	/**
 	 * Starts a new game of quinzical, throws out old data.
@@ -50,7 +50,7 @@ public class GameController extends Help {
 	 * @throws IOException
 	 */
 	public void newGameData() throws IOException {
-		attempt.resetAll();
+		_attempt.resetAll();
 		setupGame();
 
 	}
@@ -74,18 +74,18 @@ public class GameController extends Help {
 		int attemptedInCurrentCate = 0;
 		Label[] categories = { category1, category2, category3, category4, category5 };
 		points.setText(new Winnings().getWinnings());
-		categoryNames = attempt.readCategoriesGenerated("NZ");
+		_categoryNames = _attempt.readCategoriesGenerated("NZ");
 		for (int i = 0; i < 5; i++) {
-			categories[i].setText(categoryNames.get(i));
+			categories[i].setText(_categoryNames.get(i));
 		}
 		Button[] questions = { c1q1, c1q2, c1q3, c1q4, c1q5, c2q1, c2q2, c2q3, c2q4, c2q5, c3q1, c3q2, c3q3, c3q4, c3q5,
 				c4q1, c4q2, c4q3, c4q4, c4q5, c5q1, c5q2, c5q3, c5q4, c5q5 };
-		questionbuttons = questions;
+		_questionbuttons = questions;
 		// Hide questions already attempted
 		boolean countCate = true;
-		int[] attemptedRecord = attempt.getAttemptedRecord("NZ");
+		int[] attemptedRecord = _attempt.getAttemptedRecord("NZ");
 		// check if all questions attempted
-		count = 0;
+		_count = 0;
 
 		for (int i = 0; i < attemptedRecord.length; i++) {
 			// Enable one button for each category
@@ -93,7 +93,7 @@ public class GameController extends Help {
 				countCate = true;
 				int quotient = i / 5;
 				if (quotient > 0) {
-					completedCategories[quotient - 1] = attemptedInCurrentCate;
+					_completedCategories[quotient - 1] = attemptedInCurrentCate;
 				}
 				attemptedInCurrentCate = 0;
 			}
@@ -103,14 +103,14 @@ public class GameController extends Help {
 				questions[i].setVisible(false);
 				attemptedInCurrentCate++;
 
-				count++;
+				_count++;
 			} else if (attemptedRecord[i] == 0 && countCate == true) {
 				questions[i].setDisable(false);
 				countCate = false;
 			}
 			// Record for number of completed Questions for the last category
 			if (i == 24) {
-				completedCategories[4] = attemptedInCurrentCate;
+				_completedCategories[4] = attemptedInCurrentCate;
 			}
 
 		}
@@ -123,7 +123,7 @@ public class GameController extends Help {
 	 * @param s
 	 */
 	public void setStage(Stage s) {
-		gameStage = s;
+		_gameStage = s;
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class GameController extends Help {
 	 */
 	public void checkIfAllAttempted() throws Exception {
 
-		if (count == 25) {
+		if (_count == 25) {
 			// Ask user if they would like to attempt remaining questions in International
 			// Section
 			if (new BonusQuestionController().getNumberOfQuestionsAttempted() < 6) {
@@ -149,7 +149,7 @@ public class GameController extends Help {
 		// Check if International Questions can be unlocked
 		int numCompleted = 0;
 		for (int i = 0; i < 5; i++) {
-			if (completedCategories[i] == 5) {
+			if (_completedCategories[i] == 5) {
 				numCompleted++;
 			}
 			if (numCompleted == 2) {
@@ -178,12 +178,12 @@ public class GameController extends Help {
 
 		Scene rewardScene = new Scene(rewardParent);
 
-		gameStage.setScene(rewardScene);
-		gameStage.show();
+		_gameStage.setScene(rewardScene);
+		_gameStage.show();
 	}
 
 	public void setInternationalSection(Event e) throws Exception {
-		internationalSection = true;
+		_internationalSection = true;
 		changeToAnswerScreen(e);
 	}
 
@@ -212,7 +212,7 @@ public class GameController extends Help {
 			lineNumber = (categoryIndex - 1) * 5 + questionIndex;
 			// Enable nextbutton click
 			if (questionIndex < 5) {
-				(questionbuttons[lineNumber]).setDisable(false);
+				(_questionbuttons[lineNumber]).setDisable(false);
 			}
 		} else {
 			section = "International";
@@ -220,18 +220,18 @@ public class GameController extends Help {
 		}
 		new AttemptTrack().setAttempted(lineNumber - 1, section);
 		// questionObjects
-		allq = attempt.getQuestionsGenerated(section);
+		_allq = _attempt.getQuestionsGenerated(section);
 
-		String question = allq.get(lineNumber - 1).getQuestion();
+		String question = _allq.get(lineNumber - 1).getQuestion();
 
 		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource("./fxml/QuestionAndAnswer.fxml"));
 		Parent questionParent = questionLoad.load();
 		QuestionController qc = questionLoad.getController();
-		if (internationalSection) {
+		if (_internationalSection) {
 			qc.setBonusAttempt();
 		}
 		qc.setQuestion(question);
-		qc.setQuestionLines(lineNumber, allq);
+		qc.setQuestionLines(lineNumber, _allq);
 
 		Scene questionScene = new Scene(questionParent);
 		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();

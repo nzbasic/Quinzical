@@ -19,9 +19,10 @@ public class BonusQuestionController {
 	Text points;
 	@FXML
 	Button b1q1, b1q2, b2q1, b2q2, b3q1, b3q2, returnMenu, NZ;
-	private List<String> categoryNames;
-	private AttemptTrack attempt = new AttemptTrack();
-	private int count;
+
+	private List<String> _categoryNames;
+	private AttemptTrack _attempt = new AttemptTrack();
+	private int _count;
 
 	/**
 	 * Loads the buttons in the Game Screen with question data.
@@ -32,16 +33,16 @@ public class BonusQuestionController {
 	public void setUp() throws IOException {
 		Label[] categories = { country1, country2, country3 };
 		points.setText(new Winnings().getWinnings());
-		categoryNames = attempt.readCategoriesGenerated("International");
+		_categoryNames = _attempt.readCategoriesGenerated("International");
 		for (int i = 0; i < 3; i++) {
-			categories[i].setText(categoryNames.get(i));
+			categories[i].setText(_categoryNames.get(i));
 		}
 		Button[] questions = { b1q1, b1q2, b2q1, b2q2, b3q1, b3q2 };
 		// Hide questions already attempted
 		boolean countCate = true;
-		int[] attemptedRecord = attempt.getAttemptedRecord("International");
+		int[] attemptedRecord = _attempt.getAttemptedRecord("International");
 		// check if all questions attempted
-		count = 0;
+		_count = 0;
 
 		for (int i = 0; i < 6; i++) {
 			// Enable one button for each category
@@ -53,7 +54,7 @@ public class BonusQuestionController {
 				// If attempted, hide button,Only Enable lowest value question
 				questions[i].setVisible(false);
 
-				count++;
+				_count++;
 			} else if (attemptedRecord[i] == 0 && countCate == true) {
 				questions[i].setDisable(false);
 				countCate = false;
@@ -81,18 +82,18 @@ public class BonusQuestionController {
 	 * @throws Exception
 	 */
 	public int getNumberOfQuestionsAttempted() throws Exception {
-		int[] attemptedRecord = attempt.getAttemptedRecord("International");
+		int[] attemptedRecord = _attempt.getAttemptedRecord("International");
 		// check if all questions attempted
-		count = 0;
+		_count = 0;
 		for (int i = 0; i < 6; i++) {
 
 			if (attemptedRecord[i] == 1) {
 
-				count++;
+				_count++;
 			}
 
 		}
-		return count;
+		return _count;
 	}
 
 	/**

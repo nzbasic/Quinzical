@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class HighscoreTrack {
 
-    private List<Score> scores = new ArrayList<Score>();
+    private List<Score> _scores = new ArrayList<Score>();
 
     public HighscoreTrack() {
         File file = new File("./scores.txt");
@@ -28,7 +28,7 @@ public class HighscoreTrack {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 Score score = new Score(line);
-                scores.add(score);
+                _scores.add(score);
             }
             sc.close();
         } catch (Exception e) {
@@ -37,16 +37,16 @@ public class HighscoreTrack {
     }
 
     public List<Score> getScores() {
-        Collections.sort(scores, Comparator.comparing(Score::getScore));
-        Collections.reverse(scores);
-        return scores;
+        Collections.sort(_scores, Comparator.comparing(Score::getScore));
+        Collections.reverse(_scores);
+        return _scores;
     }
 
     public void addScore(Score newScore) throws IOException {
-        scores.add(newScore);
+        _scores.add(newScore);
         File file = new File("./scores.txt");
         FileWriter fw = new FileWriter(file);
-        for (Score score : scores) {
+        for (Score score : _scores) {
             fw.write(score.getScore() + "\n");
         }
         fw.close();

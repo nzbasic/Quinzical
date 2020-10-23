@@ -41,28 +41,28 @@ public class QuestionController extends Help {
 	@FXML
 	private TextField answer;
 	@FXML
-	private Button giveup, submit, continueGame, mainMenu, normal, fast, slow;
+	private Button giveup, submit, continueGame, mainMenu;
 	@FXML
 	private AnchorPane popup;
 	@FXML
 	private ImageView clock;
 
-	private int lineNumber;
-	private List<Question> questionsAndAnswers;
-	private boolean practiceMode = false;
-	private boolean internationalSection = false;
-	private Question questionObj;
-	private int retryNumber = 0;
-	private String questionText;
-	private Timeline animation;
-	private boolean gameExit=false;
+	private int _linenumber;
+	private List<Question> _questionsAndAnswers;
+	private boolean _practiceMode = false;
+	private boolean _internationalSection = false;
+	private Question _questionObj;
+	private int _retryNumber = 0;
+	private String _questionText;
+	private Timeline _animation;
+	private boolean _gameExit =false;
 
 	/**
 	 * Sets the controller to be in practice mode. Changes behaviour when getting a
 	 * question wrong.
 	 */
 	public void setPracticeMode() {
-		practiceMode = true;
+		_practiceMode = true;
 		submit.setTranslateX(-175);
 		giveup.setVisible(false);
 	}
@@ -74,20 +74,20 @@ public class QuestionController extends Help {
 	 */
 	public void setQuestion(Question q) {
 		question.setVisible(true);
-		questionObj = q;
-		question.setText(questionObj.getQuestion());
-		questionText = replaceText(questionObj.getQuestion());
+		_questionObj = q;
+		question.setText(_questionObj.getQuestion());
+		_questionText = replaceText(_questionObj.getQuestion());
 		setType();
-		speaking(questionText, 1, 1);
+		speaking(_questionText, 1, 1);
 
 	}
 
 	public void setBonusAttempt() {
-		internationalSection = true;
+		_internationalSection = true;
 	}
 
 	public String getQuestionText() {
-		return questionText;
+		return _questionText;
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class QuestionController extends Help {
 	 * @param s Question string
 	 */
 	public void setQuestion(String s) {
-		questionText = replaceText(s);
+		_questionText = replaceText(s);
 		question.setText(s);
 	}
 
@@ -104,11 +104,11 @@ public class QuestionController extends Help {
 	public void playQuestionSpeech(Event e) {
 		String ButtonId = ((Control) e.getSource()).getId();
 		if (ButtonId.equals("normal")) {
-			speaking(questionText, 1, 1);
+			speaking(_questionText, 1, 1);
 		} else if (ButtonId.equals("slow")) {
-			speaking(questionText, 0, 1);
+			speaking(_questionText, 0, 1);
 		} else if (ButtonId.equals("fast")) {
-			speaking(questionText, 2, 1);
+			speaking(_questionText, 2, 1);
 		}
 
 	}
@@ -121,17 +121,17 @@ public class QuestionController extends Help {
 	 * @param questionLines List of questions
 	 */
 	public void setQuestionLines(int index, List<Question> questionLines) {
-		lineNumber = index;
-		questionsAndAnswers = questionLines;
+		_linenumber = index;
+		_questionsAndAnswers = questionLines;
 		setType();
 	}
 
 	private void setType() {
 		String typeString;
-		if (questionObj != null) {
-			typeString = questionObj.getType();
+		if (_questionObj != null) {
+			typeString = _questionObj.getType();
 		} else {
-			Question q = questionsAndAnswers.get(lineNumber - 1);
+			Question q = _questionsAndAnswers.get(_linenumber - 1);
 			typeString = q.getType();
 		}
 		type.setText(typeString + ":");
@@ -144,8 +144,8 @@ public class QuestionController extends Help {
 		clock.setVisible(false);
 		fixedDisplay.setVisible(false);
 		timerDisplay.setVisible(false);
-		if (animation != null) {
-			animation.stop();
+		if (_animation != null) {
+			_animation.stop();
 		}
 	}
 
@@ -157,34 +157,34 @@ public class QuestionController extends Help {
 	 */
 	@FXML
 	public void checkAnswer(Event e) {
-		gameExit=true;
+		_gameExit =true;
 		stopTimerAnimation();
-		if (practiceMode) {
+		if (_practiceMode) {
 			// increase retry number, once they hit 3 then they dont get any more attempts
-			retryNumber++;
+			_retryNumber++;
 
 			// Check if what they wrote is correct, update question
-			if (questionObj.checkAnswer(answer.getText())) {
-				questionObj.setResult(true);
+			if (_questionObj.checkAnswer(answer.getText())) {
+				_questionObj.setResult(true);
 				message.setText("Correct!");
 				speaking("Correct!", 1, 1);
 				
 			} else {
 
-				if (retryNumber == 2) {
-					char first = questionObj.getFirstLetter();
+				if (_retryNumber == 2) {
+					char first = _questionObj.getFirstLetter();
 					popup.setVisible(true);
 					String textHint = "The first letter is: " + Character.toUpperCase(first);
 					firstLetter.setText(textHint);
 					speaking(textHint, 1, 2);
 				}
-				if (retryNumber < 3) {
-					message.setText("Incorrect, " + (3 - retryNumber) + " attempts remain");
+				if (_retryNumber < 3) {
+					message.setText("Incorrect, " + (3 - _retryNumber) + " attempts remain");
 					message.setVisible(true);
 					return;
 				} else {
 					firstLetter.setVisible(false);
-					String answerText = "The correct answer was " + questionObj.sayAnswer();
+					String answerText = "The correct answer was " + _questionObj.sayAnswer();
 					message.setText(answerText);
 					speaking(answerText, 1, 2);
 				}
@@ -195,7 +195,7 @@ public class QuestionController extends Help {
 
 			String usrInput = answer.getText();
 			// Check Answers
-			Question q = questionsAndAnswers.get(lineNumber - 1);
+			Question q = _questionsAndAnswers.get(_linenumber - 1);
 			if (q.checkAnswer(usrInput)) {
 
 				// Add Winnings
@@ -280,7 +280,7 @@ public class QuestionController extends Help {
 					if (playTime == 0 ) {
 						p.waitFor();
 						//int gameExit = p.exitValue();
-						if (!gameExit || playTime == 3) {
+						if (!_gameExit || playTime == 3) {
 							Platform.runLater(new Runnable() {
 								private int count = 60;
 								private String display;
@@ -305,9 +305,9 @@ public class QuestionController extends Help {
 									clock.setVisible(true);
 									fixedDisplay.setVisible(true);
 									timerDisplay.setVisible(true);
-									animation = new Timeline(new KeyFrame(Duration.seconds(1), e -> updateTimer()));
-									animation.setCycleCount(Timeline.INDEFINITE);
-									animation.play();
+									_animation = new Timeline(new KeyFrame(Duration.seconds(1), e -> updateTimer()));
+									_animation.setCycleCount(Timeline.INDEFINITE);
+									_animation.play();
 
 								}
 
@@ -336,7 +336,7 @@ public class QuestionController extends Help {
 	@FXML
 	public void returnToQuestionSelection(Event e) throws Exception {
 		FXMLLoader gameLoad = null;
-		if (practiceMode) {
+		if (_practiceMode) {
 			gameLoad = new FXMLLoader(getClass().getResource("./fxml/Practice.fxml"));
 
 			Parent gameParent = gameLoad.load();
@@ -346,7 +346,7 @@ public class QuestionController extends Help {
 			quinzicalStage.setScene(gameScene);
 			quinzicalStage.show();
 		} else {
-			if (internationalSection) {
+			if (_internationalSection) {
 				new GameController().switchToInternationalQuestions(e);
 			} else {
 				gameLoad = new FXMLLoader(getClass().getResource("./fxml/Game.fxml"));

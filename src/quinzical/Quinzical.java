@@ -14,12 +14,12 @@ import quinzical.scenes.GameController;
  */
 public class Quinzical extends Application {
 
-	private static Stage stage;
+	private static Stage _stage;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		primaryStage.setResizable(false);
-		stage = primaryStage;
+		_stage = primaryStage;
 		loadFXML("Menu");
 		primaryStage.setTitle("Quinzical");
 	}
@@ -32,8 +32,8 @@ public class Quinzical extends Application {
 		FXMLLoader fxml = new FXMLLoader(GameController.class.getResource("./fxml/" + fxmlName + ".fxml"));
 		Parent parent = fxml.load();
 		Scene scene = new Scene(parent);
-		stage.setScene(scene);
-		stage.show();
+		_stage.setScene(scene);
+		_stage.show();
 	}
 
 }
