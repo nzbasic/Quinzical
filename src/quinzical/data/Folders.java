@@ -1,5 +1,8 @@
 package quinzical.data;
 
+/**
+ * Enum to store names of Folders we create
+ */
 public enum Folders {
     CATEGORIES {
         @Override

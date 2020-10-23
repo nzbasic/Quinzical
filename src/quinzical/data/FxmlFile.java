@@ -1,5 +1,8 @@
 package quinzical.data;
 
+/**
+ * Enum to store names and paths of FXML files we have created
+ */
 public enum FxmlFile implements IFxmlFile {
 
     MENU {

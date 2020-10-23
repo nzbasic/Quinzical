@@ -1,5 +1,8 @@
 package quinzical.data;
 
+/**
+ * Enum to store names of files we create
+ */
 public enum Files {
     ATTEMPT_RECORD {
         @Override
