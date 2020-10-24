@@ -5,15 +5,10 @@ import java.util.List;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import quinzical.data.tracking.AttemptTrack;
 import quinzical.data.tracking.HighscoreTrack;
 import quinzical.data.model.Question;
@@ -44,7 +39,6 @@ public class GameController extends Help {
 	private List<Question> _allq;
 	private int _count;
 	private boolean _internationalSection = false;
-	private Stage _gameStage;
 
 	/**
 	 * Starts a new game of quinzical, throws out old data.
@@ -119,14 +113,6 @@ public class GameController extends Help {
 
 	}
 
-	/**
-	 * Sets the stage of this controller.
-	 * 
-	 * @param s
-	 */
-	public void setStage(Stage s) {
-		_gameStage = s;
-	}
 
 	/**
 	 * Checks if all questions have been attempted, if they have, go to reward
@@ -173,15 +159,9 @@ public class GameController extends Help {
 		Score score = new Score(winnings);
 		HighscoreTrack tracker = new HighscoreTrack();
 		tracker.addScore(score);
-		FXMLLoader rewardLoad = new FXMLLoader(getClass().getResource(FxmlFile.REWARD.getPath()));
-		Parent rewardParent = rewardLoad.load();
-		RewardController rc = rewardLoad.getController();
+		RewardController rc = (RewardController)Quinzical.loadGetController(FxmlFile.REWARD);
 		rc.setPoints(winnings);
-
-		Scene rewardScene = new Scene(rewardParent);
-
-		_gameStage.setScene(rewardScene);
-		_gameStage.show();
+        Quinzical.loadStoredFXML();
 	}
 
 	public void setInternationalSection(Event e) throws Exception {
@@ -226,19 +206,14 @@ public class GameController extends Help {
 
 		String question = _allq.get(lineNumber - 1).getQuestion();
 
-		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource(FxmlFile.QUESTION_AND_ANSWER.getPath()));
-		Parent questionParent = questionLoad.load();
-		QuestionController qc = questionLoad.getController();
+		QuestionController qc = (QuestionController)Quinzical.loadGetController(FxmlFile.QUESTION_AND_ANSWER);
 		if (_internationalSection) {
 			qc.setBonusAttempt();
 		}
 		qc.setQuestion(question);
 		qc.setQuestionLines(lineNumber, _allq);
 
-		Scene questionScene = new Scene(questionParent);
-		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-		quinzicalStage.setScene(questionScene);
-		quinzicalStage.show();
+		Quinzical.loadStoredFXML();
 		qc.speaking(qc.getQuestionText(), 1, 0);
 	}
 
@@ -250,14 +225,9 @@ public class GameController extends Help {
 	 */
 	@FXML
 	public void switchToInternationalQuestions(Event e) throws IOException {
-		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource(FxmlFile.INTERNATIONAL_QUESTIONS.getPath()));
-		Parent questionParent = questionLoad.load();
-		BonusQuestionController qc = questionLoad.getController();
+		BonusQuestionController qc = (BonusQuestionController)Quinzical.loadGetController(FxmlFile.INTERNATIONAL_QUESTIONS);
 		qc.setUp();
-		Scene questionScene = new Scene(questionParent);
-		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-		quinzicalStage.setScene(questionScene);
-		quinzicalStage.show();
+		Quinzical.loadStoredFXML();
 	}
 
 	/**

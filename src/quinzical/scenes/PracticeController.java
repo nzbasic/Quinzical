@@ -7,18 +7,14 @@ import java.util.TreeSet;
 
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-import javafx.scene.Node;
 import quinzical.data.tracking.AttemptTrack;
 import quinzical.data.model.Category;
+import quinzical.Quinzical;
 import quinzical.data.CategoryLoader;
 import quinzical.data.FxmlFile;
 import quinzical.data.model.Question;
@@ -87,16 +83,11 @@ public class PracticeController extends Help {
 	}
 
 	private void loadQuestion(Question question, Event e) throws IOException {
-		FXMLLoader questionLoad = new FXMLLoader(getClass().getResource(FxmlFile.QUESTION_AND_ANSWER.getPath()));
-		Parent questionParent = questionLoad.load();
-		QuestionController qc = questionLoad.getController();
+		QuestionController qc = (QuestionController) Quinzical.loadGetController(FxmlFile.QUESTION_AND_ANSWER);
 		qc.setPracticeMode();
 		qc.setQuestion(question);
 
-		Scene questionScene = new Scene(questionParent);
-		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-		quinzicalStage.setScene(questionScene);
-		quinzicalStage.show();
+		Quinzical.loadStoredFXML();
 	}
 
 	/**
@@ -175,14 +166,10 @@ public class PracticeController extends Help {
 		rg.setGameCategories(gameCategories);
 		rg.generateGameQuestions(5, Sections.NZ);
 
-		FXMLLoader gameLoad = new FXMLLoader(getClass().getResource(FxmlFile.GAME.getPath()));
-		Parent gameParent = gameLoad.load();
-		GameController gc = gameLoad.getController();
+		
+		GameController gc = (GameController)Quinzical.loadGetController(FxmlFile.GAME);
 		gc.newGameData();
-		Scene gameScene = new Scene(gameParent);
-		Stage quinzicalStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-		quinzicalStage.setScene(gameScene);
-		quinzicalStage.show();
+		Quinzical.loadStoredFXML();
 	}
 
 	/**

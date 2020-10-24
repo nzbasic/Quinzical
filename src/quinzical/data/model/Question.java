@@ -139,8 +139,8 @@ public class Question {
 
 		String output = "";
 		String[] data = userInput.split(" ");
-		if (data[0].equals("the")) {
-			int length = data.length;
+		int length = data.length;
+		if (data[0].contentEquals("the") || data[0].equals("a")) {
 			for (int i = 1; i < length; i++) {
 				output = output + data[i];
 			}
