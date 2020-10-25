@@ -81,10 +81,16 @@ public class QuestionController extends Help {
 
 	}
 
+	/**
+	 * Sets internal field to keep track if the game is currently in international mode.
+	 */
 	public void setBonusAttempt() {
 		_internationalSection = true;
 	}
 
+	/**
+	 * @return The current question text as String
+	 */
 	public String getQuestionText() {
 		return _questionText;
 	}
@@ -125,6 +131,9 @@ public class QuestionController extends Help {
 		setType();
 	}
 
+	/**
+	 * Sets the question type in the box next to the textfield. 
+	 */
 	private void setType() {
 		String typeString;
 		if (_questionObj != null) {
