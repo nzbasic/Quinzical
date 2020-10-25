@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0a152b;" stylesheets="@Reward.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.RewardController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0a152b;" stylesheets="@css/Reward.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.scenes.RewardController">
    <children>
       <Button fx:id="returnMenu" layoutX="204.0" layoutY="585.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="80.0" prefWidth="240.0" style="-fx-background-color: #F28100; -fx-background-radius: 7;" text="Return To Menu" textFill="WHITE">
          <font>

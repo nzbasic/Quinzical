@@ -181,7 +181,7 @@
       </AnchorPane>
    </children>
    <stylesheets>
-      <URL value="@Game.css" />
-      <URL value="@Help.css" />
+      <URL value="@css/Help.css" />
+      <URL value="@css/Game.css" />
    </stylesheets>
 </AnchorPane>
