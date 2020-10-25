@@ -15,7 +15,7 @@
 	-fx-border-width: 1 1 1 1;
 	-fx-background-insets: 0;
 }
-#helpOverlay {
+#helpOverlay,#categoryOverlay {
     -fx-background-color: #000000;
     -fx-opacity: 0.73;
 }

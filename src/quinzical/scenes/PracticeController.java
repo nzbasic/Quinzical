@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import quinzical.data.tracking.AttemptTrack;
 import quinzical.data.model.Category;
@@ -27,7 +28,7 @@ public class PracticeController extends Help {
 	private List<Category> _categories;
 	private ToggleButton[] _buttons;
 	private ToggleButton[] _selected;
-	private boolean _practiseMode = true;
+	private boolean _practiceMode = true;
 	private int[] _numberSelected = new int[5];
 	private TreeSet<Integer> _freeSpace = new TreeSet<Integer>();
 	private int _total = 0;
@@ -42,6 +43,8 @@ public class PracticeController extends Help {
 	private HBox selection;
 	@FXML
 	private Label selectionLabel, title;
+	@FXML
+	private AnchorPane categoryOverlay;
 
 	@FXML
 	private void initialize() {
@@ -63,9 +66,9 @@ public class PracticeController extends Help {
 	 * Display category selection screen
 	 */
 	public void setCategorySelection() {
-		help.setVisible(false);
+		help.setVisible(true);
 		practise.setVisible(false);
-		_practiseMode = false;
+		_practiceMode = false;
 		selection.setVisible(true);
 		selectionLabel.setVisible(true);
 		random.setVisible(true);
@@ -103,7 +106,7 @@ public class PracticeController extends Help {
 		char[] chars = id.toCharArray();
 		int categoryNum = Integer.parseInt(Character.toString(chars[3]));
 		Category category = _categories.get(categoryNum - 1);
-		if (_practiseMode == true) {
+		if (_practiceMode == true) {
 
 			Question question = _generator.generatePracticeQuestion(category);
 			loadQuestion(question, e);
@@ -223,5 +226,23 @@ public class PracticeController extends Help {
 		
 		confirm.setVisible(true);
 		
+	}
+
+	@Override
+	public void help() {
+		if (_practiceMode) {
+			super.help();
+		} else {
+			categoryOverlay.setVisible(true);
+		}
+	}
+
+	@Override
+	public void helpDown() {
+		if (_practiceMode) {
+			super.helpDown();
+		} else {
+			categoryOverlay.setVisible(false);
+		}
 	}
 }
