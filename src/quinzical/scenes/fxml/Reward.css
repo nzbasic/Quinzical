@@ -1,10 +1,10 @@
 .table-view{
-    -fx-background-color: #FF851B;
+    -fx-background-color: #F28100;
     -fx-border-color: black;
  }
  
  .table-view .column-header-background{
-     -fx-background-color: #FF851B;
+     -fx-background-color: #F28100;
  }
  
  .table-view .column-header-background .label{
@@ -21,7 +21,7 @@
  }
  
  .table-row-cell{
-     -fx-background-color: #FF851B;
+     -fx-background-color: #F28100;
      -fx-background-insets: 0, 0 0 1 0;
      -fx-padding: 0.0em; 
  }
