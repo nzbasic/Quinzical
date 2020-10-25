@@ -1,5 +1,8 @@
 package quinzical.data.model;
 
+/**
+ * Data class for scores, used in the reward screen leaderboard.
+ */
 public class Score {
 
     private String _score;

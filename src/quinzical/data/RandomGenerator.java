@@ -148,6 +148,11 @@ public class RandomGenerator {
 		return q;
 	}
 
+	/**
+	 * Generated a random question from a list of questions.
+	 * @param list List of questions
+	 * @return Random question object
+	 */
 	public Question generateRandomQuestionFromList(List<Question> list) {
 		int length = list.size();
 		int randomNum = ThreadLocalRandom.current().nextInt(0, length);

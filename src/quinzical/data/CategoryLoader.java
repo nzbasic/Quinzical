@@ -16,6 +16,10 @@ public class CategoryLoader {
 
 	private List<Category> _categories;
 
+	/**
+	 * Constructor for category loader
+	 * @param section One of the sections of the game, eg NZ or INTERNATIONAL
+	 */
 	public CategoryLoader(Sections section) {
 		_categories = new ArrayList<Category>();
 
@@ -41,6 +45,9 @@ public class CategoryLoader {
 		}
 	}
 
+	/**
+	 * @return Stored list of categories.
+	 */
 	public List<Category> getCategories() {
 		return _categories;
 	}

@@ -137,6 +137,7 @@ public class Question {
 
 		List<String> possibleAnswers = getAnswersAsList();
 
+		//check if the first word is a or the and remove it from their answer.
 		String output = "";
 		String[] data = userInput.split(" ");
 		int length = data.length;
@@ -164,10 +165,16 @@ public class Question {
 		return false;
 	}
 
+	/**
+	 * @return Formatted string for wrong questions tracking purposes. Only returns question, answer, type
+	 */
 	public String getFormattedStringWrong() {
 		return _question + Question.delimiter + _answer + Question.delimiter + _type + "\n";
 	}
 
+	/**
+	 * @return Formatted string for attempt question tracking purposes. Returns question, answer, prize, category and type.
+	 */
 	public String getFormattedString() {
 		return _question + Question.delimiter + _answer + Question.delimiter + _prize + Question.delimiter
 		+ _parent.getName() + Question.delimiter + _type;

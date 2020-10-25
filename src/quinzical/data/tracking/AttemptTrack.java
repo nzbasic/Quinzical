@@ -19,8 +19,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * This class manages the previous attempt history and game status
- *
+ * This class manages the previous attempt history and game status.
  */
 public class AttemptTrack {
 
