@@ -183,6 +183,7 @@ public class QuestionController extends Help {
 					char first = _questionObj.getFirstLetter();
 					popup.setVisible(true);
 					String textHint = "The first letter is: " + Character.toUpperCase(first);
+					answer.setText(Character.toString(first));
 					firstLetter.setText(textHint);
 					speaking(textHint, 1, 2);
 				}
