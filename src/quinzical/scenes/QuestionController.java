@@ -228,7 +228,7 @@ public class QuestionController extends Help {
 				WinningsTrack winningController = new WinningsTrack();
 				winningController.readWinnings();
 				winningController.updateWinnings(Integer.parseInt(q.getPrize()));
-				message.setText("Correct!");
+				message.setText("Correct! You have gained $" + q.getPrize());
 				speaking("Correct!", 1, 2);
 				setGreen();
 				new AttemptTrack().removeCorrectlyAttemptedQuestion(q);
