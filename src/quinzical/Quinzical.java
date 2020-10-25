@@ -28,6 +28,11 @@ public class Quinzical extends Application {
 		launch(args);
 	}
 
+	/**
+	 * Loads an fxml file to the main stage.
+	 * @param fxmlfile FxmlFile enum
+	 * @throws IOException file not found
+	 */
 	public static void loadFXML(FxmlFile fxmlfile) throws IOException {
 		FXMLLoader fxml = new FXMLLoader(GameController.class.getResource(fxmlfile.getPath()));
 		Parent parent = fxml.load();
@@ -38,13 +43,25 @@ public class Quinzical extends Application {
 	
 	private static Parent _controllerParent;
 
+	/**
+	 * This will load a given Fxml file and return the controller for that fxml. It will also store the parent in _controllerParent to load later with Quinzical#loadStoredFXML().
+	 * @param fxmlfile FxmlFile enum
+	 * @return Controller defined in the fxml
+	 * @throws IOException file not found
+	 */
 	public static Object loadGetController(FxmlFile fxmlfile) throws IOException {
 		FXMLLoader load = new FXMLLoader(GameController.class.getResource(fxmlfile.getPath()));
 		_controllerParent = load.load();
 		return load.getController();
 	}
 
-	public static void loadStoredFXML() throws IOException {
+	/**
+	 * Loads the parent currently stored in Quinzical._controllerParent to the main stage.
+	 */
+	public static void loadStoredFXML() {
+		if (_controllerParent == null) {
+			throw new NullPointerException("Parent not loaded");
+		}
 		Scene scene = new Scene(_controllerParent);
 		_stage.setScene(scene);
 		_stage.show();
