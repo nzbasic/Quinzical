@@ -158,6 +158,20 @@ public class QuestionController extends Help {
 	}
 
 	/**
+	 * sets the popup colour to red.
+	 */
+	private void setRed() {
+		popup.setStyle("-fx-background-color: #FF4136; -fx-background-radius: 7;");
+	}
+
+	/**
+	 * sets the popup colour to green.
+	 */
+	private void setGreen() {
+		popup.setStyle("-fx-background-color: #2ECC40; -fx-background-radius: 7;");
+	}
+
+	/**
 	 * Called when user submits their answer. If practice mode is on, they get 3
 	 * attempts. Otherwise, show if they are right or wrong.
 	 * 
@@ -176,6 +190,7 @@ public class QuestionController extends Help {
 				_questionObj.setResult(true);
 				message.setText("Correct!");
 				speaking("Correct!", 1, 1);
+				setGreen();
 				
 			} else {
 
@@ -186,6 +201,7 @@ public class QuestionController extends Help {
 					answer.setText(Character.toString(first));
 					firstLetter.setText(textHint);
 					speaking(textHint, 1, 2);
+					
 				}
 				if (_retryNumber < 3) {
 					message.setText("Incorrect, " + (3 - _retryNumber) + " attempts remain");
@@ -197,6 +213,7 @@ public class QuestionController extends Help {
 					message.setText(answerText);
 					speaking(answerText, 1, 2);
 				}
+				setRed();
 			}
 		} else {
 
@@ -213,10 +230,11 @@ public class QuestionController extends Help {
 				winningController.updateWinnings(Integer.parseInt(q.getPrize()));
 				message.setText("Correct!");
 				speaking("Correct!", 1, 2);
+				setGreen();
 				new AttemptTrack().removeCorrectlyAttemptedQuestion(q);
 				// new HelperThread("Correct!", 1, 1).run();
 			} else {
-
+				setRed();
 				String answerTxt = "Your answer was incorrect";
 				message.setText(answerTxt);
 				speaking(answerTxt, 1, 2);

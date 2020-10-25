@@ -122,7 +122,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="popup" layoutX="270.0" layoutY="605.0" prefHeight="105.0" prefWidth="736.0" style="-fx-background-color: #F28100; -fx-background-radius: 7;" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="274.0">
+      <AnchorPane fx:id="popup" layoutX="278.0" layoutY="606.0" prefHeight="105.0" prefWidth="736.0" style="-fx-background-color: #F28100; -fx-background-radius: 7;" AnchorPane.leftAnchor="278.0" AnchorPane.rightAnchor="266.0">
          <effect>
             <DropShadow />
          </effect>
