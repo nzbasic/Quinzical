@@ -50,6 +50,10 @@ public class PracticeController extends Help {
 	private void initialize() {
 		_loader = new CategoryLoader(Sections.NZ);
 		_generator = new RandomGenerator();
+		List<Question> list = new AttemptTrack().getWrongQuestions();
+		if (list.size() == 0) {
+			practise.setVisible(false);
+		}
 		_categories = _loader.getCategories();
 		_buttons = new ToggleButton[] { ctg1, ctg2, ctg3, ctg4, ctg5, ctg6, ctg7, ctg8, ctg9 };
 		_selected = new ToggleButton[] { s1, s2, s3, s4, s5 };
