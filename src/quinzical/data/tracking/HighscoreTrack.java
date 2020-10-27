@@ -23,7 +23,7 @@ public class HighscoreTrack {
      * Loads the current scores if they exist to the internal list.
      */
     public HighscoreTrack() {
-        File file = new File(Files.SCORES.toString());
+        File file = new File("." + Files.SCORES.toString());
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -61,7 +61,7 @@ public class HighscoreTrack {
      */
     public void addScore(Score newScore) throws IOException {
         _scores.add(newScore);
-        File file = new File(Files.SCORES.toString());
+        File file = new File("." + Files.SCORES.toString());
         FileWriter fw = new FileWriter(file);
         for (Score score : _scores) {
             fw.write(score.getScore() + "\n");
