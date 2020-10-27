@@ -113,4 +113,11 @@ public class MenuController extends Help {
 
 	}
 
+	@Override
+	public void help() {
+		if (popup.isVisible()) {
+			return;
+		}
+	}
+
 }
