@@ -118,6 +118,7 @@ public class MenuController extends Help {
 		if (popup.isVisible()) {
 			return;
 		}
+		super.help();
 	}
 
 }

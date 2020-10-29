@@ -186,7 +186,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="help" layoutX="1195.0" layoutY="658.0" mnemonicParsing="false" onAction="#help" prefHeight="46.0" prefWidth="75.0" stylesheets="@Help.css" text="Help" />
+      <Button fx:id="help" layoutX="1195.0" layoutY="658.0" mnemonicParsing="false" onAction="#help" prefHeight="46.0" prefWidth="75.0" text="Help" />
       <ImageView fitHeight="451.0" fitWidth="590.0" layoutX="835.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true" rotate="-39.8">
          <image>
             <Image url="@assets/fern.png" />
