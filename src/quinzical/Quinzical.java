@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import quinzical.scenes.GameController;
+import quinzical.scenes.QuestionController;
 
 /**
  * Entry point class for the program. Loads the menu and starts the game.
@@ -38,7 +39,9 @@ public class Quinzical extends Application {
 		Parent parent = fxml.load();
 		Scene scene = new Scene(parent);
 		_stage.setScene(scene);
+		_stage.setOnHiding(event -> {new QuestionController().killProcesses();});
 		_stage.show();
+		
 	}
 	
 	private static Parent _controllerParent;
