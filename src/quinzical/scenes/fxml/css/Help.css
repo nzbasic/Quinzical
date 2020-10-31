@@ -30,6 +30,12 @@ SVGPath {
     -fx-font-family:'system';
     -fx-font-size: 13px;
 }
+#wrongLabel {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: black;
+    -fx-font-family:'system';
+    -fx-font-size: 13px;
+}
 #message {
     -fx-background-color: null;
     -fx-text-fill: white;

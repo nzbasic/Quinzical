@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.SVGPath;
 import quinzical.data.tracking.AttemptTrack;
 import quinzical.data.model.Category;
 import quinzical.Quinzical;
@@ -42,7 +43,9 @@ public class PracticeController extends Help {
 	@FXML
 	private HBox selection;
 	@FXML
-	private Label selectionLabel, title;
+	private Label selectionLabel, title, wrongLabel;
+	@FXML
+	private SVGPath wrongSVG;
 	@FXML
 	private AnchorPane categoryOverlay;
 
@@ -234,6 +237,14 @@ public class PracticeController extends Help {
 	@Override
 	public void help() {
 		if (_practiceMode) {
+			List<Question> list = new AttemptTrack().getWrongQuestions();
+			if (list.size() == 0) {
+				wrongSVG.setVisible(false);
+				wrongLabel.setVisible(false);
+			} else {
+				wrongSVG.setVisible(true);
+				wrongLabel.setVisible(true);
+			}
 			super.help();
 		} else {
 			categoryOverlay.setVisible(true);
