@@ -54,7 +54,7 @@ public class QuestionController extends Help {
 	private int _retryNumber = 0;
 	private String _questionText;
 	private Timeline _animation;
-	private boolean _gameExit =false;
+	private boolean _gameExit = false;
 
 	/**
 	 * Sets the controller to be in practice mode. Changes behaviour when getting a
@@ -82,7 +82,8 @@ public class QuestionController extends Help {
 	}
 
 	/**
-	 * Sets internal field to keep track if the game is currently in international mode.
+	 * Sets internal field to keep track if the game is currently in international
+	 * mode.
 	 */
 	public void setBonusAttempt() {
 		_internationalSection = true;
@@ -132,7 +133,7 @@ public class QuestionController extends Help {
 	}
 
 	/**
-	 * Sets the question type in the box next to the textfield. 
+	 * Sets the question type in the box next to the textfield.
 	 */
 	private void setType() {
 		String typeString;
@@ -144,11 +145,11 @@ public class QuestionController extends Help {
 		}
 		type.setText(typeString + ":");
 	}
-	
+
 	/**
 	 * stop timer
 	 */
-	private void stopTimerAnimation(){
+	private void stopTimerAnimation() {
 		clock.setVisible(false);
 		fixedDisplay.setVisible(false);
 		timerDisplay.setVisible(false);
@@ -179,7 +180,7 @@ public class QuestionController extends Help {
 	 */
 	@FXML
 	public void checkAnswer(Event e) {
-		_gameExit =true;
+		_gameExit = true;
 		stopTimerAnimation();
 		if (_practiceMode) {
 			// increase retry number, once they hit 3 then they dont get any more attempts
@@ -191,7 +192,7 @@ public class QuestionController extends Help {
 				message.setText("Correct!");
 				speaking("Correct!", 1, 1);
 				setGreen();
-				
+
 			} else {
 
 				if (_retryNumber == 2) {
@@ -201,7 +202,7 @@ public class QuestionController extends Help {
 					answer.setText(Character.toString(first));
 					firstLetter.setText(textHint);
 					speaking(textHint, 1, 2);
-					
+
 				}
 				if (_retryNumber < 3) {
 					message.setText("Incorrect, " + (3 - _retryNumber) + " attempts remain");
@@ -304,9 +305,9 @@ public class QuestionController extends Help {
 					Process p = new ProcessBuilder("bash", "-c", "festival -b ./.attempt/.question.scm").start();
 
 					// TImer only appears after the first time the question gets played
-					if (playTime == 0 ) {
+					if (playTime == 0) {
 						p.waitFor();
-						//int gameExit = p.exitValue();
+						// int gameExit = p.exitValue();
 						if (!_gameExit || playTime == 3) {
 							Platform.runLater(new Runnable() {
 								private int count = 60;
@@ -369,10 +370,10 @@ public class QuestionController extends Help {
 			if (_internationalSection) {
 				new GameController().switchToInternationalQuestions(e);
 			} else {
-				GameController gc = (GameController)Quinzical.loadGetController(FxmlFile.GAME);
+				GameController gc = (GameController) Quinzical.loadGetController(FxmlFile.GAME);
 				gc.oldGameData();
 
-			    Quinzical.loadStoredFXML();
+				Quinzical.loadStoredFXML();
 				gc.checkIfAllAttempted();
 			}
 

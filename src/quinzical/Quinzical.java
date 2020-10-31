@@ -31,6 +31,7 @@ public class Quinzical extends Application {
 
 	/**
 	 * Loads an fxml file to the main stage.
+	 * 
 	 * @param fxmlfile FxmlFile enum
 	 * @throws IOException file not found
 	 */
@@ -39,15 +40,20 @@ public class Quinzical extends Application {
 		Parent parent = fxml.load();
 		Scene scene = new Scene(parent);
 		_stage.setScene(scene);
-		_stage.setOnHiding(event -> {new QuestionController().killProcesses();});
+		_stage.setOnHiding(event -> {
+			new QuestionController().killProcesses();
+		});
 		_stage.show();
-		
+
 	}
-	
+
 	private static Parent _controllerParent;
 
 	/**
-	 * This will load a given Fxml file and return the controller for that fxml. It will also store the parent in _controllerParent to load later with Quinzical#loadStoredFXML().
+	 * This will load a given Fxml file and return the controller for that fxml. It
+	 * will also store the parent in _controllerParent to load later with
+	 * Quinzical#loadStoredFXML().
+	 * 
 	 * @param fxmlfile FxmlFile enum
 	 * @return Controller defined in the fxml
 	 * @throws IOException file not found
@@ -59,7 +65,8 @@ public class Quinzical extends Application {
 	}
 
 	/**
-	 * Loads the parent currently stored in Quinzical._controllerParent to the main stage.
+	 * Loads the parent currently stored in Quinzical._controllerParent to the main
+	 * stage.
 	 */
 	public static void loadStoredFXML() {
 		if (_controllerParent == null) {
@@ -69,7 +76,5 @@ public class Quinzical extends Application {
 		_stage.setScene(scene);
 		_stage.show();
 	}
-
-
 
 }

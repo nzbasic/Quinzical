@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class RewardController {
 
-	@FXML 
+	@FXML
 	private TableView<Score> table;
 	@FXML
 	private TableColumn<Score, String> highscores;

@@ -18,6 +18,7 @@ public class CategoryLoader {
 
 	/**
 	 * Constructor for category loader
+	 * 
 	 * @param section One of the sections of the game, eg NZ or INTERNATIONAL
 	 */
 	public CategoryLoader(Sections section) {

@@ -26,7 +26,6 @@ public class RandomGenerator {
 	private List<Question> _gameQuestions = new ArrayList<Question>();
 	private AttemptTrack _attempt = new AttemptTrack();
 
-
 	/**
 	 * Uses random number generation to generate lists of categories and questions
 	 * from all loaded questions. n:number of categories to generate
@@ -81,7 +80,8 @@ public class RandomGenerator {
 		List<String> listOfLines = new ArrayList<>();
 		try {
 			// read each file
-			bufReader = new BufferedReader(new FileReader(Folders.CATEGORIES.toString() + "/" + section.toString() + "/" + nameOfFile));
+			bufReader = new BufferedReader(
+					new FileReader(Folders.CATEGORIES.toString() + "/" + section.toString() + "/" + nameOfFile));
 			// read all lines in that file
 			String line = bufReader.readLine();
 			while (line != null) {
@@ -98,8 +98,9 @@ public class RandomGenerator {
 
 	/**
 	 * Creates question objects, must have called generateCategoriesAtRandom()
-	 * before calling this method 
-	 * @param n=number of questions per category 
+	 * before calling this method
+	 * 
+	 * @param n=number of questions per category
 	 * @param section: NZ or International
 	 */
 	public void generateGameQuestions(int n, Sections section) {
@@ -113,7 +114,7 @@ public class RandomGenerator {
 			List<String> questionLines = readAllLinesInFile(cName, section);
 			// Generate 5 question objects
 			for (int i = 0; i < n; i++) {
-				int index=0;
+				int index = 0;
 				int randomNum = ThreadLocalRandom.current().nextInt(0, questionLines.size());
 				// creates a question object and attach to its category object
 				String[] questionfields = questionLines.get(randomNum).split(Question.delimiter);
@@ -121,7 +122,7 @@ public class RandomGenerator {
 				if (n == 5) {
 					index = i;
 				} else {
-					index = 1 + i * 2; //2 questions per category
+					index = 1 + i * 2; // 2 questions per category
 				}
 				q = new Question(questionfields[0], questionfields[1], Integer.toString(_points[index]),
 						questionfields[2], current);
@@ -150,6 +151,7 @@ public class RandomGenerator {
 
 	/**
 	 * Generated a random question from a list of questions.
+	 * 
 	 * @param list List of questions
 	 * @return Random question object
 	 */

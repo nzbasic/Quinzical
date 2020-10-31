@@ -33,12 +33,14 @@ public class AttemptTrack {
 	private static final int _questionsPerCategoryNormal = 5;
 	private static final int _questionsPerCategoryInternational = 2;
 	private static final int _numberOfQuestions = 25;
-    private static final String _questionsAttemptFile = Folders.ATTEMPT.toString() + Files.QUESTIONS_ATTEMPT.toString();
-	private static final String _internationalAttemptFile = Folders.ATTEMPT.toString() + Files.INTERNATIONAL_ATTEMPT.toString();
+	private static final String _questionsAttemptFile = Folders.ATTEMPT.toString() + Files.QUESTIONS_ATTEMPT.toString();
+	private static final String _internationalAttemptFile = Folders.ATTEMPT.toString()
+			+ Files.INTERNATIONAL_ATTEMPT.toString();
 	private static final String _attemptRecord = Folders.ATTEMPT.toString() + Files.ATTEMPT_RECORD.toString();
-	private static final String _internationalAttemptRecord = Folders.ATTEMPT.toString() + Files.BONUS_ATTEMPT_RECORD.toString();
+	private static final String _internationalAttemptRecord = Folders.ATTEMPT.toString()
+			+ Files.BONUS_ATTEMPT_RECORD.toString();
 	private static final String _wrongQuestions = Folders.ATTEMPT.toString() + Files.WRONG_QUESTIONS.toString();
-	
+
 	/**
 	 * Constructor method, creates all necessary files and folder if not created
 	 * already.
@@ -83,13 +85,13 @@ public class AttemptTrack {
 	public void updateQuestionsGenerated(List<Question> qList, Sections section) {
 		FileWriter fw = null;
 		try {
-			switch(section) {
-				case NZ:
-					fw = new FileWriter(_questionsAttemptFile);
-					break;
-				case INTERNATIONAL:
-					fw = new FileWriter(_internationalAttemptFile);
-					break;
+			switch (section) {
+			case NZ:
+				fw = new FileWriter(_questionsAttemptFile);
+				break;
+			case INTERNATIONAL:
+				fw = new FileWriter(_internationalAttemptFile);
+				break;
 			}
 
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -125,17 +127,17 @@ public class AttemptTrack {
 		int questionsPerCategory = 0;
 		try {
 
-			switch(section) {
-				case NZ:
-					reader = new BufferedReader(new FileReader(_questionsAttemptFile));
-					questionsPerCategory = _questionsPerCategoryNormal;
-					break;
-				case INTERNATIONAL:
-					reader = new BufferedReader(new FileReader(_internationalAttemptFile));
-					questionsPerCategory = _questionsPerCategoryInternational;
-					break;
+			switch (section) {
+			case NZ:
+				reader = new BufferedReader(new FileReader(_questionsAttemptFile));
+				questionsPerCategory = _questionsPerCategoryNormal;
+				break;
+			case INTERNATIONAL:
+				reader = new BufferedReader(new FileReader(_internationalAttemptFile));
+				questionsPerCategory = _questionsPerCategoryInternational;
+				break;
 			}
-	
+
 			int i = 0;
 			int j = 0;
 			while ((line = reader.readLine()) != null) {
@@ -174,13 +176,13 @@ public class AttemptTrack {
 		FileWriter fw = null;
 		try {
 
-			switch(section) {
-				case NZ:
-					fw = new FileWriter(_attemptRecord);
-					break;
-				case INTERNATIONAL:
-					fw = new FileWriter(_internationalAttemptRecord);
-					break;
+			switch (section) {
+			case NZ:
+				fw = new FileWriter(_attemptRecord);
+				break;
+			case INTERNATIONAL:
+				fw = new FileWriter(_internationalAttemptRecord);
+				break;
 			}
 
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -217,13 +219,13 @@ public class AttemptTrack {
 		String line = null;
 		try {
 
-			switch(section) {
-				case NZ:
-					reader = new BufferedReader(new FileReader(_attemptRecord));
-					break;
-				case INTERNATIONAL:
-					reader = new BufferedReader(new FileReader(_internationalAttemptRecord));
-					break;
+			switch (section) {
+			case NZ:
+				reader = new BufferedReader(new FileReader(_attemptRecord));
+				break;
+			case INTERNATIONAL:
+				reader = new BufferedReader(new FileReader(_internationalAttemptRecord));
+				break;
 			}
 			int i = 0;
 			while ((line = reader.readLine()) != null) {

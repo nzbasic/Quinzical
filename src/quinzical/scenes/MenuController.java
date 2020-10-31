@@ -92,7 +92,7 @@ public class MenuController extends Help {
 	 */
 	@FXML
 	public void continueGame(Event e) throws Exception {
-		GameController gc = (GameController)Quinzical.loadGetController(FxmlFile.GAME);
+		GameController gc = (GameController) Quinzical.loadGetController(FxmlFile.GAME);
 		gc.oldGameData();
 		Quinzical.loadStoredFXML();
 		gc.checkIfAllAttempted();
@@ -107,7 +107,7 @@ public class MenuController extends Help {
 	 */
 	@FXML
 	public void newGame(Event e) throws IOException {
-		PracticeController gc = (PracticeController)Quinzical.loadGetController(FxmlFile.PRACTICE);
+		PracticeController gc = (PracticeController) Quinzical.loadGetController(FxmlFile.PRACTICE);
 		gc.setCategorySelection();
 		Quinzical.loadStoredFXML();
 

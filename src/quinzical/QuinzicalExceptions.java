@@ -5,10 +5,9 @@ import javafx.scene.control.Alert.AlertType;
 
 public class QuinzicalExceptions extends RuntimeException {
 	/**
-	 * 
+	 * This class shows the users an alert message for all QuinzicalExceptions
 	 */
 	private static final long serialVersionUID = 1L;
-	
 
 	public QuinzicalExceptions(String err) {
 

@@ -38,7 +38,7 @@ public class PracticeController extends Help {
 	@FXML
 	private ToggleButton tester;
 	@FXML
-	private Button practise, confirm, help,random;
+	private Button practise, confirm, help, random;
 	@FXML
 	private HBox selection;
 	@FXML
@@ -117,14 +117,14 @@ public class PracticeController extends Help {
 
 		} else {
 			int index = 0;
-			
+
 			// Check if the space is free
 			if (_freeSpace.contains(_total)) {
 				index = _total;
 			}
 
 			if (_total < 5) {
-				index = _freeSpace.first(); 
+				index = _freeSpace.first();
 				_numberSelected[index] = categoryNum - 1; // stores button index
 				_buttons[categoryNum - 1].setVisible(false);
 				_selected[index].setVisible(true);
@@ -132,7 +132,7 @@ public class PracticeController extends Help {
 				_selected[index].setText(category.getName());
 				_total++;
 			}
-			
+
 			if (_total >= 5) {
 				confirm.setVisible(true);
 				_buttons[categoryNum - 1].setSelected(false);
@@ -173,8 +173,7 @@ public class PracticeController extends Help {
 		rg.setGameCategories(gameCategories);
 		rg.generateGameQuestions(5, Sections.NZ);
 
-		
-		GameController gc = (GameController)Quinzical.loadGetController(FxmlFile.GAME);
+		GameController gc = (GameController) Quinzical.loadGetController(FxmlFile.GAME);
 		gc.newGameData();
 		Quinzical.loadStoredFXML();
 	}
@@ -188,48 +187,48 @@ public class PracticeController extends Help {
 	public void returnToMenu(Event e) throws IOException {
 		new GameController().returnToMenu(e);
 	}
-    
+
 	@FXML
 	public void reset() {
-	    _total=0;
-	    initialize();
-	    for (ToggleButton b :_buttons) {
-	    	b.setVisible(true);
-	    }
-	    setCategorySelection();
-        
-		
+		_total = 0;
+		initialize();
+		for (ToggleButton b : _buttons) {
+			b.setVisible(true);
+		}
+		setCategorySelection();
+
 	}
+
 	/**
 	 * Generate 5 random categories for users.
 	 */
 	@FXML
 	public void generateRandomCategories() {
-		
+
 		reset();
-		RandomGenerator myRG=new RandomGenerator();
+		RandomGenerator myRG = new RandomGenerator();
 		myRG.generateCategoriesAtRandom(5, Sections.NZ);
-		
-		_total=5;
-	    int i=0;
-		for (String s:myRG.getGeneratedCategories()) {
-		    for (ToggleButton b :_buttons) {
-		    	if ( b.getText().equals(s)) {
-			     b.setVisible(false);
-			     char[] chars = b.getId().toCharArray();
-				 int categoryNum = Integer.parseInt(Character.toString(chars[3]));
-			     _numberSelected[i] = categoryNum-1;// stores button index
-			     _selected[i].setVisible(true);
-			     _selected[i].setText(s);
-			     _freeSpace.remove(i);
-			     i++;
-		    	}
-		    }
-        
+
+		_total = 5;
+		int i = 0;
+		for (String s : myRG.getGeneratedCategories()) {
+			for (ToggleButton b : _buttons) {
+				if (b.getText().equals(s)) {
+					b.setVisible(false);
+					char[] chars = b.getId().toCharArray();
+					int categoryNum = Integer.parseInt(Character.toString(chars[3]));
+					_numberSelected[i] = categoryNum - 1;// stores button index
+					_selected[i].setVisible(true);
+					_selected[i].setText(s);
+					_freeSpace.remove(i);
+					i++;
+				}
+			}
+
 		}
-		
+
 		confirm.setVisible(true);
-		
+
 	}
 
 	@Override

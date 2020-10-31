@@ -113,7 +113,6 @@ public class GameController extends Help {
 
 	}
 
-
 	/**
 	 * Checks if all questions have been attempted, if they have, go to reward
 	 * screen. If 2 categories have been attempted unlock International questions.
@@ -159,9 +158,9 @@ public class GameController extends Help {
 		Score score = new Score(winnings);
 		HighscoreTrack tracker = new HighscoreTrack();
 		tracker.addScore(score);
-		RewardController rc = (RewardController)Quinzical.loadGetController(FxmlFile.REWARD);
+		RewardController rc = (RewardController) Quinzical.loadGetController(FxmlFile.REWARD);
 		rc.setPoints(winnings);
-        Quinzical.loadStoredFXML();
+		Quinzical.loadStoredFXML();
 	}
 
 	public void setInternationalSection(Event e) throws Exception {
@@ -206,7 +205,7 @@ public class GameController extends Help {
 
 		String question = _allq.get(lineNumber - 1).getQuestion();
 
-		QuestionController qc = (QuestionController)Quinzical.loadGetController(FxmlFile.QUESTION_AND_ANSWER);
+		QuestionController qc = (QuestionController) Quinzical.loadGetController(FxmlFile.QUESTION_AND_ANSWER);
 		if (_internationalSection) {
 			qc.setBonusAttempt();
 		}
@@ -225,7 +224,8 @@ public class GameController extends Help {
 	 */
 	@FXML
 	public void switchToInternationalQuestions(Event e) throws IOException {
-		BonusQuestionController qc = (BonusQuestionController)Quinzical.loadGetController(FxmlFile.INTERNATIONAL_QUESTIONS);
+		BonusQuestionController qc = (BonusQuestionController) Quinzical
+				.loadGetController(FxmlFile.INTERNATIONAL_QUESTIONS);
 		qc.setUp();
 		Quinzical.loadStoredFXML();
 	}
