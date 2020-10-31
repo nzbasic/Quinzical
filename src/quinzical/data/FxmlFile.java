@@ -50,7 +50,7 @@ public enum FxmlFile implements IFxmlFile {
 
 	FOLDER {
 		public String getPath() {
-			return "./fxml/";
+			return "fxml/";
 		}
-	};
+	}
 }
