@@ -56,9 +56,9 @@ public class GameController extends Help {
 	 * 
 	 * @throws IOException
 	 */
-	public void oldGameData() throws IOException {
+	public void oldGameData() throws Exception {
 		setupGame();
-
+        checkIfAllAttempted();
 	}
 
 	/**
