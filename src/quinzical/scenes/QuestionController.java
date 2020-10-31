@@ -25,6 +25,7 @@ import quinzical.data.tracking.AttemptTrack;
 import quinzical.data.Files;
 import quinzical.data.Folders;
 import quinzical.data.FxmlFile;
+import quinzical.data.Sections;
 import quinzical.data.model.Question;
 import quinzical.data.tracking.WinningsTrack;
 
@@ -368,7 +369,28 @@ public class QuestionController extends Help {
 			Quinzical.loadFXML(FxmlFile.PRACTICE);
 		} else {
 			if (_internationalSection) {
-				new GameController().switchToInternationalQuestions(e);
+				GameController gc = (GameController) Quinzical.loadGetController(FxmlFile.GAME);
+
+				//if there are unattempted international questions go to back to international section
+				//if there are no international questions left and there are normal questions go to normal
+				//if neither have questions go to reward.
+
+				int number = new BonusQuestionController().getNumberOfQuestionsAttempted();
+
+				if (number < 6) {
+					gc.switchToInternationalQuestions(e);
+				} else {
+					int[] record = new AttemptTrack().getAttemptedRecord(Sections.NZ);
+					for (int attempt : record) {
+						if (attempt == 0){ 
+							gc.oldGameData();
+							Quinzical.loadStoredFXML();
+							return;
+						}
+					}
+					gc.toRewardScreen();
+					return;
+				}
 			} else {
 				GameController gc = (GameController) Quinzical.loadGetController(FxmlFile.GAME);
 				gc.oldGameData();
