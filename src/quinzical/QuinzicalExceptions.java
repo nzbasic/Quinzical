@@ -7,7 +7,8 @@ public class QuinzicalExceptions extends RuntimeException {
 	/**
 	 * 
 	 */
-	private static final long _serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
+	
 
 	public QuinzicalExceptions(String err) {
 
