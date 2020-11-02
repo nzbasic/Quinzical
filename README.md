@@ -1,10 +1,7 @@
 # Quinzical
 
 Menu:\
-![alt text](https://cdn.discordapp.com/attachments/627267590862929961/761884795516485632/menu.png "Quinzical Menu")
-
-Question Select:\
-![alt text](https://cdn.discordapp.com/attachments/627267590862929961/761885530727776266/unknown.png "Question Selection Screen")
+![alt text](https://media.discordapp.net/attachments/627267590862929961/772969678749827072/menu.png?width=1163&height=654 "Quinzical Menu")
 
 Find the current release [HERE](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-05/releases)
 
